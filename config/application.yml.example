@@ -1,0 +1,9 @@
+# This is a application.yml example that is not ignored, so that you can copy this and create your own application.yml
+## with the same structure but your own keys.
+
+development:
+  CUADERNO_AMARILLO_DATABASE_PASSWORD: '??'
+test:
+  CUADERNO_AMARILLO_DATABASE_PASSWORD: '??'
+production:
+  CUADERNO_AMARILLO_DATABASE_PASSWORD: '??'
