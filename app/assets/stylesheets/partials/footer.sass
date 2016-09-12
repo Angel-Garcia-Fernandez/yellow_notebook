@@ -1,0 +1,21 @@
+// Sticky footer styles
+//--------------------------------------------------
+
+$footer_height: 35px
+$footer_top_padding_for_disapearing: 15px
+
+html
+  position: relative
+  min-height: 100%
+
+body
+  /* Margin bottom by footer height */
+  margin-bottom: $footer_height + $footer_top_padding_for_disapearing
+
+.footer
+  position: absolute
+  bottom: 0
+  width: 100%
+  /* Set the fixed height of the footer here */
+  height: $footer_height
+  background-color: #f5f5f5

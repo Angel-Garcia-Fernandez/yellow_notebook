@@ -1,0 +1,26 @@
+# ActiveRecord model translations
+
+es:
+  activerecord:
+    models:
+      user:
+        one: usuario
+        other: usuarios
+      teacher:
+        one: monitor
+        other: monitores
+    attributes:
+      user:
+        login: login
+        email: correo
+        password: contraseña
+        password_confirmation: confirmar contraseña
+      teacher:
+        id: nº identificación
+        name: nombre
+        surname: apellidos
+        manage_attendance_default: asistencia
+        manage_collection_default: cobros
+        details: observaciones
+        created_at: fecha creación
+

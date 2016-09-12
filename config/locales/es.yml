@@ -22,7 +22,13 @@ es:
   layouts:
     application:
       title: 'El cuaderno amarillo'
+      description: 'Aplicación para gestionar actividades de tiempo libre.'
     nav_links_for_auth:
+      admin: 'Administración'
+      teachers: 'Monitores'
+      activities: 'Actividades'
+      account: 'Cuenta'
+      users: 'Usuarios'
       edit_account: 'Editar cuenta'
       sign_in: 'Identificarse'
       sign_out: 'Salir'
@@ -30,7 +36,7 @@ es:
     navigation:
       home: 'Cuaderno amarillo'
     navigation_links:
-      about: 'Sobre CA'
+      about: 'Sobre nosotros'
   pages:
     about:
       title: "Sobre cuaderno amarillo"

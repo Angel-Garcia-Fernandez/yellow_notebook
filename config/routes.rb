@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :activities
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -8,7 +9,14 @@ Rails.application.routes.draw do
   root :to => 'high_voltage/pages#show', id: 'about'
 
   # web for authenticated users:
-  devise_for :users
-  resources :users
+  devise_for :users#, skip: :registration
+  # as :user do
+  #   get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'
+  #   put 'users' => 'devise/registrations#update', :as => 'user_registration'
+  # end
 
+
+  resources :users, only: [ :index, :show ]
+
+  resources :teachers
 end

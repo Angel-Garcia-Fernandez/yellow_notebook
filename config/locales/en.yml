@@ -23,6 +23,7 @@ en:
   layouts:
     application:
       title: 'Yellow Notebook'
+      description: 'Spare time activity management app.'
     nav_links_for_auth:
       edit_account: 'Edit account'
       sign_in: 'Sign in'

@@ -53,7 +53,11 @@ gem 'high_voltage'
 # Bootstrap
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
-
+gem 'bootstrap-generators' # add bootstrap generators for scaffolding.
+gem 'bootstrap-sass-extras' # add some extras included in twitter-bootstrap-sass to bootstrap-sass.
+                              # $ rails g bootstrap:themed Posts
+                              # that regenerate the old scaffold views to the bootstrap ones.ç
+gem 'devise-bootstrap-views'
 
 
 # In Rubymine, using the debugger implies  commenting byebug and instaling debase gems.

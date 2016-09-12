@@ -1,4 +1,4 @@
-/*
+/**
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  *
@@ -10,6 +10,15 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
- *= require_self
+ * The modules directory is reserved for Sass code that doesn't cause Sass to actually output CSS. Things like mixin declarations, functions, and variables.
+ * The partials directory is where the meat of my CSS is constructed.
+ * The vendor directory is for third-party CSS.
+ *
+ * "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
  */
+
+@import "bootstrap-sprockets"
+@import "bootstrap"
+@import "vendor/*"
+@import "modules/*"
+@import "partials/**/*"
