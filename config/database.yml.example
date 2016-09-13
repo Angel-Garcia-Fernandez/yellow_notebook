@@ -1,0 +1,33 @@
+# At the server and local
+# mysql -uroot -p
+# > CREATE USER 'cuaderno_amarillo_user'@'localhost' IDENTIFIED BY 'mypass';
+# > GRANT  ALL ON cuaderno_amarillo_development_db.* TO 'cuaderno_amarillo_user'@'localhost';
+# > GRANT  ALL ON cuaderno_amarillo_production_db.* TO 'cuaderno_amarillo_user'@'localhost';
+# > GRANT  ALL ON cuaderno_amarillo_test_db.* TO 'cuaderno_amarillo_user'@'localhost';
+
+
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  username: cuaderno_amarillo_user
+  #socket: /tmp/mysql.sock
+
+development:
+  <<: *default
+  database: cuaderno_amarillo_development_db
+  password: <%= ENV['CUADERNO_AMARILLO_DATABASE_PASSWORD'] %>
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  <<: *default
+  database: cuaderno_amarillo_test_db
+  password: <%= ENV['CUADERNO_AMARILLO_DATABASE_PASSWORD'] %>
+
+production:
+  <<: *default
+  database: cuaderno_amarillo_production_db
+  username: cuaderno_amarillo_user
+  password: <%= ENV['CUADERNO_AMARILLO_DATABASE_PASSWORD'] %>

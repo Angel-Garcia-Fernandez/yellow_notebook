@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160911232047) do
+ActiveRecord::Schema.define(version: 20160912124015) do
+
+  create_table "account_details", force: :cascade do |t|
+    t.string   "IBAN",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "activities", force: :cascade do |t|
     t.string   "code",           limit: 255
@@ -22,6 +28,45 @@ ActiveRecord::Schema.define(version: 20160911232047) do
     t.decimal  "default_price",              precision: 8, scale: 2
     t.datetime "created_at",                                         null: false
     t.datetime "updated_at",                                         null: false
+  end
+
+  create_table "guardians", force: :cascade do |t|
+    t.string   "NIC",          limit: 255
+    t.string   "name",         limit: 255
+    t.string   "surname",      limit: 255
+    t.string   "phone_number", limit: 255
+    t.string   "address",      limit: 255
+    t.string   "town",         limit: 255
+    t.string   "province",     limit: 255
+    t.string   "zip_code",     limit: 255
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  create_table "schools", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.string   "address",    limit: 255
+    t.string   "town",       limit: 255
+    t.string   "province",   limit: 255
+    t.string   "zip_code",   limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "students", force: :cascade do |t|
+    t.string   "NIC",                      limit: 255
+    t.string   "name",                     limit: 255
+    t.string   "surname",                  limit: 255
+    t.decimal  "default_discount",                     precision: 4, scale: 4
+    t.integer  "default_payment_type_eid", limit: 4
+    t.string   "scholar_phone_number",     limit: 255
+    t.string   "phone_number",             limit: 255
+    t.string   "address",                  limit: 255
+    t.string   "town",                     limit: 255
+    t.string   "province",                 limit: 255
+    t.string   "zip_code",                 limit: 255
+    t.datetime "created_at",                                                   null: false
+    t.datetime "updated_at",                                                   null: false
   end
 
   create_table "teachers", force: :cascade do |t|

@@ -30,7 +30,16 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'unicorn'
 
 # Use Capistrano for deployment
-gem 'capistrano-rails', group: :development
+group :development do
+  gem 'capistrano', '~> 3.6'  # this is not necessary because it is a dependency of capistrano-rails, but it fix capistrano
+                              # version which is important
+  gem 'capistrano-rails'
+  gem 'capistrano-rvm'
+  gem 'capistrano-ssh-doctor' # In capfile: require 'capistrano/ssh_doctor'
+                              # execute: $ bundle exec cap production ssh:doctor
+  gem 'capistrano-passenger'
+
+end
 
 # Environment variables configuration in application.yml with figaro.
 # $ bundle exec figaro install
@@ -59,6 +68,7 @@ gem 'bootstrap-sass-extras' # add some extras included in twitter-bootstrap-sass
                               # that regenerate the old scaffold views to the bootstrap ones.ç
 gem 'devise-bootstrap-views'
 
+gem 'annotate' #annotate database schema in models
 
 # In Rubymine, using the debugger implies  commenting byebug and instaling debase gems.
 # group :development, :test do

@@ -27,6 +27,8 @@ es:
       admin: 'Administración'
       teachers: 'Monitores'
       activities: 'Actividades'
+      students: 'Alumnos'
+      schools: 'Colegios'
       account: 'Cuenta'
       users: 'Usuarios'
       edit_account: 'Editar cuenta'

@@ -1,0 +1,38 @@
+# == Schema Information
+#
+# Table name: guardians
+#
+#  id           :integer          not null, primary key
+#  NIC          :string(255)
+#  name         :string(255)
+#  surname      :string(255)
+#  phone_number :string(255)
+#  address      :string(255)
+#  town         :string(255)
+#  province     :string(255)
+#  zip_code     :string(255)
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  NIC: MyString
+  name: MyString
+  surname: MyString
+  phone_number: MyString
+  address: MyString
+  town: MyString
+  province: MyString
+  zip_code: MyString
+
+two:
+  NIC: MyString
+  name: MyString
+  surname: MyString
+  phone_number: MyString
+  address: MyString
+  town: MyString
+  province: MyString
+  zip_code: MyString

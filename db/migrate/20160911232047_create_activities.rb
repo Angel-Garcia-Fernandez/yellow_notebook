@@ -7,7 +7,6 @@ class CreateActivities < ActiveRecord::Migration
       t.date :started_at
       t.date :ended_at
       t.decimal :default_price, precision: 8, scale: 2
-      t.
 
       t.timestamps null: false
     end

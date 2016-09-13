@@ -1,0 +1,17 @@
+# == Schema Information
+#
+# Table name: account_details
+#
+#  id         :integer          not null, primary key
+#  IBAN       :string(255)
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  IBAN: MyString
+
+two:
+  IBAN: MyString
