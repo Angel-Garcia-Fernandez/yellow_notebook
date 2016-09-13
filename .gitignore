@@ -15,6 +15,7 @@
 # Ignore sensitive application environment variables configuration
 /config/application.yml
 /config/database.yml
+/config/secrets.yml
 
 #Ignore all rubymine files
 /.idea
