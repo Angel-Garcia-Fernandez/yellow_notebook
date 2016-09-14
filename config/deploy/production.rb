@@ -38,6 +38,9 @@ set :deploy_to, '/srv/ror/yellow_notebook/production'
 # Branch to deploy
 set :branch, 'master'
 
+# Environment
+set :rails_env, 'production'
+
 #set :app_domain, 'www.cuaderno_amarillo.com'
 
 # Custom SSH Options

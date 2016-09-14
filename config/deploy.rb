@@ -11,7 +11,7 @@ set :repo_url, 'git@github.com:Angel-Garcia-Fernandez/yellow_notebook.git'
 set :deploy_to, '/srv/ror/yellow_notebook/no_stage'
 
 # Default environment
-set :rails_env, 'production'
+set :rails_env, 'staging'
 
 # Default value for :scm is :git
 set :scm, :git

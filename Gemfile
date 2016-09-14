@@ -35,8 +35,8 @@ group :development do
                               # version which is important
   gem 'capistrano-rails'
   gem 'capistrano-rvm'
-  gem 'capistrano-ssh-doctor' # In capfile: require 'capistrano/ssh_doctor'
-                              # execute: $ bundle exec cap production ssh:doctor
+  # gem 'capistrano-ssh-doctor' # In capfile: require 'capistrano/ssh_doctor'
+  #                             # execute: $ bundle exec cap production ssh:doctor
   gem 'capistrano-passenger'
 
 end

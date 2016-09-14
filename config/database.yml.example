@@ -31,3 +31,9 @@ production:
   database: cuaderno_amarillo_production_db
   username: cuaderno_amarillo_user
   password: <%= ENV['CUADERNO_AMARILLO_DATABASE_PASSWORD'] %>
+
+staging:
+  <<: *default
+  database: cuaderno_amarillo_staging_db
+  username: cuaderno_amarillo_user
+  password: <%= ENV['CUADERNO_AMARILLO_DATABASE_PASSWORD']

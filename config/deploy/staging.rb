@@ -38,6 +38,9 @@ set :deploy_to, '/srv/ror/yellow_notebook/staging'
 # Branch to deploy
 set :branch, 'master'
 
+# Environment
+set :rails_env, 'staging'
+
 #set :app_domain, 'pre.cuaderno_amarillo.com'
 
 # Custom SSH Options
