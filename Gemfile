@@ -38,7 +38,8 @@ group :development do
   # gem 'capistrano-ssh-doctor' # In capfile: require 'capistrano/ssh_doctor'
   #                             # execute: $ bundle exec cap production ssh:doctor
   gem 'capistrano-passenger'
-
+  gem 'capistrano-db-tasks', require: false # Gives some task to pull or push database from local to server and vice versa.
+                                            # For a list of tasks: https://github.com/sgruhier/capistrano-db-tasks
 end
 
 # Environment variables configuration in application.yml with figaro.

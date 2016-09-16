@@ -22,3 +22,6 @@
 
 #ignore files ending in .ignore
 *.ignore
+
+#ignore db dumps
+/db/*.sql
