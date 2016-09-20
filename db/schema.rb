@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160912124015) do
+ActiveRecord::Schema.define(version: 20160918221651) do
 
   create_table "account_details", force: :cascade do |t|
     t.string   "IBAN",       limit: 255
@@ -30,6 +30,13 @@ ActiveRecord::Schema.define(version: 20160912124015) do
     t.datetime "updated_at",                                         null: false
   end
 
+  create_table "activity_classes", force: :cascade do |t|
+    t.datetime "started_at"
+    t.datetime "ended_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "guardians", force: :cascade do |t|
     t.string   "NIC",          limit: 255
     t.string   "name",         limit: 255
@@ -43,6 +50,14 @@ ActiveRecord::Schema.define(version: 20160912124015) do
     t.datetime "updated_at",               null: false
   end
 
+  create_table "school_representatives", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.string   "position",   limit: 255
+    t.text     "details",    limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
   create_table "schools", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.string   "address",    limit: 255
@@ -51,6 +66,22 @@ ActiveRecord::Schema.define(version: 20160912124015) do
     t.string   "zip_code",   limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+  end
+
+  create_table "student_activity_sign_ups", force: :cascade do |t|
+    t.decimal  "activity_discount",           precision: 4, scale: 4
+    t.date     "started_at"
+    t.date     "ended_at"
+    t.integer  "payment_type_eid",  limit: 4
+    t.datetime "created_at",                                          null: false
+    t.datetime "updated_at",                                          null: false
+  end
+
+  create_table "student_class_data", force: :cascade do |t|
+    t.boolean  "attended"
+    t.boolean  "paid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "students", force: :cascade do |t|

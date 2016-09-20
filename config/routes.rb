@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :student_activity_sign_ups
+  resources :student_class_data
+  resources :activity_classes
+  resources :school_representatives
   resources :schools
   resources :account_details
   resources :guardians

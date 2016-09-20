@@ -41,7 +41,8 @@ set :branch, 'master'
 # Environment
 set :rails_env, 'production'
 
-#set :app_domain, 'www.cuaderno_amarillo.com'
+# Domain_name
+set :app_domain, 'gestion.cuadernoamarillo.com'
 
 # Custom SSH Options
 # ==================
@@ -59,8 +60,8 @@ set :rails_env, 'production'
 
 set :ssh_options, {
                     keys: [ "#{ENV['HOME']}/.ssh/yellow_notebook_rsa" ],
-                    forward_agent: true,
-                    auth_methods: %w(public_key)
+                    #forward_agent: true,
+                    auth_methods: %w(publickey)
                 }
 #
 # The server-based syntax can be used to override options:

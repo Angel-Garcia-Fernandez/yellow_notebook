@@ -40,6 +40,7 @@ group :development do
   gem 'capistrano-passenger'
   gem 'capistrano-db-tasks', require: false # Gives some task to pull or push database from local to server and vice versa.
                                             # For a list of tasks: https://github.com/sgruhier/capistrano-db-tasks
+  gem 'capistrano-rails-collection'
 end
 
 # Environment variables configuration in application.yml with figaro.
@@ -69,7 +70,7 @@ gem 'bootstrap-sass-extras' # add some extras included in twitter-bootstrap-sass
                               # that regenerate the old scaffold views to the bootstrap ones.ç
 gem 'devise-bootstrap-views'
 
-gem 'annotate' #annotate database schema in models
+gem 'annotate' #annotate database schema in models: bundle exec annotate
 
 # In Rubymine, using the debugger implies  commenting byebug and instaling debase gems.
 # group :development, :test do

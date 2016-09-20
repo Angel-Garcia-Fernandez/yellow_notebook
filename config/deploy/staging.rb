@@ -41,7 +41,8 @@ set :branch, 'master'
 # Environment
 set :rails_env, 'staging'
 
-#set :app_domain, 'pre.cuaderno_amarillo.com'
+# Domain_name
+set :app_domain, 'pruebas.cuadernoamarillo.com'
 
 # Custom SSH Options
 # ==================
