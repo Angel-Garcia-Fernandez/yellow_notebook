@@ -1,0 +1,1 @@
+json.array! @student_activity_sign_ups, partial: 'student_activity_sign_ups/student_activity_sign_up', as: :student_activity_sign_up

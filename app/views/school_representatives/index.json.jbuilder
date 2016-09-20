@@ -1,0 +1,1 @@
+json.array! @school_representatives, partial: 'school_representatives/school_representative', as: :school_representative

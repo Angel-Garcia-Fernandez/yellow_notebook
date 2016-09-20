@@ -1,0 +1,1 @@
+json.array! @student_class_data, partial: 'student_class_data/student_class_datum', as: :student_class_datum

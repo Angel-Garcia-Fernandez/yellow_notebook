@@ -1,0 +1,1 @@
+json.partial! "school_representatives/school_representative", school_representative: @school_representative
