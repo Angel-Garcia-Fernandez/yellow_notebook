@@ -1,8 +1,13 @@
 require 'test_helper'
 
 class TeachersControllerTest < ActionController::TestCase
+
+
   setup do
+    @user = users(:one)
     @teacher = teachers(:one)
+    @teacher_new = { name: 'MyString3', surname: 'MyString3', manage_attendance_default: false, manage_collection_default: true, details: 'MyText' }
+    sign_in @user
   end
 
   test "should get index" do
@@ -18,10 +23,12 @@ class TeachersControllerTest < ActionController::TestCase
 
   test "should create teacher" do
     assert_difference('Teacher.count') do
-      post :create, teacher: { details: @teacher.details, manage_attendance_default: @teacher.manage_attendance_default, manage_collection_default: @teacher.manage_collection_default, name: @teacher.name, surname: @teacher.surname }
+      post :create, teacher: @teacher_new
     end
 
     assert_redirected_to teacher_path(assigns(:teacher))
+    # puts assigns(:teacher)
+    # assert_equal @teacher_new, assigns(:teacher)
   end
 
   test "should show teacher" do

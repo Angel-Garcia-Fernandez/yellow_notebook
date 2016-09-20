@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 20160918221651) do
   end
 
   create_table "student_activity_sign_ups", force: :cascade do |t|
-    t.decimal  "activity_discount",           precision: 4, scale: 4
+    t.decimal  "activity_discount",           precision: 5, scale: 4
     t.date     "started_at"
     t.date     "ended_at"
     t.integer  "payment_type_eid",  limit: 4
@@ -88,7 +88,7 @@ ActiveRecord::Schema.define(version: 20160918221651) do
     t.string   "NIC",                      limit: 255
     t.string   "name",                     limit: 255
     t.string   "surname",                  limit: 255
-    t.decimal  "default_discount",                     precision: 4, scale: 4
+    t.decimal  "default_discount",                     precision: 5, scale: 4
     t.integer  "default_payment_type_eid", limit: 4
     t.string   "scholar_phone_number",     limit: 255
     t.string   "phone_number",             limit: 255

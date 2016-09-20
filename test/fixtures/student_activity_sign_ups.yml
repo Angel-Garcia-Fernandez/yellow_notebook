@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  activity_discount: 9.99
+  activity_discount: 1.0
   started_at: 2016-09-19
   ended_at: 2016-09-19
   payment_type_eid: 1
 
 two:
-  activity_discount: 9.99
+  activity_discount: 0.85
   started_at: 2016-09-19
   ended_at: 2016-09-19
   payment_type_eid: 1

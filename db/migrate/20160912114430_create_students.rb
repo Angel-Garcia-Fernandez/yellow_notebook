@@ -4,7 +4,7 @@ class CreateStudents < ActiveRecord::Migration
       t.string :NIC
       t.string :name
       t.string :surname
-      t.decimal :default_discount, precision: 4, scale: 4
+      t.decimal :default_discount, precision: 5, scale: 4
       t.integer :default_payment_type_eid
       t.string :scholar_phone_number
       t.string :phone_number

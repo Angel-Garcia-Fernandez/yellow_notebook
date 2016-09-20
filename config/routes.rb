@@ -16,8 +16,7 @@ Rails.application.routes.draw do
   # end
 
 
-  resources :users, only: [ :index, :show ]
-
+  resources :users
   resources :teachers
   resources :student_activity_sign_ups
   resources :student_class_data

@@ -23,7 +23,7 @@ one:
 
 two:
   name: MyString
-  surname: MyString
+  surname: MyString2
   manage_attendance_default: false
   manage_collection_default: false
   details: MyText

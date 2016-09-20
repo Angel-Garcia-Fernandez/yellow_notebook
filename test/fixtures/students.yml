@@ -24,7 +24,7 @@ one:
   NIC: MyString
   name: MyString
   surname: MyString
-  default_discount: 9.99
+  default_discount: 0.99
   default_payment_type_eid: 1
   scholar_phone_number: MyString
   phone_number: MyString
@@ -37,7 +37,7 @@ two:
   NIC: MyString
   name: MyString
   surname: MyString
-  default_discount: 9.99
+  default_discount: 1
   default_payment_type_eid: 1
   scholar_phone_number: MyString
   phone_number: MyString
