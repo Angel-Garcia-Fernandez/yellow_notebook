@@ -89,5 +89,20 @@ group :development do
   gem 'spring'
 end
 
+# PDF support
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary-edge', '~> 0.12.3.0' # wkhtmltopdf installer for wicked_pdf
+
 # Select2 support
 gem 'select2-rails'
+
+# bootstrap datepicker support
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.42'
+
+
+# Activerecord any_of: OR for scopes
+gem 'activerecord_any_of'
+
+# Paperclip for uploading files
+gem 'paperclip', '~> 5.1.0'

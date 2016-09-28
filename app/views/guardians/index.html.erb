@@ -14,6 +14,7 @@
       <th><%= model_class.human_attribute_name(:town) %></th>
       <th><%= model_class.human_attribute_name(:province) %></th>
       <th><%= model_class.human_attribute_name(:zip_code) %></th>
+      <th><%= model_class.human_attribute_name(:student_id) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', default: t("helpers.actions") %></th>
     </tr>
@@ -30,6 +31,7 @@
           <td><%= guardian.town %></td>
           <td><%= guardian.province %></td>
           <td><%= guardian.zip_code %></td>
+          <td><%= guardian.student_id %></td>
         <td><%=l guardian.created_at, format: :long %></td>
         <td>
           <%= link_to guardian_path(guardian), class: 'btn btn-xs', title: "#{ t('.show', default: t('helpers.links.show')) }" do %>

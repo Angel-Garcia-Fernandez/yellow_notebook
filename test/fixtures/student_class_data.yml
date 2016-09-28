@@ -1,9 +1,26 @@
+# == Schema Information
+#
+# Table name: student_class_data
+#
+#  id                          :integer          not null, primary key
+#  attended                    :boolean          default(FALSE)
+#  paid                        :boolean          default(FALSE)
+#  created_at                  :datetime         not null
+#  updated_at                  :datetime         not null
+#  activity_class_id           :integer          not null
+#  student_activity_sign_up_id :integer          not null
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
   attended: false
   paid: false
+  activity_class: activity_two
+  strudent_activity_sign_up: student_activity_sign_up_two
 
 two:
   attended: false
   paid: false
+  activity_class: activity_two
+  strudent_activity_sign_up: student_activity_sign_up_two

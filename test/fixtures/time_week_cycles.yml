@@ -1,0 +1,27 @@
+# == Schema Information
+#
+# Table name: time_week_cycles
+#
+#  id                       :integer          not null, primary key
+#  activity_class_starts_at :datetime         not null
+#  activity_class_ends_at   :datetime         not null
+#  period_started_at        :date
+#  period_ended_at          :date
+#  created_at               :datetime         not null
+#  updated_at               :datetime         not null
+#  activity_id              :integer          not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  period_started_at: 2016-09-27
+  period_ended_at: 2016-09-27
+  activity_started_at: 2016-09-27 21:11:19
+  activity_ended_at: 2016-09-27 21:11:19
+
+two:
+  period_started_at: 2016-09-27
+  period_ended_at: 2016-09-27
+  activity_started_at: 2016-09-27 21:11:19
+  activity_ended_at: 2016-09-27 21:11:19

@@ -7,6 +7,12 @@
   <dl>
       <dt class="label label-default"><%= model_class.human_attribute_name(:IBAN) %></dt>
       <dd><pre class="prettyprint"><%= @account_detail.IBAN %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:default_account) %></dt>
+      <dd><pre class="prettyprint"><%= @account_detail.default_account %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:guardian_id) %></dt>
+      <dd><pre class="prettyprint"><%= @account_detail.guardian_id %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:student_id) %></dt>
+      <dd><pre class="prettyprint"><%= @account_detail.student_id %></pre></dd>
   </dl>
 </div>
 

@@ -22,5 +22,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :validatable ,
          :rememberable, :registerable, :trackable
 
+  has_many :teachers
+
   validates_uniqueness_of :login
 end

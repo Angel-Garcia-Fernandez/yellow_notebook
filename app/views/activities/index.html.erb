@@ -12,6 +12,8 @@
       <th><%= model_class.human_attribute_name(:started_at) %></th>
       <th><%= model_class.human_attribute_name(:ended_at) %></th>
       <th><%= model_class.human_attribute_name(:default_price) %></th>
+      <th><%= model_class.human_attribute_name(:details) %></th>
+      <th><%= model_class.human_attribute_name(:school_id) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', default: t("helpers.actions") %></th>
     </tr>
@@ -26,6 +28,8 @@
           <td><%= activity.started_at %></td>
           <td><%= activity.ended_at %></td>
           <td><%= activity.default_price %></td>
+          <td><%= activity.details %></td>
+          <td><%= activity.school_id %></td>
         <td><%=l activity.created_at, format: :long %></td>
         <td>
           <%= link_to activity_path(activity), class: 'btn btn-xs', title: "#{ t('.show', default: t('helpers.links.show')) }" do %>

@@ -1,8 +1,8 @@
 <%= form_for @school_representative, html: { class: 'form-horizontal' } do |f| %>
   <div class="form-group">
-    <%= f.label :name, class: 'control-label col-md-2' %>
+    <%= f.label :full_name, class: 'control-label col-md-2' %>
     <div class="col-md-10">
-      <%= f.text_field :name, class: 'text_field form-control' %>
+      <%= f.text_field :full_name, class: 'text_field form-control' %>
     </div>
   </div>
   <div class="form-group">
@@ -15,6 +15,12 @@
     <%= f.label :details, class: 'control-label col-md-2' %>
     <div class="col-md-10">
       <%= f.text_field :details, class: 'text_field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :school_id, class: 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :school_id, class: 'text_field form-control' %>
     </div>
   </div>
 

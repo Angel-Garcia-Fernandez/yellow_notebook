@@ -1,0 +1,1 @@
+json.array! @time_week_cycles, partial: 'time_week_cycles/time_week_cycle', as: :time_week_cycle

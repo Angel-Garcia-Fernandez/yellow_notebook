@@ -6,9 +6,9 @@
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:NIC) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:surname) %></th>
+      <th><%= model_class.human_attribute_name(:NIC) %></th>
       <th><%= model_class.human_attribute_name(:default_discount) %></th>
       <th><%= model_class.human_attribute_name(:default_payment_type_eid) %></th>
       <th><%= model_class.human_attribute_name(:scholar_phone_number) %></th>
@@ -25,9 +25,9 @@
     <% @students.each do |student| %>
       <tr>
         <td><%= student.id %></td>
-          <td><%= student.NIC %></td>
           <td><%= student.name %></td>
           <td><%= student.surname %></td>
+          <td><%= student.NIC %></td>
           <td><%= student.default_discount %></td>
           <td><%= student.default_payment_type_eid %></td>
           <td><%= student.scholar_phone_number %></td>

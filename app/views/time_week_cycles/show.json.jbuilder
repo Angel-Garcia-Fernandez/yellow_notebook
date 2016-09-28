@@ -1,0 +1,1 @@
+json.partial! "time_week_cycles/time_week_cycle", time_week_cycle: @time_week_cycle

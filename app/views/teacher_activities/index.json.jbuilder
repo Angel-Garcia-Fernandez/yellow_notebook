@@ -1,0 +1,1 @@
+json.array! @teacher_activities, partial: 'teacher_activities/teacher_activity', as: :teacher_activity

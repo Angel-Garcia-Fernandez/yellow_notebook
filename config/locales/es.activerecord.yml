@@ -24,3 +24,20 @@ es:
         details: observaciones
         created_at: fecha creación
 
+    errors:
+      models:
+        account_detail:
+          attributes:
+            default_account:
+              one_default: debe haber una y sólo una cuenta por defecto
+        time_week_cycle:
+          attributes:
+            activity_class_ends_at:
+              ends_before_start: no puede terminar antes de empezar
+            period_ended_at:
+              ended_before_start: no puede terminar antes de empezar
+        teacher_activity:
+          attributes:
+            teacher_in_charge:
+              one_default: debe haber uno y sólo un monitor al cargo
+

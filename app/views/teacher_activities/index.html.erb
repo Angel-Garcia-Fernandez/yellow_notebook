@@ -1,0 +1,46 @@
+<%- model_class = TeacherActivity -%>
+<div class="page-header">
+  <h1><%=t '.title', default: model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:attendance_management) %></th>
+      <th><%= model_class.human_attribute_name(:collection_management) %></th>
+      <th><%= model_class.human_attribute_name(:teacher_in_charge) %></th>
+      <th><%= model_class.human_attribute_name(:activity_id) %></th>
+      <th><%= model_class.human_attribute_name(:teacher_id) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', default: t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @teacher_activities.each do |teacher_activity| %>
+      <tr>
+        <td><%= teacher_activity.id %></td>
+          <td><%= teacher_activity.attendance_management %></td>
+          <td><%= teacher_activity.collection_management %></td>
+          <td><%= teacher_activity.teacher_in_charge %></td>
+          <td><%= teacher_activity.activity_id %></td>
+          <td><%= teacher_activity.teacher_id %></td>
+        <td><%=l teacher_activity.created_at, format: :long %></td>
+        <td>
+          <%= link_to teacher_activity_path(teacher_activity), class: 'btn btn-xs', title: "#{ t('.show', default: t('helpers.links.show')) }" do %>
+            <%= glyph 'info-sign' %>
+          <%- end -%>
+          <%= link_to edit_teacher_activity_path(teacher_activity), class: 'btn btn-xs', title: "#{ t('.edit', default: t('helpers.links.edit')) }" do %>
+            <%= glyph 'pencil' %>
+          <%- end -%>
+          <%= link_to teacher_activity_path(teacher_activity), method: :delete, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'btn btn-xs', title: "#{ t('.destroy', default: t('helpers.links.destroy')) }" do %>
+            <%= glyph 'remove' %>
+          <%- end -%>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', default: t("helpers.links.new")),
+            new_teacher_activity_path,
+            class: 'btn btn-primary' %>

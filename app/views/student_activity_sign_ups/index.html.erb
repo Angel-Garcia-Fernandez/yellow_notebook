@@ -10,6 +10,8 @@
       <th><%= model_class.human_attribute_name(:started_at) %></th>
       <th><%= model_class.human_attribute_name(:ended_at) %></th>
       <th><%= model_class.human_attribute_name(:payment_type_eid) %></th>
+      <th><%= model_class.human_attribute_name(:activity_id) %></th>
+      <th><%= model_class.human_attribute_name(:student_id) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', default: t("helpers.actions") %></th>
     </tr>
@@ -22,6 +24,8 @@
           <td><%= student_activity_sign_up.started_at %></td>
           <td><%= student_activity_sign_up.ended_at %></td>
           <td><%= student_activity_sign_up.payment_type_eid %></td>
+          <td><%= student_activity_sign_up.activity_id %></td>
+          <td><%= student_activity_sign_up.student_id %></td>
         <td><%=l student_activity_sign_up.created_at, format: :long %></td>
         <td>
           <%= link_to student_activity_sign_up_path(student_activity_sign_up), class: 'btn btn-xs', title: "#{ t('.show', default: t('helpers.links.show')) }" do %>

@@ -3,11 +3,11 @@
 # Table name: students
 #
 #  id                       :integer          not null, primary key
+#  name                     :string(255)      default("")
+#  surname                  :string(255)      default("")
 #  NIC                      :string(255)
-#  name                     :string(255)
-#  surname                  :string(255)
-#  default_discount         :decimal(4, 4)
-#  default_payment_type_eid :integer
+#  default_discount         :decimal(5, 4)    default(0.0), not null
+#  default_payment_type_eid :integer          default(0), not null
 #  scholar_phone_number     :string(255)
 #  phone_number             :string(255)
 #  address                  :string(255)
@@ -33,7 +33,7 @@ one:
   province: MyString
   zip_code: MyString
 
-two:
+student_two:
   NIC: MyString
   name: MyString
   surname: MyString

@@ -27,7 +27,7 @@ one:
   login: one
   email: one@mail.es
 
-two:
+user_two:
   id: 2
   login: two
   email: two@mail.es

@@ -1,17 +1,32 @@
 <%- model_class = Teacher -%>
 <div class="page-header">
-  <h1><%=t '.title', default: model_class.model_name.human(count: 2).titleize %></h1>
+  <h1><%=t '.title', default: model_class.model_name.human.pluralize.titleize %></h1>
 </div>
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id).titleize  %></th>
-      <th><%= model_class.human_attribute_name(:name).titleize  %></th>
-      <th><%= model_class.human_attribute_name(:surname).titleize  %></th>
-      <th><%= model_class.human_attribute_name(:manage_attendance_default).titleize  %></th>
-      <th><%= model_class.human_attribute_name(:manage_collection_default).titleize  %></th>
-      <th><%= model_class.human_attribute_name(:details).titleize  %></th>
-      <th><%= model_class.human_attribute_name(:created_at).titleize %></th>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:surname) %></th>
+      <th><%= model_class.human_attribute_name(:work_email) %></th>
+      <th><%= model_class.human_attribute_name(:NIC) %></th>
+      <th><%= model_class.human_attribute_name(:mobile_phone_number) %></th>
+      <th><%= model_class.human_attribute_name(:phone_number) %></th>
+      <th><%= model_class.human_attribute_name(:address) %></th>
+      <th><%= model_class.human_attribute_name(:town) %></th>
+      <th><%= model_class.human_attribute_name(:province) %></th>
+      <th><%= model_class.human_attribute_name(:zip_code) %></th>
+      <th><%= model_class.human_attribute_name(:IBAN) %></th>
+      <th><%= model_class.human_attribute_name(:photo_file_name) %></th>
+      <th><%= model_class.human_attribute_name(:photo_content_type) %></th>
+      <th><%= model_class.human_attribute_name(:photo_file_size) %></th>
+      <th><%= model_class.human_attribute_name(:photo_updated_at) %></th>
+      <th><%= model_class.human_attribute_name(:default_collection_management) %></th>
+      <th><%= model_class.human_attribute_name(:default_attendance_management) %></th>
+      <th><%= model_class.human_attribute_name(:studies) %></th>
+      <th><%= model_class.human_attribute_name(:details) %></th>
+      <th><%= model_class.human_attribute_name(:user_id) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', default: t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -21,9 +36,24 @@
         <td><%= teacher.id %></td>
           <td><%= teacher.name %></td>
           <td><%= teacher.surname %></td>
-          <td><%= teacher.manage_attendance_default %></td>
-          <td><%= teacher.manage_collection_default %></td>
+          <td><%= teacher.work_email %></td>
+          <td><%= teacher.NIC %></td>
+          <td><%= teacher.mobile_phone_number %></td>
+          <td><%= teacher.phone_number %></td>
+          <td><%= teacher.address %></td>
+          <td><%= teacher.town %></td>
+          <td><%= teacher.province %></td>
+          <td><%= teacher.zip_code %></td>
+          <td><%= teacher.IBAN %></td>
+          <td><%= teacher.photo_file_name %></td>
+          <td><%= teacher.photo_content_type %></td>
+          <td><%= teacher.photo_file_size %></td>
+          <td><%= teacher.photo_updated_at %></td>
+          <td><%= teacher.default_collection_management %></td>
+          <td><%= teacher.default_attendance_management %></td>
+          <td><%= teacher.studies %></td>
           <td><%= teacher.details %></td>
+          <td><%= teacher.user_id %></td>
         <td><%=l teacher.created_at, format: :long %></td>
         <td>
           <%= link_to teacher_path(teacher), class: 'btn btn-xs', title: "#{ t('.show', default: t('helpers.links.show')) }" do %>

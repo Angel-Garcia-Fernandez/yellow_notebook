@@ -7,6 +7,9 @@
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:IBAN) %></th>
+      <th><%= model_class.human_attribute_name(:default_account) %></th>
+      <th><%= model_class.human_attribute_name(:guardian_id) %></th>
+      <th><%= model_class.human_attribute_name(:student_id) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', default: t("helpers.actions") %></th>
     </tr>
@@ -16,6 +19,9 @@
       <tr>
         <td><%= account_detail.id %></td>
           <td><%= account_detail.IBAN %></td>
+          <td><%= account_detail.default_account %></td>
+          <td><%= account_detail.guardian_id %></td>
+          <td><%= account_detail.student_id %></td>
         <td><%=l account_detail.created_at, format: :long %></td>
         <td>
           <%= link_to account_detail_path(account_detail), class: 'btn btn-xs', title: "#{ t('.show', default: t('helpers.links.show')) }" do %>
