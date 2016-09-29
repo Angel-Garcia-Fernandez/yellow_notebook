@@ -19,8 +19,3 @@
 //= require bootstrap-datetimepicker
 //= require_tree .
 
-
-//select2 initialization
-$( "#dropdown" ).select2({
-    theme: "bootstrap"
-});

@@ -16,3 +16,4 @@ function observers () {
 
 $(document).ready(ready );
 $(document).ajaxComplete(ready);
+$(document).on('turbolinks:load', ready);
