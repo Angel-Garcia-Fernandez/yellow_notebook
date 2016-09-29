@@ -1,4 +1,5 @@
 class TeacherActivitiesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_teacher_activity, only: [:show, :edit, :update, :destroy]
 
   # GET /teacher_activities

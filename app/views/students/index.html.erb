@@ -17,6 +17,7 @@
       <th><%= model_class.human_attribute_name(:town) %></th>
       <th><%= model_class.human_attribute_name(:province) %></th>
       <th><%= model_class.human_attribute_name(:zip_code) %></th>
+      <th><%= model_class.human_attribute_name(:details) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', default: t("helpers.actions") %></th>
     </tr>
@@ -36,6 +37,7 @@
           <td><%= student.town %></td>
           <td><%= student.province %></td>
           <td><%= student.zip_code %></td>
+        <td><%= student.details %></td>
         <td><%=l student.created_at, format: :long %></td>
         <td>
           <%= link_to student_path(student), class: 'btn btn-xs', title: "#{ t('.show', default: t('helpers.links.show')) }" do %>

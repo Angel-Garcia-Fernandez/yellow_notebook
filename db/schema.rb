@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160928132547) do
+ActiveRecord::Schema.define(version: 20160928224407) do
 
   create_table "account_details", force: :cascade do |t|
     t.string   "IBAN",            limit: 255
@@ -116,19 +116,20 @@ ActiveRecord::Schema.define(version: 20160928132547) do
   add_index "student_class_data", ["student_activity_sign_up_id"], name: "index_student_class_data_on_student_activity_sign_up_id", using: :btree
 
   create_table "students", force: :cascade do |t|
-    t.string   "name",                     limit: 255,                         default: ""
-    t.string   "surname",                  limit: 255,                         default: ""
+    t.string   "name",                     limit: 255,                           default: ""
+    t.string   "surname",                  limit: 255,                           default: ""
     t.string   "NIC",                      limit: 255
-    t.decimal  "default_discount",                     precision: 5, scale: 4, default: 0.0, null: false
-    t.integer  "default_payment_type_eid", limit: 4,                           default: 0,   null: false
+    t.decimal  "default_discount",                       precision: 5, scale: 4, default: 0.0, null: false
+    t.integer  "default_payment_type_eid", limit: 4,                             default: 0,   null: false
     t.string   "scholar_phone_number",     limit: 255
     t.string   "phone_number",             limit: 255
     t.string   "address",                  limit: 255
     t.string   "town",                     limit: 255
     t.string   "province",                 limit: 255
     t.string   "zip_code",                 limit: 255
-    t.datetime "created_at",                                                                 null: false
-    t.datetime "updated_at",                                                                 null: false
+    t.datetime "created_at",                                                                   null: false
+    t.datetime "updated_at",                                                                   null: false
+    t.text     "details",                  limit: 65535
   end
 
   create_table "teacher_activities", force: :cascade do |t|
@@ -143,6 +144,16 @@ ActiveRecord::Schema.define(version: 20160928132547) do
 
   add_index "teacher_activities", ["activity_id"], name: "index_teacher_activities_on_activity_id", using: :btree
   add_index "teacher_activities", ["teacher_id"], name: "index_teacher_activities_on_teacher_id", using: :btree
+
+  create_table "teacher_users", force: :cascade do |t|
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.integer  "user_id",    limit: 4
+    t.integer  "teacher_id", limit: 4
+  end
+
+  add_index "teacher_users", ["teacher_id"], name: "index_teacher_users_on_teacher_id", using: :btree
+  add_index "teacher_users", ["user_id"], name: "index_teacher_users_on_user_id", using: :btree
 
   create_table "teachers", force: :cascade do |t|
     t.string   "name",                          limit: 255,   default: ""
@@ -166,11 +177,9 @@ ActiveRecord::Schema.define(version: 20160928132547) do
     t.text     "details",                       limit: 65535
     t.datetime "created_at",                                                  null: false
     t.datetime "updated_at",                                                  null: false
-    t.integer  "user_id",                       limit: 4
   end
 
   add_index "teachers", ["name", "surname"], name: "index_teachers_on_name_and_surname", using: :btree
-  add_index "teachers", ["user_id"], name: "index_teachers_on_user_id", using: :btree
 
   create_table "time_week_cycles", force: :cascade do |t|
     t.datetime "activity_class_starts_at",           null: false
@@ -213,6 +222,7 @@ ActiveRecord::Schema.define(version: 20160928132547) do
   add_foreign_key "student_class_data", "student_activity_sign_ups"
   add_foreign_key "teacher_activities", "activities"
   add_foreign_key "teacher_activities", "teachers"
-  add_foreign_key "teachers", "users"
+  add_foreign_key "teacher_users", "teachers"
+  add_foreign_key "teacher_users", "users"
   add_foreign_key "time_week_cycles", "activities"
 end

@@ -1,4 +1,5 @@
 class SchoolRepresentativesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_school_representative, only: [:show, :edit, :update, :destroy]
 
   # GET /school_representatives

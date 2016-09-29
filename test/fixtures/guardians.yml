@@ -27,6 +27,7 @@ one:
   town: MyString
   province: MyString
   zip_code: MyString
+  student: student_two
 
 father:
   NIC: MyString
@@ -37,3 +38,4 @@ father:
   town: MyString
   province: MyString
   zip_code: MyString
+  student: student_two

@@ -9,9 +9,11 @@ es:
       destroy: "Borrar"
       new: "Nuevo"
       edit: "Editar"
+      edit_password: "Editar contraseña"
       show: "Mostrar"
     titles:
       edit: "Editar"
+      edit_password: "Editar contraseña"
       save: "Guardar"
       new: "Nuevo"
       delete: "Borrar"

@@ -17,10 +17,10 @@ one:
   attended: false
   paid: false
   activity_class: activity_two
-  strudent_activity_sign_up: student_activity_sign_up_two
+  student_activity_sign_up: student_activity_sign_up_two
 
 two:
   attended: false
   paid: false
   activity_class: activity_two
-  strudent_activity_sign_up: student_activity_sign_up_two
+  student_activity_sign_up: student_activity_sign_up_two

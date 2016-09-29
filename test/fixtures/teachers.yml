@@ -32,14 +32,14 @@
 one:
   name: MyString
   surname: MyString
-  manage_attendance_default: false
-  manage_collection_default: false
+  default_attendance_management: false
+  default_collection_management: false
   details: MyText
 
 teacher_two:
   name: MyString
   surname: MyString2
-  manage_attendance_default: false
-  manage_collection_default: false
+  default_attendance_management: false
+  default_collection_management: false
   details: MyText
   user: user_two

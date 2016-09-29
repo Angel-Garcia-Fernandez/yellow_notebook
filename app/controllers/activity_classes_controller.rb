@@ -1,4 +1,5 @@
 class ActivityClassesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_activity_class, only: [:show, :edit, :update, :destroy]
 
   # GET /activity_classes

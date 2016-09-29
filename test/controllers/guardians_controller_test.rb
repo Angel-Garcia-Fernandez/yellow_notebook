@@ -2,6 +2,8 @@ require 'test_helper'
 
 class GuardiansControllerTest < ActionController::TestCase
   setup do
+    @user = users(:one)
+    sign_in @user
     @guardian = guardians(:one)
   end
 

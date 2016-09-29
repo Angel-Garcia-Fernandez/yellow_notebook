@@ -9,12 +9,14 @@
       <dd><pre class="prettyprint"><%= @user.login %></pre></dd>
       <dt class="label label-default"><%= model_class.human_attribute_name(:email) %></dt>
       <dd><pre class="prettyprint"><%= @user.email %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:encrypted_password) %></dt>
-      <dd><pre class="prettyprint"><%= @user.encrypted_password %></pre></dd>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:teacher) %></dt>
+    <dd><pre class="prettyprint"><%= @user.teacher %></pre></dd>
       <dt class="label label-default"><%= model_class.human_attribute_name(:remember_created_at) %></dt>
       <dd><pre class="prettyprint"><%= @user.remember_created_at %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:current_sign_in_at) %></dt>
-      <dd><pre class="prettyprint"><%= @user.current_sign_in_at %></pre></dd>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:sign_in_count) %></dt>
+    <dd><pre class="prettyprint"><%= @user.sign_in_count %></pre></dd>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:current_sign_in_at) %></dt>
+    <dd><pre class="prettyprint"><%= @user.current_sign_in_at %></pre></dd>
       <dt class="label label-default"><%= model_class.human_attribute_name(:last_sign_in_at) %></dt>
       <dd><pre class="prettyprint"><%= @user.last_sign_in_at %></pre></dd>
       <dt class="label label-default"><%= model_class.human_attribute_name(:current_sign_in_ip) %></dt>
@@ -29,6 +31,8 @@
               users_path, class: 'btn btn-default'  %>
   <%= link_to t('.edit', default: t("helpers.links.edit")),
               edit_user_path(@user), class: 'btn btn-default' %>
+  <%= link_to t('.edit_password', default: t("helpers.links.edit_password")),
+              edit_password_user_path(@user), class: 'btn btn-default' %>
   <%= link_to t('.destroy', default: t("helpers.links.destroy")),
               user_path(@user),
               method: 'delete',

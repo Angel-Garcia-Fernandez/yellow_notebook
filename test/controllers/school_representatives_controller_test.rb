@@ -2,6 +2,8 @@ require 'test_helper'
 
 class SchoolRepresentativesControllerTest < ActionController::TestCase
   setup do
+    @user = users(:one)
+    sign_in @user
     @school_representative = school_representatives(:one)
   end
 
@@ -18,7 +20,7 @@ class SchoolRepresentativesControllerTest < ActionController::TestCase
 
   test "should create school_representative" do
     assert_difference('SchoolRepresentative.count') do
-      post :create, school_representative: { details: @school_representative.details, name: @school_representative.name, position: @school_representative.position }
+      post :create, school_representative: { details: @school_representative.details, full_name: @school_representative.full_name, position: @school_representative.position }
     end
 
     assert_redirected_to school_representative_path(assigns(:school_representative))
@@ -35,7 +37,7 @@ class SchoolRepresentativesControllerTest < ActionController::TestCase
   end
 
   test "should update school_representative" do
-    patch :update, id: @school_representative, school_representative: { details: @school_representative.details, name: @school_representative.name, position: @school_representative.position }
+    patch :update, id: @school_representative, school_representative: { details: @school_representative.details, full_name: @school_representative.full_name, position: @school_representative.position }
     assert_redirected_to school_representative_path(assigns(:school_representative))
   end
 

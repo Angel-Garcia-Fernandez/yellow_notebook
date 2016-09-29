@@ -22,7 +22,22 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :validatable ,
          :rememberable, :registerable, :trackable
 
-  has_many :teachers
+  has_one :teacher_user
+  has_one :teacher, through: :teacher_user
+
+  accepts_nested_attributes_for :teacher_user
 
   validates_uniqueness_of :login
+  validates_associated :teacher_user
+
+  def to_s
+    login.to_s
+  end
+
+  # def initialize attributes = nil, options = {}
+  #   super attributes, options
+  #   self.teacher_user.nil? && self.build_teacher_user
+  #   self
+  # end
+
 end

@@ -29,15 +29,22 @@
 
 class Teacher < ActiveRecord::Base
 
-  belongs_to :user
+  has_one :teacher_user
+  has_one :user, through: :teacher_user
   has_many :teacher_activities
 
+  accepts_nested_attributes_for :teacher_user
+
   validates_uniqueness_of :name , scope: :surname#, conditions: { status: :active}
-  #validates_presence_of :manage_attendance_default, :manage_collection_default
-  validates_inclusion_of :manage_attendance_default, :manage_collection_default, in: [ true, false ]
+  #validates_presence_of :default_attendance_management, :default_collection_management
+  validates_inclusion_of :default_attendance_management, :default_collection_management, in: [ true, false ]
   validates_length_of :IBAN, maximum: 75
   validates_length_of :name, :surname, :work_email, :NIC, :mobile_phone_number, :phone_number,
                       :address, :town, :province, :zip_code, maximum: 255
+  validates_associated :teacher_user
 
+  def to_s
+    "#{surname}, #{name}"
+  end
 
 end

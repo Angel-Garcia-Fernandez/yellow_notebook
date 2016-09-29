@@ -6,7 +6,7 @@ class TeachersControllerTest < ActionController::TestCase
   setup do
     @user = users(:one)
     @teacher = teachers(:one)
-    @teacher_new = { name: 'MyString3', surname: 'MyString3', manage_attendance_default: false, manage_collection_default: true, details: 'MyText' }
+    @teacher_new = { name: 'MyString3', surname: 'MyString3', default_attendance_management: false, default_collection_management: true, details: 'MyText' }
     sign_in @user
   end
 
@@ -42,7 +42,7 @@ class TeachersControllerTest < ActionController::TestCase
   end
 
   test "should update teacher" do
-    patch :update, id: @teacher, teacher: { details: @teacher.details, manage_attendance_default: @teacher.manage_attendance_default, manage_collection_default: @teacher.manage_collection_default, name: @teacher.name, surname: @teacher.surname }
+    patch :update, id: @teacher, teacher: { details: @teacher.details, default_attendance_management: @teacher.default_attendance_management, default_collection_management: @teacher.default_collection_management, name: @teacher.name, surname: @teacher.surname }
     assert_redirected_to teacher_path(assigns(:teacher))
   end
 

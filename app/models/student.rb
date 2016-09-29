@@ -16,6 +16,7 @@
 #  zip_code                 :string(255)
 #  created_at               :datetime         not null
 #  updated_at               :datetime         not null
+#  details                  :text(65535)
 #
 
 class Student < ActiveRecord::Base
@@ -28,7 +29,7 @@ class Student < ActiveRecord::Base
                       :province, :zip_code, maximum: 255
   validates_presence_of :default_discount, :default_payment_type_eid
   validates_numericality_of  :default_discount, greater_than_or_equal_to: 0.0, less_than_or_equal_to: 1.0, allow_nil: true
-  validates_uniqueness_of :name, scope: [ :surname ]
+  #validates_uniqueness_of :name, scope: [ :surname ], if: 'NIC.blank?'
   validates_uniqueness_of :NIC, allow_blank: true, allow_nil: true
 
 end

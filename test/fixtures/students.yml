@@ -16,6 +16,7 @@
 #  zip_code                 :string(255)
 #  created_at               :datetime         not null
 #  updated_at               :datetime         not null
+#  details                  :text(65535)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
@@ -32,11 +33,12 @@ one:
   town: MyString
   province: MyString
   zip_code: MyString
+  details: MyString
 
 student_two:
   NIC: MyString
   name: MyString
-  surname: MyString
+  surname: MyString2
   default_discount: 1
   default_payment_type_eid: 1
   scholar_phone_number: MyString

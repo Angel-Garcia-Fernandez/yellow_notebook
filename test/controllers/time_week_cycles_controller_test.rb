@@ -2,6 +2,8 @@ require 'test_helper'
 
 class TimeWeekCyclesControllerTest < ActionController::TestCase
   setup do
+    @user = users(:one)
+    sign_in @user
     @time_week_cycle = time_week_cycles(:one)
   end
 

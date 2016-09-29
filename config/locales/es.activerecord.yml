@@ -15,14 +15,37 @@ es:
         email: correo
         password: contraseña
         password_confirmation: confirmar contraseña
+        remember_created_at: fecha de recordarme
+        sign_in_count: veces logueado
+        current_sign_in_at: fecha logueo actual
+        last_sign_in_at: fecha último logueo
+        current_sign_in_ip: ip logueo actual
+        last_sign_in_ip: ip último logueo
+        created_at: fecha creación
+        updated_at: fecha actualización
+        teacher_user: monitor
+        teacher: monitor
       teacher:
         id: nº identificación
         name: nombre
         surname: apellidos
-        manage_attendance_default: asistencia
-        manage_collection_default: cobros
-        details: observaciones
+        work_email: correo trabajo
+        NIC: DNI
+        default_attendance_management: asistencia
+        default_collection_management: cobros
+        mobile_phone_number: móvil
+        phone_number: teléfono
+        address: dirección
+        town: municipio
+        province: provincia
+        zip_code: C.P.
+        IBAN: IBAN
+        photo: fotos
+        studies: estudios
+        details: detalles
         created_at: fecha creación
+        updated_at: fecha actualización
+        teacher_user: usuario
 
     errors:
       models:

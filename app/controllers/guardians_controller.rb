@@ -1,4 +1,5 @@
 class GuardiansController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_guardian, only: [:show, :edit, :update, :destroy]
 
   # GET /guardians

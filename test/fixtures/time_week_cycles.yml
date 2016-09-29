@@ -17,11 +17,13 @@
 one:
   period_started_at: 2016-09-27
   period_ended_at: 2016-09-27
-  activity_started_at: 2016-09-27 21:11:19
-  activity_ended_at: 2016-09-27 21:11:19
+  activity_class_starts_at: 2016-09-27 21:11:19
+  activity_class_ends_at: 2016-09-27 22:11:19
+  activity: activity_two
 
 two:
   period_started_at: 2016-09-27
   period_ended_at: 2016-09-27
-  activity_started_at: 2016-09-27 21:11:19
-  activity_ended_at: 2016-09-27 21:11:19
+  activity_class_starts_at: 2016-09-27 21:11:19
+  activity_class_ends_at: 2016-09-27 22:11:19
+  activity: activity_two

@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :time_week_cycles
-  resources :teacher_activities
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -11,14 +9,16 @@ Rails.application.routes.draw do
   root :to => 'high_voltage/pages#show', id: 'about'
 
   # web for authenticated users:
-  devise_for :users#, skip: :registration
+  devise_for :users, skip: :registration
   # as :user do
   #   get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'
   #   put 'users' => 'devise/registrations#update', :as => 'user_registration'
   # end
 
 
-  resources :users
+  resources :users do
+    get :edit_password, on: :member
+  end
   resources :teachers
   resources :student_activity_sign_ups
   resources :student_class_data
@@ -30,4 +30,6 @@ Rails.application.routes.draw do
   resources :students
   resources :students
   resources :activities
+  resources :time_week_cycles
+  resources :teacher_activities
 end

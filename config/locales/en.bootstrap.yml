@@ -11,9 +11,11 @@ en:
       destroy: "Delete"
       new: "New"
       edit: "Edit"
+      edit_password: "Edit password"
       show: "Show"
     titles:
       edit: "Edit"
+      edit_password: "Edit password"
       save: "Save"
       new: "New"
       delete: "Delete"

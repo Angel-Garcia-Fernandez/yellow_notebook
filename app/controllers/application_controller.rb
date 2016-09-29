@@ -10,4 +10,9 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:login, :email])
   end
+
+  def add_model_error_to_flash model_resource
+    flash[:error] = model_resource.errors.full_messages.join(', ')
+  end
+
 end

@@ -2,6 +2,8 @@ require 'test_helper'
 
 class AccountDetailsControllerTest < ActionController::TestCase
   setup do
+    @user = users(:one)
+    sign_in @user
     @account_detail = account_details(:one)
   end
 

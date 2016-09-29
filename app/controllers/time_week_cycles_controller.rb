@@ -1,4 +1,5 @@
 class TimeWeekCyclesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_time_week_cycle, only: [:show, :edit, :update, :destroy]
 
   # GET /time_week_cycles

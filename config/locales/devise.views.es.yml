@@ -39,6 +39,7 @@ es:
     sessions:
       new:
         sign_in: Iniciar sesion
+        remember_me: Recuerdame
     shared:
       links:
         didn_t_receive_confirmation_instructions: ¿No ha recibido las instrucciones de confirmación?

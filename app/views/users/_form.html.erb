@@ -1,58 +1,48 @@
 <%= form_for @user, html: { class: 'form-horizontal' } do |f| %>
-    <div class="form-group">
-      <%= f.label :login, class: 'control-label col-md-2' %>
-      <div class="col-md-10">
-        <%= f.text_field :login, class: 'text_field form-control' %>
-      </div>
-    </div>
-    <div class="form-group">
-      <%= f.label :email, class: 'control-label col-md-2' %>
-      <div class="col-md-10">
-        <%= f.text_field :email, class: 'text_field form-control' %>
-      </div>
-    </div>
-    <div class="form-group">
-      <%= f.label :password, class: 'control-label col-md-2' %> %>
-      <div class="'col-md-10">
-        <%= f.password_field :password, class: 'password_field form-control' %>
-      </div>
-    </div>
-    <div class="form-group">
-      <%= f.label :password_confirmation, class: 'control-label col-md-2' %> %>
-      <div class="'col-md-10">
-        <%= f.password_field :password_confirmation, class: "form-control" %>
-      </div>
-    </div>
-    <div class="form-group">
-      <%= f.label :remember_created_at, class: 'control-label col-md-2' %>
-      <div class="col-md-10">
-        <%= f.text_field :remember_created_at, class: 'text_field form-control' %>
-      </div>
-    </div>
-    <div class="form-group">
-      <%= f.label :current_sign_in_at, class: 'control-label col-md-2' %>
-      <div class="col-md-10">
-        <%= f.text_field :current_sign_in_at, class: 'text_field form-control' %>
-      </div>
-    </div>
-    <div class="form-group">
-      <%= f.label :last_sign_in_at, class: 'control-label col-md-2' %>
-      <div class="col-md-10">
-        <%= f.text_field :last_sign_in_at, class: 'text_field form-control' %>
-      </div>
-    </div>
-    <div class="form-group">
-      <%= f.label :current_sign_in_ip, class: 'control-label col-md-2' %>
-      <div class="col-md-10">
-        <%= f.text_field :current_sign_in_ip, class: 'text_field form-control' %>
-      </div>
-    </div>
-    <div class="form-group">
-      <%= f.label :last_sign_in_ip, class: 'control-label col-md-2' %>
-      <div class="col-md-10">
-        <%= f.text_field :last_sign_in_ip, class: 'text_field form-control' %>
-      </div>
-    </div>
+
+    <% if @edit_body %>
+
+        <div class="form-group">
+          <%= f.label :login, class: 'control-label col-md-2' %>
+          <div class="col-md-10">
+            <%= f.text_field :login, class: 'text_field form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :email, class: 'control-label col-md-2' %>
+          <div class="col-md-10">
+            <%= f.text_field :email, class: 'text_field form-control' %>
+          </div>
+        </div>
+
+        <%= f.fields_for :teacher_user do |a| %>
+            <div class="form-group">
+              <%= a.label :teacher, class: 'control-label col-md-2' %>
+              <div class="col-md-10">
+                <%= a.collection_select :teacher_id, @teachers, :id, :to_s,  { include_blank: true }, {class: 'select-search form-control'} %>
+              </div>
+            </div>
+        <% end %>
+
+    <% end %>
+
+    <% if @edit_password_body %>
+
+        <div class="form-group">
+          <%= f.label :password, class: 'control-label col-md-2' %>
+          <div class="col-md-10">
+            <%= f.password_field :password, class: 'text_field form-control' %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :password_confirmation, class: 'control-label col-md-2' %>
+          <div class="col-md-10">
+            <%= f.password_field :password_confirmation, class: 'text_field form-control' %>
+          </div>
+        </div>
+
+    <% end %>
 
     <div class="form-group">
       <div class='col-md-offset-2 col-md-10'>
@@ -61,4 +51,5 @@
                     users_path, class: 'btn btn-default' %>
       </div>
     </div>
+
 <% end %>

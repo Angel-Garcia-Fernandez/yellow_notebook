@@ -1,4 +1,5 @@
 class StudentActivitySignUpsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_student_activity_sign_up, only: [:show, :edit, :update, :destroy]
 
   # GET /student_activity_sign_ups

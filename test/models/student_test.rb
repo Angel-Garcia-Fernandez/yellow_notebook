@@ -16,6 +16,7 @@
 #  zip_code                 :string(255)
 #  created_at               :datetime         not null
 #  updated_at               :datetime         not null
+#  details                  :text(65535)
 #
 
 require 'test_helper'

@@ -2,6 +2,8 @@ require 'test_helper'
 
 class StudentActivitySignUpsControllerTest < ActionController::TestCase
   setup do
+    @user = users(:one)
+    sign_in @user
     @student_activity_sign_up = student_activity_sign_ups(:one)
   end
 

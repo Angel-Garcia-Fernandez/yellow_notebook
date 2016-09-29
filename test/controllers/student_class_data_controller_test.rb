@@ -2,6 +2,8 @@ require 'test_helper'
 
 class StudentClassDataControllerTest < ActionController::TestCase
   setup do
+    @user = users(:one)
+    sign_in @user
     @student_class_datum = student_class_data(:one)
   end
 
