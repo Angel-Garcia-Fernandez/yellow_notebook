@@ -5,7 +5,9 @@
 
 <div class="fieldset">
   <dl>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:name) %></dt>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:photo) %></dt>
+    <dd><pre class="prettyprint"><%= image_tag @teacher.photo.url(:medium) %></pre></dd>
+        <dt class="label label-default"><%= model_class.human_attribute_name(:name) %></dt>
       <dd><pre class="prettyprint"><%= @teacher.name %></pre></dd>
       <dt class="label label-default"><%= model_class.human_attribute_name(:surname) %></dt>
       <dd><pre class="prettyprint"><%= @teacher.surname %></pre></dd>
@@ -27,14 +29,6 @@
       <dd><pre class="prettyprint"><%= @teacher.zip_code %></pre></dd>
       <dt class="label label-default"><%= model_class.human_attribute_name(:IBAN) %></dt>
       <dd><pre class="prettyprint"><%= @teacher.IBAN %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:photo_file_name) %></dt>
-      <dd><pre class="prettyprint"><%= @teacher.photo_file_name %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:photo_content_type) %></dt>
-      <dd><pre class="prettyprint"><%= @teacher.photo_content_type %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:photo_file_size) %></dt>
-      <dd><pre class="prettyprint"><%= @teacher.photo_file_size %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:photo_updated_at) %></dt>
-      <dd><pre class="prettyprint"><%= @teacher.photo_updated_at %></pre></dd>
       <dt class="label label-default"><%= model_class.human_attribute_name(:default_collection_management) %></dt>
       <dd><pre class="prettyprint"><%= @teacher.default_collection_management %></pre></dd>
       <dt class="label label-default"><%= model_class.human_attribute_name(:default_attendance_management) %></dt>
@@ -43,8 +37,8 @@
       <dd><pre class="prettyprint"><%= @teacher.studies %></pre></dd>
       <dt class="label label-default"><%= model_class.human_attribute_name(:details) %></dt>
       <dd><pre class="prettyprint"><%= @teacher.details %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:user_id) %></dt>
-      <dd><pre class="prettyprint"><%= @teacher.user_id %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:user) %></dt>
+      <dd><pre class="prettyprint"><%= @teacher.user %></pre></dd>
   </dl>
 </div>
 

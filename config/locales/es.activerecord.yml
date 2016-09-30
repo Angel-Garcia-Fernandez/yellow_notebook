@@ -40,7 +40,7 @@ es:
         province: provincia
         zip_code: C.P.
         IBAN: IBAN
-        photo: fotos
+        photo: foto
         studies: estudios
         details: detalles
         created_at: fecha creación

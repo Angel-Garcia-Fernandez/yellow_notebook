@@ -35,6 +35,9 @@ class Teacher < ActiveRecord::Base
 
   accepts_nested_attributes_for :teacher_user
 
+  has_attached_file :photo, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+  validates_attachment_content_type :photo, content_type: /\Aimage\/.*\z/
+
   validates_uniqueness_of :name , scope: :surname#, conditions: { status: :active}
   #validates_presence_of :default_attendance_management, :default_collection_management
   validates_inclusion_of :default_attendance_management, :default_collection_management, in: [ true, false ]

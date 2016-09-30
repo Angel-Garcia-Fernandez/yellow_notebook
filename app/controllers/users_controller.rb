@@ -22,7 +22,7 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
-    @user.teacher_user.nil? && @user.build_teacher_user
+    @user.teacher_user || @user.build_teacher_user
   end
 
   # GET /users/1/edit

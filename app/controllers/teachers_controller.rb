@@ -1,6 +1,8 @@
 class TeachersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_teacher, only: [:show, :edit, :update, :destroy]
+  before_action :set_select_collections, only: [:edit, :new, :update, :create]
+
 
   # GET /teachers
   # GET /teachers.json
@@ -16,6 +18,7 @@ class TeachersController < ApplicationController
   # GET /teachers/new
   def new
     @teacher = Teacher.new
+    @teacher.teacher_user || @teacher.build_teacher_user
   end
 
   # GET /teachers/1/edit
@@ -32,6 +35,7 @@ class TeachersController < ApplicationController
         format.html { redirect_to @teacher, notice: 'Teacher was successfully created.' }
         format.json { render :show, status: :created, location: @teacher }
       else
+        add_model_error_to_flash @teacher
         format.html { render :new }
         format.json { render json: @teacher.errors, status: :unprocessable_entity }
       end
@@ -46,6 +50,7 @@ class TeachersController < ApplicationController
         format.html { redirect_to @teacher, notice: 'Teacher was successfully updated.' }
         format.json { render :show, status: :ok, location: @teacher }
       else
+        add_model_error_to_flash @teacher
         format.html { render :edit }
         format.json { render json: @teacher.errors, status: :unprocessable_entity }
       end
@@ -66,10 +71,15 @@ class TeachersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_teacher
       @teacher = Teacher.find(params[:id])
+      @teacher.teacher_user || @teacher.build_teacher_user
     end
+
+  def set_select_collections
+    @users = User.all
+  end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def teacher_params
-      params.require(:teacher).permit(:name, :surname, :default_attendance_management, :default_collection_management, :details)
+      params.require(:teacher).permit(:photo, :name, :surname, :default_attendance_management, :default_collection_management, :details, teacher_user_attributes: :user_id )
     end
 end
