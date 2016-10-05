@@ -5,13 +5,13 @@
 
 <div class="fieldset">
   <dl>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:iban) %></dt>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:iban).capitalize %></dt>
       <dd><pre class="prettyprint"><%= @account_detail.iban %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:default_account) %></dt>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:default_account).capitalize %></dt>
       <dd><pre class="prettyprint"><%= @account_detail.default_account %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:guardian_id) %></dt>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:guardian_id).capitalize %></dt>
       <dd><pre class="prettyprint"><%= @account_detail.guardian_id %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:student_id) %></dt>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:student_id).capitalize %></dt>
       <dd><pre class="prettyprint"><%= @account_detail.student_id %></pre></dd>
   </dl>
 </div>

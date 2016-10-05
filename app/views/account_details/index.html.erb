@@ -1,16 +1,16 @@
 <%- model_class = AccountDetail -%>
 <div class="page-header">
-  <h1><%=t '.title', default: model_class.model_name.human.pluralize.titleize %></h1>
+  <h1><%=t '.title', default: model_class.model_name.human( count:2 ).titleize %></h1>
 </div>
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:iban) %></th>
-      <th><%= model_class.human_attribute_name(:default_account) %></th>
-      <th><%= model_class.human_attribute_name(:guardian_id) %></th>
-      <th><%= model_class.human_attribute_name(:student_id) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%= model_class.human_attribute_name(:id).capitalize %></th>
+      <th><%= model_class.human_attribute_name(:iban).capitalize %></th>
+      <th><%= model_class.human_attribute_name(:default_account).capitalize %></th>
+      <th><%= model_class.human_attribute_name(:guardian_id).capitalize %></th>
+      <th><%= model_class.human_attribute_name(:student_id).capitalize %></th>
+      <th><%= model_class.human_attribute_name(:created_at).capitalize %></th>
       <th><%=t '.actions', default: t("helpers.actions") %></th>
     </tr>
   </thead>

@@ -24,7 +24,6 @@
 #  details                       :text(65535)
 #  created_at                    :datetime         not null
 #  updated_at                    :datetime         not null
-#  user_id                       :integer
 #
 
 class Teacher < ActiveRecord::Base
@@ -47,7 +46,7 @@ class Teacher < ActiveRecord::Base
   validates_associated :teacher_user
 
   def to_s
-    "#{surname}, #{name}"
+    "#{name} #{surname}"
   end
 
 end

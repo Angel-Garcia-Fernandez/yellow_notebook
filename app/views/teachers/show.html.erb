@@ -5,39 +5,39 @@
 
 <div class="fieldset">
   <dl>
-    <dt class="label label-default"><%= model_class.human_attribute_name(:photo) %></dt>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:photo).capitalize %></dt>
     <dd><pre class="prettyprint"><%= image_tag @teacher.photo.url(:medium) %></pre></dd>
-    <dt class="label label-default"><%= model_class.human_attribute_name(:name) %></dt>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:name).capitalize %></dt>
     <dd><pre class="prettyprint"><%= @teacher.name %></pre></dd>
-    <dt class="label label-default"><%= model_class.human_attribute_name(:surname) %></dt>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:surname).capitalize %></dt>
     <dd><pre class="prettyprint"><%= @teacher.surname %></pre></dd>
-    <dt class="label label-default"><%= model_class.human_attribute_name(:nic) %></dt>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:nic).capitalize %></dt>
     <dd><pre class="prettyprint"><%= @teacher.nic %></pre></dd>
-    <dt class="label label-default"><%= model_class.human_attribute_name(:iban) %></dt>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:iban).capitalize %></dt>
     <dd><pre class="prettyprint"><%= @teacher.iban %></pre></dd>
-    <dt class="label label-default"><%= model_class.human_attribute_name(:user) %></dt>
-    <dd><pre class="prettyprint"><%= @teacher.user %></pre></dd>
-    <dt class="label label-default"><%= model_class.human_attribute_name(:default_collection_management) %></dt>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:user).capitalize %></dt>
+    <dd><pre class="prettyprint"><% user = @teacher.user %> <%= link_to user, user_path( user ) if user.present? %></pre></dd>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:default_collection_management).capitalize %></dt>
     <dd><pre class="prettyprint"><%= @teacher.default_collection_management.humanize %></pre></dd>
-    <dt class="label label-default"><%= model_class.human_attribute_name(:default_attendance_management) %></dt>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:default_attendance_management).capitalize %></dt>
     <dd><pre class="prettyprint"><%= @teacher.default_attendance_management.humanize %></pre></dd>
-    <dt class="label label-default"><%= model_class.human_attribute_name(:mobile_phone_number) %></dt>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:mobile_phone_number).capitalize %></dt>
     <dd><pre class="prettyprint"><%= @teacher.mobile_phone_number %></pre></dd>
-    <dt class="label label-default"><%= model_class.human_attribute_name(:phone_number) %></dt>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:phone_number).capitalize %></dt>
     <dd><pre class="prettyprint"><%= @teacher.phone_number %></pre></dd>
-    <dt class="label label-default"><%= model_class.human_attribute_name(:work_email) %></dt>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:work_email).capitalize %></dt>
     <dd><pre class="prettyprint"><%= @teacher.work_email %></pre></dd>
-    <dt class="label label-default"><%= model_class.human_attribute_name(:studies) %></dt>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:studies).capitalize %></dt>
     <dd><pre class="prettyprint"><%= @teacher.studies %></pre></dd>
-    <dt class="label label-default"><%= model_class.human_attribute_name(:address) %></dt>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:address).capitalize %></dt>
     <dd><pre class="prettyprint"><%= @teacher.address %></pre></dd>
-    <dt class="label label-default"><%= model_class.human_attribute_name(:town) %></dt>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:town).capitalize %></dt>
     <dd><pre class="prettyprint"><%= @teacher.town %></pre></dd>
-    <dt class="label label-default"><%= model_class.human_attribute_name(:province) %></dt>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:province).capitalize %></dt>
     <dd><pre class="prettyprint"><%= @teacher.province %></pre></dd>
-    <dt class="label label-default"><%= model_class.human_attribute_name(:zip_code) %></dt>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:zip_code).capitalize %></dt>
     <dd><pre class="prettyprint"><%= @teacher.zip_code %></pre></dd>
-    <dt class="label label-default"><%= model_class.human_attribute_name(:details) %></dt>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:details).capitalize %></dt>
     <dd><pre class="prettyprint"><%= @teacher.details %></pre></dd>
   </dl>
 </div>

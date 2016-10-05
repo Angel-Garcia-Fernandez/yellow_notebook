@@ -1,34 +1,26 @@
 <%- model_class = School -%>
 <div class="page-header">
-  <h1><%=t '.title', default: model_class.model_name.human.pluralize.titleize %></h1>
+  <h1><%=t '.title', default: model_class.model_name.human( count:2 ).titleize %></h1>
 </div>
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:address) %></th>
-      <th><%= model_class.human_attribute_name(:town) %></th>
-      <th><%= model_class.human_attribute_name(:province) %></th>
-      <th><%= model_class.human_attribute_name(:zip_code) %></th>
-      <th><%= model_class.human_attribute_name(:email) %></th>
-      <th><%= model_class.human_attribute_name(:phone) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%= model_class.human_attribute_name(:name).capitalize %></th>
+      <th><%= model_class.human_attribute_name(:town).capitalize %></th>
+      <th><%= model_class.human_attribute_name(:zip_code).capitalize %></th>
+      <th><%= model_class.human_attribute_name(:email).capitalize %></th>
+      <th><%= model_class.human_attribute_name(:phone).capitalize %></th>
       <th><%=t '.actions', default: t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
     <% @schools.each do |school| %>
       <tr>
-        <td><%= school.id %></td>
           <td><%= school.name %></td>
-          <td><%= school.address %></td>
           <td><%= school.town %></td>
-          <td><%= school.province %></td>
           <td><%= school.zip_code %></td>
           <td><%= school.email %></td>
           <td><%= school.phone %></td>
-        <td><%=l school.created_at, format: :long %></td>
         <td>
           <%= link_to school_path(school), class: 'btn btn-xs', title: "#{ t('.show', default: t('helpers.links.show')) }" do %>
             <%= glyph 'info-sign' %>

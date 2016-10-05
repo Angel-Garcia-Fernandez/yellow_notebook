@@ -1,17 +1,17 @@
 <%- model_class = TeacherActivity -%>
 <div class="page-header">
-  <h1><%=t '.title', default: model_class.model_name.human.pluralize.titleize %></h1>
+  <h1><%=t '.title', default: model_class.model_name.human( count:2 ).titleize %></h1>
 </div>
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:attendance_management) %></th>
-      <th><%= model_class.human_attribute_name(:collection_management) %></th>
-      <th><%= model_class.human_attribute_name(:teacher_in_charge) %></th>
-      <th><%= model_class.human_attribute_name(:activity_id) %></th>
-      <th><%= model_class.human_attribute_name(:teacher_id) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%= model_class.human_attribute_name(:id).capitalize %></th>
+      <th><%= model_class.human_attribute_name(:attendance_management).capitalize %></th>
+      <th><%= model_class.human_attribute_name(:collection_management).capitalize %></th>
+      <th><%= model_class.human_attribute_name(:teacher_in_charge).capitalize %></th>
+      <th><%= model_class.human_attribute_name(:activity_id).capitalize %></th>
+      <th><%= model_class.human_attribute_name(:teacher_id).capitalize %></th>
+      <th><%= model_class.human_attribute_name(:created_at).capitalize %></th>
       <th><%=t '.actions', default: t("helpers.actions") %></th>
     </tr>
   </thead>

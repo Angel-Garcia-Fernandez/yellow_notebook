@@ -5,29 +5,29 @@
 
 <div class="fieldset">
   <dl>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:name) %></dt>
-      <dd><pre class="prettyprint"><%= @student.name %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:surname) %></dt>
-      <dd><pre class="prettyprint"><%= @student.surname %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:nic) %></dt>
-      <dd><pre class="prettyprint"><%= @student.nic %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:default_discount) %></dt>
-      <dd><pre class="prettyprint"><%= @student.default_discount %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:default_payment_type_eid) %></dt>
-      <dd><pre class="prettyprint"><%= @student.default_payment_type_eid %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:scholar_phone_number) %></dt>
-      <dd><pre class="prettyprint"><%= @student.scholar_phone_number %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:phone_number) %></dt>
-      <dd><pre class="prettyprint"><%= @student.phone_number %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:address) %></dt>
-      <dd><pre class="prettyprint"><%= @student.address %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:town) %></dt>
-      <dd><pre class="prettyprint"><%= @student.town %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:province) %></dt>
-      <dd><pre class="prettyprint"><%= @student.province %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:zip_code) %></dt>
-      <dd><pre class="prettyprint"><%= @student.zip_code %></pre></dd>
-    <dt class="label label-default"><%= model_class.human_attribute_name(:details) %></dt>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:name).capitalize %></dt>
+    <dd><pre class="prettyprint"><%= @student.name %></pre></dd>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:surname).capitalize %></dt>
+    <dd><pre class="prettyprint"><%= @student.surname %></pre></dd>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:nic).capitalize %></dt>
+    <dd><pre class="prettyprint"><%= @student.nic %></pre></dd>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:default_discount).capitalize %></dt>
+    <dd><pre class="prettyprint"><%= number_to_percentage @student.default_discount * 100 %></pre></dd>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:default_payment_type_eid).capitalize %></dt>
+    <dd><pre class="prettyprint"><%= @student.default_payment_type_eid %></pre></dd>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:scholar_phone_number).capitalize %></dt>
+    <dd><pre class="prettyprint"><%= @student.scholar_phone_number %></pre></dd>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:phone_number).capitalize %></dt>
+    <dd><pre class="prettyprint"><%= @student.phone_number %></pre></dd>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:address).capitalize %></dt>
+    <dd><pre class="prettyprint"><%= @student.address %></pre></dd>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:zip_code).capitalize %></dt>
+    <dd><pre class="prettyprint"><%= @student.zip_code %></pre></dd>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:town).capitalize %></dt>
+    <dd><pre class="prettyprint"><%= @student.town %></pre></dd>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:province).capitalize %></dt>
+    <dd><pre class="prettyprint"><%= @student.province %></pre></dd>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:details).capitalize %></dt>
     <dd><pre class="prettyprint"><%= @student.details %></pre></dd>
   </dl>
 </div>

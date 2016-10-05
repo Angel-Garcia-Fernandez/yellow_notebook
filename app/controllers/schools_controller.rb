@@ -32,6 +32,7 @@ class SchoolsController < ApplicationController
         format.html { redirect_to @school, notice: 'School was successfully created.' }
         format.json { render :show, status: :created, location: @school }
       else
+        add_model_error_to_flash @school
         format.html { render :new }
         format.json { render json: @school.errors, status: :unprocessable_entity }
       end
@@ -46,6 +47,7 @@ class SchoolsController < ApplicationController
         format.html { redirect_to @school, notice: 'School was successfully updated.' }
         format.json { render :show, status: :ok, location: @school }
       else
+        add_model_error_to_flash @school
         format.html { render :edit }
         format.json { render json: @school.errors, status: :unprocessable_entity }
       end
@@ -70,6 +72,6 @@ class SchoolsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def school_params
-      params.require(:school).permit(:name, :address, :town, :province, :zip_code)
+      params.require(:school).permit( :name, :address, :town, :province, :email, :phone, :zip_code)
     end
 end

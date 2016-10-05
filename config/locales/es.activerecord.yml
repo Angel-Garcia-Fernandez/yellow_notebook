@@ -9,6 +9,15 @@ es:
       teacher:
         one: monitor
         other: monitores
+      activity:
+        one: actividad
+        other: actividades
+      school:
+        one: colegio
+        other: colegios
+      student:
+        one: alumno
+        other: alumnos
     attributes:
       user:
         id: nº identificación
@@ -51,6 +60,46 @@ es:
       teacher_user:
         user: usuario
         teacher: monitor
+      activity:
+        id: nº identificación
+        code: código
+        name: nombre
+        classification: categoría
+        started_at: fecha comienzo
+        ended_at: fecha fin
+        default_price: precio
+        details: detalles
+        school: colegio
+        time_week_cycles: horario
+        current_num_of_students: nº alumnos actual
+        total_num_of_students: nº alumnos apuntados
+      school:
+        id: nº identificación
+        name: nombre
+        address: dirección
+        town: municipio
+        province: provincia
+        zip_code: C.P.
+        email: correo
+        phone: teléfono
+        school_representatives: contactos
+        activities: actividades
+      student:
+        id: nº identificación
+        name: nombre
+        surname: apellidos
+        nic: DNI
+        default_discount: descuento normal
+        default_payment_type_eid: tipo pago
+        scholar_phone_number: móvil propio
+        phone_number: teléfono familiar
+        address: dirección
+        town: municipio
+        province: provincia
+        zip_code: C.P.
+        details: detalles
+
+        
 
     errors:
       models:

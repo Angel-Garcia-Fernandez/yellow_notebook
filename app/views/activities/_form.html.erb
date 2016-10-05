@@ -1,11 +1,5 @@
 <%= form_for @activity, html: { class: 'form-horizontal' } do |f| %>
   <div class="form-group">
-    <%= f.label :code, class: 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :code, class: 'text_field form-control' %>
-    </div>
-  </div>
-  <div class="form-group">
     <%= f.label :name, class: 'control-label col-md-2' %>
     <div class="col-md-10">
       <%= f.text_field :name, class: 'text_field form-control' %>
@@ -20,13 +14,13 @@
   <div class="form-group">
     <%= f.label :started_at, class: 'control-label col-md-2' %>
     <div class="col-md-10">
-      <%= f.text_field :started_at, class: 'text_field form-control' %>
+      <%= f.text_field :started_at, class: 'datepicker text_field form-control' %>
     </div>
   </div>
   <div class="form-group">
     <%= f.label :ended_at, class: 'control-label col-md-2' %>
     <div class="col-md-10">
-      <%= f.text_field :ended_at, class: 'text_field form-control' %>
+      <%= f.text_field :ended_at, class: 'datepicker text_field form-control' %>
     </div>
   </div>
   <div class="form-group">
@@ -38,15 +32,15 @@
   <div class="form-group">
     <%= f.label :details, class: 'control-label col-md-2' %>
     <div class="col-md-10">
-      <%= f.text_field :details, class: 'text_field form-control' %>
+      <%= f.text_area :details, class: 'text_field form-control' %>
     </div>
   </div>
-  <div class="form-group">
-    <%= f.label :school_id, class: 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :school_id, class: 'text_field form-control' %>
+    <div class="form-group">
+      <%= f.label :school, class: 'control-label col-md-2' %>
+      <div class="col-md-10">
+        <%= f.collection_select :school_id, @schools, :id, :to_s,  { include_blank: true }, {class: 'select-search form-control'} %>
+      </div>
     </div>
-  </div>
 
   <div class="form-group">
     <div class='col-md-offset-2 col-md-10'>

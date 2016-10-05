@@ -23,8 +23,19 @@ class Activity < ActiveRecord::Base
   has_many :time_week_cycles
   has_many :teacher_activities
 
-  validates_presence_of :code, :name
-  validates_length_of :code, :name, :classification, maximum: 255
+  validates_presence_of :name
+  validates_length_of :name, :classification, maximum: 255
   #validates_uniqueness_of :code
 
+  def to_s
+    "#{name} - #{classification}"
+  end
+
+  def total_num_of_students
+    self.student_activity_sign_ups.count
+  end
+
+  def current_num_of_students date = DateTime.current
+    self.student_activity_sign_ups.currently( date ).count
+  end
 end

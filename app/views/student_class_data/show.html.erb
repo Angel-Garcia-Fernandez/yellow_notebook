@@ -5,13 +5,13 @@
 
 <div class="fieldset">
   <dl>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:attended) %></dt>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:attended).capitalize %></dt>
       <dd><pre class="prettyprint"><%= @student_class_datum.attended %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:paid) %></dt>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:paid).capitalize %></dt>
       <dd><pre class="prettyprint"><%= @student_class_datum.paid %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:activity_class_id) %></dt>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:activity_class_id).capitalize %></dt>
       <dd><pre class="prettyprint"><%= @student_class_datum.activity_class_id %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:student_activity_sign_up_id) %></dt>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:student_activity_sign_up_id).capitalize %></dt>
       <dd><pre class="prettyprint"><%= @student_class_datum.student_activity_sign_up_id %></pre></dd>
   </dl>
 </div>

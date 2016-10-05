@@ -32,4 +32,8 @@ class Student < ActiveRecord::Base
   #validates_uniqueness_of :name, scope: [ :surname ], if: 'nic.blank?'
   validates_uniqueness_of :nic, allow_blank: true, allow_nil: true
 
+  def to_s
+    "#{name} #{surname}"
+  end
+
 end

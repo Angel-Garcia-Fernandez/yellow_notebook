@@ -1,57 +1,45 @@
 <%- model_class = Student -%>
 <div class="page-header">
-  <h1><%=t '.title', default: model_class.model_name.human.pluralize.titleize %></h1>
+  <h1><%=t '.title', default: model_class.model_name.human( count:2 ).titleize %></h1>
 </div>
 <table class="table table-striped">
   <thead>
-    <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:surname) %></th>
-      <th><%= model_class.human_attribute_name(:nic) %></th>
-      <th><%= model_class.human_attribute_name(:default_discount) %></th>
-      <th><%= model_class.human_attribute_name(:default_payment_type_eid) %></th>
-      <th><%= model_class.human_attribute_name(:scholar_phone_number) %></th>
-      <th><%= model_class.human_attribute_name(:phone_number) %></th>
-      <th><%= model_class.human_attribute_name(:address) %></th>
-      <th><%= model_class.human_attribute_name(:town) %></th>
-      <th><%= model_class.human_attribute_name(:province) %></th>
-      <th><%= model_class.human_attribute_name(:zip_code) %></th>
-      <th><%= model_class.human_attribute_name(:details) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%=t '.actions', default: t("helpers.actions") %></th>
-    </tr>
+  <tr>
+    <th><%= model_class.human_attribute_name(:name).capitalize %></th>
+    <th><%= model_class.human_attribute_name(:surname).capitalize %></th>
+    <th><%= model_class.human_attribute_name(:nic).capitalize %></th>
+    <th><%= model_class.human_attribute_name(:default_discount).capitalize %></th>
+    <th><%= model_class.human_attribute_name(:default_payment_type_eid).capitalize %></th>
+    <th><%= model_class.human_attribute_name(:scholar_phone_number).capitalize %></th>
+    <th><%= model_class.human_attribute_name(:phone_number).capitalize %></th>
+    <th><%= model_class.human_attribute_name(:town).capitalize %></th>
+    <th><%=t '.actions', default: t("helpers.actions") %></th>
+  </tr>
   </thead>
   <tbody>
-    <% @students.each do |student| %>
+  <% @students.each do |student| %>
       <tr>
-        <td><%= student.id %></td>
-          <td><%= student.name %></td>
-          <td><%= student.surname %></td>
-          <td><%= student.nic %></td>
-          <td><%= student.default_discount %></td>
-          <td><%= student.default_payment_type_eid %></td>
-          <td><%= student.scholar_phone_number %></td>
-          <td><%= student.phone_number %></td>
-          <td><%= student.address %></td>
-          <td><%= student.town %></td>
-          <td><%= student.province %></td>
-          <td><%= student.zip_code %></td>
-        <td><%= student.details %></td>
-        <td><%=l student.created_at, format: :long %></td>
+        <td><%= student.name %></td>
+        <td><%= student.surname %></td>
+        <td><%= student.nic %></td>
+        <td><%= student.default_discount %></td>
+        <td><%= student.default_payment_type_eid %></td>
+        <td><%= student.scholar_phone_number %></td>
+        <td><%= student.phone_number %></td>
+        <td><%= student.town %></td>
         <td>
           <%= link_to student_path(student), class: 'btn btn-xs', title: "#{ t('.show', default: t('helpers.links.show')) }" do %>
-            <%= glyph 'info-sign' %>
+              <%= glyph 'info-sign' %>
           <%- end -%>
           <%= link_to edit_student_path(student), class: 'btn btn-xs', title: "#{ t('.edit', default: t('helpers.links.edit')) }" do %>
-            <%= glyph 'pencil' %>
+              <%= glyph 'pencil' %>
           <%- end -%>
           <%= link_to student_path(student), method: :delete, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'btn btn-xs', title: "#{ t('.destroy', default: t('helpers.links.destroy')) }" do %>
-            <%= glyph 'remove' %>
+              <%= glyph 'remove' %>
           <%- end -%>
         </td>
       </tr>
-    <% end %>
+  <% end %>
   </tbody>
 </table>
 

@@ -5,20 +5,20 @@
 
 <div class="fieldset">
   <dl>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:name) %></dt>
-      <dd><pre class="prettyprint"><%= @school.name %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:address) %></dt>
-      <dd><pre class="prettyprint"><%= @school.address %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:town) %></dt>
-      <dd><pre class="prettyprint"><%= @school.town %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:province) %></dt>
-      <dd><pre class="prettyprint"><%= @school.province %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:zip_code) %></dt>
-      <dd><pre class="prettyprint"><%= @school.zip_code %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:email) %></dt>
-      <dd><pre class="prettyprint"><%= @school.email %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:phone) %></dt>
-      <dd><pre class="prettyprint"><%= @school.phone %></pre></dd>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:name).capitalize %></dt>
+    <dd><pre class="prettyprint"><%= @school.name %></pre></dd>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:address).capitalize %></dt>
+    <dd><pre class="prettyprint"><%= @school.address %></pre></dd>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:town).capitalize %></dt>
+    <dd><pre class="prettyprint"><%= @school.town %></pre></dd>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:zip_code).capitalize %></dt>
+    <dd><pre class="prettyprint"><%= @school.zip_code %></pre></dd>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:province).capitalize %></dt>
+    <dd><pre class="prettyprint"><%= @school.province %></pre></dd>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:email).capitalize %></dt>
+    <dd><pre class="prettyprint"><%= @school.email %></pre></dd>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:phone).capitalize %></dt>
+    <dd><pre class="prettyprint"><%= @school.phone %></pre></dd>
   </dl>
 </div>
 

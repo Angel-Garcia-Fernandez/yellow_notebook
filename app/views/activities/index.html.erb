@@ -1,36 +1,31 @@
 <%- model_class = Activity -%>
 <div class="page-header">
-  <h1><%=t '.title', default: model_class.model_name.human.pluralize.titleize %></h1>
+  <h1><%=t '.title', default: model_class.model_name.human( count:2 ).titleize %></h1>
 </div>
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:code) %></th>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:classification) %></th>
-      <th><%= model_class.human_attribute_name(:started_at) %></th>
-      <th><%= model_class.human_attribute_name(:ended_at) %></th>
-      <th><%= model_class.human_attribute_name(:default_price) %></th>
-      <th><%= model_class.human_attribute_name(:details) %></th>
-      <th><%= model_class.human_attribute_name(:school_id) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%= model_class.human_attribute_name(:name).capitalize %></th>
+      <th><%= model_class.human_attribute_name(:classification).capitalize %></th>
+      <th><%= model_class.human_attribute_name(:started_at).capitalize %></th>
+      <th><%= model_class.human_attribute_name(:ended_at).capitalize %></th>
+      <th><%= model_class.human_attribute_name(:default_price).capitalize %></th>
+      <th><%= model_class.human_attribute_name(:school).capitalize %></th>
       <th><%=t '.actions', default: t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
     <% @activities.each do |activity| %>
       <tr>
-        <td><%= activity.id %></td>
-          <td><%= activity.code %></td>
-          <td><%= activity.name %></td>
+        <td><%= activity.name %></td>
           <td><%= activity.classification %></td>
           <td><%= activity.started_at %></td>
           <td><%= activity.ended_at %></td>
-          <td><%= activity.default_price %></td>
-          <td><%= activity.details %></td>
-          <td><%= activity.school_id %></td>
-        <td><%=l activity.created_at, format: :long %></td>
+          <td><%= number_to_currency activity.default_price, unit: '€   ' %></td>
+        <td>
+          <% school = activity.school %>
+          <%= link_to school, school_path( school ) if school.present? %>
+        </td>
         <td>
           <%= link_to activity_path(activity), class: 'btn btn-xs', title: "#{ t('.show', default: t('helpers.links.show')) }" do %>
             <%= glyph 'info-sign' %>

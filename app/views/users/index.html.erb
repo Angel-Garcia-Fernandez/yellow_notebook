@@ -1,15 +1,15 @@
 <%- model_class = User -%>
 <div class="page-header">
-  <h1><%=t '.title', default: model_class.model_name.human.pluralize.titleize %></h1>
+  <h1><%=t '.title', default: model_class.model_name.human( count:2 ).titleize %></h1>
 </div>
 <table class="table table-striped">
   <thead>
   <tr>
-    <th><%= model_class.human_attribute_name(:login) %></th>
-    <th><%= model_class.human_attribute_name(:email) %></th>
-    <th><%= model_class.human_attribute_name(:teacher) %></th>
-    <th><%= model_class.human_attribute_name(:current_sign_in_at) %></th>
-    <th><%= model_class.human_attribute_name(:last_sign_in_at) %></th>
+    <th><%= model_class.human_attribute_name(:login).capitalize %></th>
+    <th><%= model_class.human_attribute_name(:email).capitalize %></th>
+    <th><%= model_class.human_attribute_name(:teacher).capitalize %></th>
+    <th><%= model_class.human_attribute_name(:current_sign_in_at).capitalize %></th>
+    <th><%= model_class.human_attribute_name(:last_sign_in_at).capitalize %></th>
     <th><%=t '.actions', default: t('helpers.actions') %></th>
   </tr>
   </thead>
@@ -19,7 +19,7 @@
 
         <td><%= user.login %></td>
         <td><%= user.email %></td>
-        <td><%= user.teacher %></td>
+        <td><% teacher = user.teacher %> <%= link_to teacher, teacher_path( teacher ) if teacher.present? %></td>
         <td><%= user.current_sign_in_at %></td>
         <td><%= user.last_sign_in_at %></td>
         <td>

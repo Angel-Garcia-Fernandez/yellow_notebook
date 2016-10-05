@@ -32,6 +32,7 @@ class StudentsController < ApplicationController
         format.html { redirect_to @student, notice: 'Student was successfully created.' }
         format.json { render :show, status: :created, location: @student }
       else
+        add_model_error_to_flash @student
         format.html { render :new }
         format.json { render json: @student.errors, status: :unprocessable_entity }
       end
@@ -46,6 +47,7 @@ class StudentsController < ApplicationController
         format.html { redirect_to @student, notice: 'Student was successfully updated.' }
         format.json { render :show, status: :ok, location: @student }
       else
+        add_model_error_to_flash @student
         format.html { render :edit }
         format.json { render json: @student.errors, status: :unprocessable_entity }
       end
@@ -70,6 +72,6 @@ class StudentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
-      params.require(:student).permit(:nic, :name, :surname, :default_discount, :default_payment_type_eid, :scholar_phone_number, :phone_number, :address, :town, :province, :zip_code)
+      params.require(:student).permit(:nic, :name, :surname, :default_discount, :default_payment_type_eid, :scholar_phone_number, :phone_number, :address, :town, :province, :zip_code, :details )
     end
 end

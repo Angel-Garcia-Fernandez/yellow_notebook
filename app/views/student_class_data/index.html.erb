@@ -1,16 +1,16 @@
 <%- model_class = StudentClassDatum -%>
 <div class="page-header">
-  <h1><%=t '.title', default: model_class.model_name.human.pluralize.titleize %></h1>
+  <h1><%=t '.title', default: model_class.model_name.human( count:2 ).titleize %></h1>
 </div>
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:attended) %></th>
-      <th><%= model_class.human_attribute_name(:paid) %></th>
-      <th><%= model_class.human_attribute_name(:activity_class_id) %></th>
-      <th><%= model_class.human_attribute_name(:student_activity_sign_up_id) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%= model_class.human_attribute_name(:id).capitalize %></th>
+      <th><%= model_class.human_attribute_name(:attended).capitalize %></th>
+      <th><%= model_class.human_attribute_name(:paid).capitalize %></th>
+      <th><%= model_class.human_attribute_name(:activity_class_id).capitalize %></th>
+      <th><%= model_class.human_attribute_name(:student_activity_sign_up_id).capitalize %></th>
+      <th><%= model_class.human_attribute_name(:created_at).capitalize %></th>
       <th><%=t '.actions', default: t("helpers.actions") %></th>
     </tr>
   </thead>

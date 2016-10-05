@@ -5,15 +5,15 @@
 
 <div class="fieldset">
   <dl>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:attendance_management) %></dt>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:attendance_management).capitalize %></dt>
       <dd><pre class="prettyprint"><%= @teacher_activity.attendance_management %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:collection_management) %></dt>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:collection_management).capitalize %></dt>
       <dd><pre class="prettyprint"><%= @teacher_activity.collection_management %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:teacher_in_charge) %></dt>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:teacher_in_charge).capitalize %></dt>
       <dd><pre class="prettyprint"><%= @teacher_activity.teacher_in_charge %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:activity_id) %></dt>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:activity_id).capitalize %></dt>
       <dd><pre class="prettyprint"><%= @teacher_activity.activity_id %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:teacher_id) %></dt>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:teacher_id).capitalize %></dt>
       <dd><pre class="prettyprint"><%= @teacher_activity.teacher_id %></pre></dd>
   </dl>
 </div>

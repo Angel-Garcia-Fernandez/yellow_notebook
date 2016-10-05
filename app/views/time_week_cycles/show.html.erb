@@ -5,15 +5,15 @@
 
 <div class="fieldset">
   <dl>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:activity_class_starts_at) %></dt>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:activity_class_starts_at).capitalize %></dt>
       <dd><pre class="prettyprint"><%= @time_week_cycle.activity_class_starts_at %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:activity_class_ends_at) %></dt>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:activity_class_ends_at).capitalize %></dt>
       <dd><pre class="prettyprint"><%= @time_week_cycle.activity_class_ends_at %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:period_started_at) %></dt>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:period_started_at).capitalize %></dt>
       <dd><pre class="prettyprint"><%= @time_week_cycle.period_started_at %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:period_ended_at) %></dt>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:period_ended_at).capitalize %></dt>
       <dd><pre class="prettyprint"><%= @time_week_cycle.period_ended_at %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:activity_id) %></dt>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:activity_id).capitalize %></dt>
       <dd><pre class="prettyprint"><%= @time_week_cycle.activity_id %></pre></dd>
   </dl>
 </div>

@@ -1,18 +1,18 @@
 <%- model_class = Teacher -%>
 <div class="page-header">
-  <h1><%=t '.title', default: model_class.model_name.human.pluralize.titleize %></h1>
+  <h1><%=t '.title', default: model_class.model_name.human( count: 2).titleize %></h1>
 </div>
 <table class="table table-striped">
   <thead>
   <tr>
-    <th><%= model_class.human_attribute_name(:name) %></th>
-    <th><%= model_class.human_attribute_name(:surname) %></th>
-    <th><%= model_class.human_attribute_name(:user) %></th>
-    <th><%= model_class.human_attribute_name(:default_collection_management) %></th>
-    <th><%= model_class.human_attribute_name(:default_attendance_management) %></th>
-    <th><%= model_class.human_attribute_name(:work_email) %></th>
-    <th><%= model_class.human_attribute_name(:mobile_phone_number) %></th>
-    <th><%= model_class.human_attribute_name(:phone_number) %></th>
+    <th><%= model_class.human_attribute_name(:name).capitalize %></th>
+    <th><%= model_class.human_attribute_name(:surname).capitalize %></th>
+    <th><%= model_class.human_attribute_name(:user).capitalize %></th>
+    <th><%= model_class.human_attribute_name(:default_collection_management).capitalize %></th>
+    <th><%= model_class.human_attribute_name(:default_attendance_management).capitalize %></th>
+    <th><%= model_class.human_attribute_name(:work_email).capitalize %></th>
+    <th><%= model_class.human_attribute_name(:mobile_phone_number).capitalize %></th>
+    <th><%= model_class.human_attribute_name(:phone_number).capitalize %></th>
     <th><%=t '.actions', default: t("helpers.actions") %></th>
   </tr>
   </thead>
@@ -21,7 +21,7 @@
       <tr>
         <td><%= teacher.name %></td>
         <td><%= teacher.surname %></td>
-        <td><%= teacher.user %></td>
+        <td><% user = teacher.user %> <%= link_to user, user_path( user ) if user.present? %></td>
         <td><%= boolean_glyph teacher.default_collection_management %></td>
         <td><%= boolean_glyph teacher.default_attendance_management %></td>
         <td><%= teacher.work_email %></td>

@@ -11,10 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160928224407) do
+ActiveRecord::Schema.define(version: 20161005172710) do
 
   create_table "account_details", force: :cascade do |t|
-    t.string   "IBAN",            limit: 255
+    t.string   "iban",            limit: 255
     t.boolean  "default_account",             default: true, null: false
     t.datetime "created_at",                                 null: false
     t.datetime "updated_at",                                 null: false
@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(version: 20160928224407) do
   add_index "account_details", ["student_id"], name: "index_account_details_on_student_id", using: :btree
 
   create_table "activities", force: :cascade do |t|
-    t.string   "code",           limit: 255,                           null: false
     t.string   "name",           limit: 255,                           null: false
     t.string   "classification", limit: 255
     t.date     "started_at"
@@ -51,7 +50,7 @@ ActiveRecord::Schema.define(version: 20160928224407) do
   add_index "activity_classes", ["activity_id"], name: "index_activity_classes_on_activity_id", using: :btree
 
   create_table "guardians", force: :cascade do |t|
-    t.string   "NIC",          limit: 255, default: "", null: false
+    t.string   "nic",          limit: 255, default: "", null: false
     t.string   "name",         limit: 255, default: "", null: false
     t.string   "surname",      limit: 255, default: "", null: false
     t.string   "phone_number", limit: 255
@@ -118,7 +117,7 @@ ActiveRecord::Schema.define(version: 20160928224407) do
   create_table "students", force: :cascade do |t|
     t.string   "name",                     limit: 255,                           default: ""
     t.string   "surname",                  limit: 255,                           default: ""
-    t.string   "NIC",                      limit: 255
+    t.string   "nic",                      limit: 255
     t.decimal  "default_discount",                       precision: 5, scale: 4, default: 0.0, null: false
     t.integer  "default_payment_type_eid", limit: 4,                             default: 0,   null: false
     t.string   "scholar_phone_number",     limit: 255
@@ -159,14 +158,14 @@ ActiveRecord::Schema.define(version: 20160928224407) do
     t.string   "name",                          limit: 255,   default: ""
     t.string   "surname",                       limit: 255,   default: ""
     t.string   "work_email",                    limit: 255,   default: ""
-    t.string   "NIC",                           limit: 255
+    t.string   "nic",                           limit: 255
     t.string   "mobile_phone_number",           limit: 255
     t.string   "phone_number",                  limit: 255
     t.string   "address",                       limit: 255
     t.string   "town",                          limit: 255
     t.string   "province",                      limit: 255
     t.string   "zip_code",                      limit: 255
-    t.string   "IBAN",                          limit: 255
+    t.string   "iban",                          limit: 255
     t.string   "photo_file_name",               limit: 255
     t.string   "photo_content_type",            limit: 255
     t.integer  "photo_file_size",               limit: 4

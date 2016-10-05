@@ -22,4 +22,7 @@ class School < ActiveRecord::Base
   validates_length_of :name, :address, :town, :province, :zip_code, :email, :phone, maximum: 255
   validates_presence_of :name
 
+  def to_s
+    "#{name}#{" (#{town})" if town.present? }"
+  end
 end

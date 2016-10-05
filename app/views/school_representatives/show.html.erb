@@ -5,13 +5,13 @@
 
 <div class="fieldset">
   <dl>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:full_name) %></dt>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:full_name).capitalize %></dt>
       <dd><pre class="prettyprint"><%= @school_representative.full_name %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:position) %></dt>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:position).capitalize %></dt>
       <dd><pre class="prettyprint"><%= @school_representative.position %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:details) %></dt>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:details).capitalize %></dt>
       <dd><pre class="prettyprint"><%= @school_representative.details %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:school_id) %></dt>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:school_id).capitalize %></dt>
       <dd><pre class="prettyprint"><%= @school_representative.school_id %></pre></dd>
   </dl>
 </div>
