@@ -8,7 +8,7 @@ class TeacherUser < ActiveRecord::Base
   after_save :destroy_nils
 
   def destroy_nils
-    if user.nil or teacher.nil
+    if user.nil? or teacher.nil?
       self.destroy
     end
   end

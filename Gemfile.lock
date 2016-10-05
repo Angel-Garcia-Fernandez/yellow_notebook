@@ -112,6 +112,8 @@ GEM
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     high_voltage (3.0.0)
+    humanize_boolean (0.0.2)
+      i18n
     i18n (0.7.0)
     jbuilder (2.6.0)
       activesupport (>= 3.0.0, < 5.1)
@@ -259,6 +261,7 @@ DEPENDENCIES
   devise-i18n
   figaro (~> 1.0)
   high_voltage
+  humanize_boolean
   jbuilder (~> 2.0)
   jquery-rails
   momentjs-rails (>= 2.9.0)
@@ -280,4 +283,4 @@ DEPENDENCIES
   yard
 
 BUNDLED WITH
-   1.12.5
+   1.13.2

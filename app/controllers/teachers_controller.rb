@@ -1,6 +1,6 @@
 class TeachersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_teacher, only: [:show, :edit, :update, :destroy]
+  before_action :set_teacher, only: [ :edit, :update, :destroy]
   before_action :set_select_collections, only: [:edit, :new, :update, :create]
 
 
@@ -13,6 +13,7 @@ class TeachersController < ApplicationController
   # GET /teachers/1
   # GET /teachers/1.json
   def show
+    @teacher = Teacher.find( params[:id] )
   end
 
   # GET /teachers/new

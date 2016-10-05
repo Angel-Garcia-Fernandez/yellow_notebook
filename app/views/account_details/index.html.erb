@@ -6,7 +6,7 @@
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:IBAN) %></th>
+      <th><%= model_class.human_attribute_name(:iban) %></th>
       <th><%= model_class.human_attribute_name(:default_account) %></th>
       <th><%= model_class.human_attribute_name(:guardian_id) %></th>
       <th><%= model_class.human_attribute_name(:student_id) %></th>
@@ -18,7 +18,7 @@
     <% @account_details.each do |account_detail| %>
       <tr>
         <td><%= account_detail.id %></td>
-          <td><%= account_detail.IBAN %></td>
+          <td><%= account_detail.iban %></td>
           <td><%= account_detail.default_account %></td>
           <td><%= account_detail.guardian_id %></td>
           <td><%= account_detail.student_id %></td>

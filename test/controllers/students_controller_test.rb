@@ -5,7 +5,7 @@ class StudentsControllerTest < ActionController::TestCase
     @user = users(:one)
     sign_in @user
     @student = students(:one)
-    @student_new = Student.new(   NIC: '444X', name: 'MyString', surname: 'MyString2', default_discount: 1, default_payment_type_eid: 1,
+    @student_new = Student.new(   nic: '444X', name: 'MyString', surname: 'MyString2', default_discount: 1, default_payment_type_eid: 1,
                                      scholar_phone_number: 'MyString', phone_number: 'MyString', address: 'MyString', town: 'MyString',
                                      province: 'MyString', zip_code: 'MyString' )
   end
@@ -23,7 +23,7 @@ class StudentsControllerTest < ActionController::TestCase
 
   test "should create student" do
     assert_difference('Student.count') do
-      post :create, student: { NIC: @student_new.NIC, address: @student_new.address, default_discount: @student_new.default_discount,
+      post :create, student: { nic: @student_new.nic, address: @student_new.address, default_discount: @student_new.default_discount,
                                default_payment_type_eid: @student_new.default_payment_type_eid, name: @student_new.name,
                                phone_number: @student_new.phone_number, province: @student_new.province,
                                scholar_phone_number: @student_new.scholar_phone_number, surname: @student_new.surname,
@@ -44,7 +44,7 @@ class StudentsControllerTest < ActionController::TestCase
   end
 
   test "should update student" do
-    patch :update, id: @student, student: { NIC: @student.NIC, address: @student.address, default_discount: @student.default_discount, default_payment_type_eid: @student.default_payment_type_eid, name: @student.name, phone_number: @student.phone_number, province: @student.province, scholar_phone_number: @student.scholar_phone_number, surname: @student.surname, town: @student.town, zip_code: @student.zip_code }
+    patch :update, id: @student, student: { nic: @student.nic, address: @student.address, default_discount: @student.default_discount, default_payment_type_eid: @student.default_payment_type_eid, name: @student.name, phone_number: @student.phone_number, province: @student.province, scholar_phone_number: @student.scholar_phone_number, surname: @student.surname, town: @student.town, zip_code: @student.zip_code }
     assert_redirected_to student_path(assigns(:student))
   end
 

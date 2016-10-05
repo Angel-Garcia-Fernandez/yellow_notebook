@@ -3,7 +3,7 @@
 # Table name: guardians
 #
 #  id           :integer          not null, primary key
-#  NIC          :string(255)      default(""), not null
+#  nic          :string(255)      default(""), not null
 #  name         :string(255)      default(""), not null
 #  surname      :string(255)      default(""), not null
 #  phone_number :string(255)
@@ -19,7 +19,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  NIC: MyString
+  nic: MyString
   name: MyString
   surname: MyString
   phone_number: MyString
@@ -30,7 +30,7 @@ one:
   student: student_two
 
 father:
-  NIC: MyString
+  nic: MyString
   name: MyString
   surname: MyString
   phone_number: MyString

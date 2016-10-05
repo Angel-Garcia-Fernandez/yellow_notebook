@@ -59,6 +59,9 @@ gem 'devise'
 gem 'rails-i18n'#, github: 'svenfuchs/rails-i18n', branch: 'rails-4-x' # For 4.x
 gem 'devise-i18n'
 
+# yes/no for booleans with i18n translations
+gem 'humanize_boolean'
+
 # support for static pages
 gem 'high_voltage'
 
@@ -99,7 +102,6 @@ gem 'select2-rails'
 # bootstrap datepicker support
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.42'
-
 
 # Activerecord any_of: OR for scopes
 gem 'activerecord_any_of'

@@ -3,7 +3,7 @@
 # Table name: guardians
 #
 #  id           :integer          not null, primary key
-#  NIC          :string(255)      default(""), not null
+#  nic          :string(255)      default(""), not null
 #  name         :string(255)      default(""), not null
 #  surname      :string(255)      default(""), not null
 #  phone_number :string(255)

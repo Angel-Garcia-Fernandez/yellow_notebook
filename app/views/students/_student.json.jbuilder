@@ -1,2 +1,2 @@
-json.extract! student, :id, :NIC, :name, :surname, :default_discount, :default_payment_type_eid, :scholar_phone_number, :phone_number, :address, :town, :province, :zip_code, :details, :created_at, :updated_at
+json.extract! student, :id, :nic, :name, :surname, :default_discount, :default_payment_type_eid, :scholar_phone_number, :phone_number, :address, :town, :province, :zip_code, :details, :created_at, :updated_at
 json.url student_url(student, format: :json)

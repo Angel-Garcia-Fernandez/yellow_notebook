@@ -20,7 +20,7 @@ class GuardiansControllerTest < ActionController::TestCase
 
   test "should create guardian" do
     assert_difference('Guardian.count') do
-      post :create, guardian: { NIC: @guardian.NIC, address: @guardian.address, name: @guardian.name, phone_number: @guardian.phone_number, province: @guardian.province, surname: @guardian.surname, town: @guardian.town, zip_code: @guardian.zip_code }
+      post :create, guardian: { nic: @guardian.nic, address: @guardian.address, name: @guardian.name, phone_number: @guardian.phone_number, province: @guardian.province, surname: @guardian.surname, town: @guardian.town, zip_code: @guardian.zip_code }
     end
 
     assert_redirected_to guardian_path(assigns(:guardian))
@@ -37,7 +37,7 @@ class GuardiansControllerTest < ActionController::TestCase
   end
 
   test "should update guardian" do
-    patch :update, id: @guardian, guardian: { NIC: @guardian.NIC, address: @guardian.address, name: @guardian.name, phone_number: @guardian.phone_number, province: @guardian.province, surname: @guardian.surname, town: @guardian.town, zip_code: @guardian.zip_code }
+    patch :update, id: @guardian, guardian: { nic: @guardian.nic, address: @guardian.address, name: @guardian.name, phone_number: @guardian.phone_number, province: @guardian.province, surname: @guardian.surname, town: @guardian.town, zip_code: @guardian.zip_code }
     assert_redirected_to guardian_path(assigns(:guardian))
   end
 

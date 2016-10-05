@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user, only: [:show, :edit, :edit_password, :update, :destroy]
+  before_action :set_user, only: [ :edit, :edit_password, :update, :destroy]
   before_action :set_select_collections, only: [:edit, :new, :update, :create]
 
 
@@ -14,9 +14,6 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
-    # unless @user == current_user
-    #   redirect_to :back, :alert => "Access denied."
-    # end
   end
 
   # GET /users/new

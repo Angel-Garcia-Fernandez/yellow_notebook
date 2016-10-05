@@ -6,7 +6,7 @@
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:NIC) %></th>
+      <th><%= model_class.human_attribute_name(:nic) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:surname) %></th>
       <th><%= model_class.human_attribute_name(:phone_number) %></th>
@@ -23,7 +23,7 @@
     <% @guardians.each do |guardian| %>
       <tr>
         <td><%= guardian.id %></td>
-          <td><%= guardian.NIC %></td>
+          <td><%= guardian.nic %></td>
           <td><%= guardian.name %></td>
           <td><%= guardian.surname %></td>
           <td><%= guardian.phone_number %></td>

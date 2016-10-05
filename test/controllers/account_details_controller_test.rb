@@ -20,7 +20,7 @@ class AccountDetailsControllerTest < ActionController::TestCase
 
   test "should create account_detail" do
     assert_difference('AccountDetail.count') do
-      post :create, account_detail: { IBAN: @account_detail.IBAN }
+      post :create, account_detail: { iban: @account_detail.iban }
     end
 
     assert_redirected_to account_detail_path(assigns(:account_detail))
@@ -37,7 +37,7 @@ class AccountDetailsControllerTest < ActionController::TestCase
   end
 
   test "should update account_detail" do
-    patch :update, id: @account_detail, account_detail: { IBAN: @account_detail.IBAN }
+    patch :update, id: @account_detail, account_detail: { iban: @account_detail.iban }
     assert_redirected_to account_detail_path(assigns(:account_detail))
   end
 

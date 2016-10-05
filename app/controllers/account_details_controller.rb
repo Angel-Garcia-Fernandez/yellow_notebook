@@ -70,6 +70,6 @@ class AccountDetailsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def account_detail_params
-      params.require(:account_detail).permit(:IBAN)
+      params.require(:account_detail).permit(:iban)
     end
 end

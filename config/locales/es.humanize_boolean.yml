@@ -1,0 +1,5 @@
+es:
+  boolean:
+    yes: 'Sí'
+    no: 'No'
+    nil: '¿?'

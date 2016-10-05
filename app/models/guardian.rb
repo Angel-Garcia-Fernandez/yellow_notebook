@@ -3,7 +3,7 @@
 # Table name: guardians
 #
 #  id           :integer          not null, primary key
-#  NIC          :string(255)      default(""), not null
+#  nic          :string(255)      default(""), not null
 #  name         :string(255)      default(""), not null
 #  surname      :string(255)      default(""), not null
 #  phone_number :string(255)
@@ -22,7 +22,7 @@ class Guardian < ActiveRecord::Base
   belongs_to :student
 
   validates_presence_of :student
-  validates_uniqueness_of :name, scope: [ :NIC, :surname ]
-  validates_length_of :NIC, :name, :surname, :phone_number, :address, :town, :province, :zip_code, maximum: 255
+  validates_uniqueness_of :name, scope: [ :nic, :surname ]
+  validates_length_of :nic, :name, :surname, :phone_number, :address, :town, :province, :zip_code, maximum: 255
 
 end

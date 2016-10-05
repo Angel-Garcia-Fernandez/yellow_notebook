@@ -11,6 +11,7 @@ es:
         other: monitores
     attributes:
       user:
+        id: nº identificación
         login: login
         email: correo
         password: contraseña
@@ -30,7 +31,7 @@ es:
         name: nombre
         surname: apellidos
         work_email: correo trabajo
-        NIC: DNI
+        nic: DNI
         default_attendance_management: asistencia
         default_collection_management: cobros
         mobile_phone_number: móvil
@@ -39,13 +40,17 @@ es:
         town: municipio
         province: provincia
         zip_code: C.P.
-        IBAN: IBAN
+        iban: IBAN
         photo: foto
         studies: estudios
         details: detalles
         created_at: fecha creación
         updated_at: fecha actualización
         teacher_user: usuario
+        user: usuario
+      teacher_user:
+        user: usuario
+        teacher: monitor
 
     errors:
       models:

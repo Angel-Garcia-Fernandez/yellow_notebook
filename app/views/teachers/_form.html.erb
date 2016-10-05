@@ -5,97 +5,30 @@
         <%= f.file_field :photo, class: 'text_field form-control' %>
       </div>
     </div>
-  <div class="form-group">
-    <%= f.label :name, class: 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :name, class: 'text_field form-control' %>
+    <div class="form-group">
+      <%= f.label :name, class: 'control-label col-md-2' %>
+      <div class="col-md-10">
+        <%= f.text_field :name, class: 'text_field form-control' %>
+      </div>
     </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :surname, class: 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :surname, class: 'text_field form-control' %>
+    <div class="form-group">
+      <%= f.label :surname, class: 'control-label col-md-2' %>
+      <div class="col-md-10">
+        <%= f.text_field :surname, class: 'text_field form-control' %>
+      </div>
     </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :work_email, class: 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :work_email, class: 'text_field form-control' %>
+    <div class="form-group">
+      <%= f.label :nic, class: 'control-label col-md-2' %>
+      <div class="col-md-10">
+        <%= f.text_field :nic, class: 'text_field form-control' %>
+      </div>
     </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :NIC, class: 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :NIC, class: 'text_field form-control' %>
+    <div class="form-group">
+      <%= f.label :iban, class: 'control-label col-md-2' %>
+      <div class="col-md-10">
+        <%= f.text_field :iban, class: 'text_field form-control' %>
+      </div>
     </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :mobile_phone_number, class: 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :mobile_phone_number, class: 'text_field form-control' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :phone_number, class: 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :phone_number, class: 'text_field form-control' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :address, class: 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :address, class: 'text_field form-control' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :town, class: 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :town, class: 'text_field form-control' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :province, class: 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :province, class: 'text_field form-control' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :zip_code, class: 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :zip_code, class: 'text_field form-control' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :IBAN, class: 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :IBAN, class: 'text_field form-control' %>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :default_collection_management, class: 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :default_collection_management, class: 'text_field form-control' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :default_attendance_management, class: 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :default_attendance_management, class: 'text_field form-control' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :studies, class: 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :studies, class: 'text_field form-control' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :details, class: 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :details, class: 'text_field form-control' %>
-    </div>
-  </div>
     <%= f.fields_for :teacher_user do |a| %>
         <div class="form-group">
           <%= a.label :user, class: 'control-label col-md-2' %>
@@ -104,12 +37,78 @@
           </div>
         </div>
     <% end %>
-
-  <div class="form-group">
-    <div class='col-md-offset-2 col-md-10'>
-      <%= f.submit nil, class: 'btn btn-primary' %>
-      <%= link_to t('.cancel', default: t("helpers.links.cancel")),
-                  teachers_path, class: 'btn btn-default' %>
+    <div class="form-group">
+      <%= f.label :default_collection_management, class: 'control-label col-md-2' %>
+      <div class="col-md-10">
+        <%= f.check_box :default_collection_management, class: 'text_field form-control' %>
+      </div>
     </div>
-  </div>
+    <div class="form-group">
+      <%= f.label :default_attendance_management, class: 'control-label col-md-2' %>
+      <div class="col-md-10">
+        <%= f.check_box :default_attendance_management, class: 'text_field form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :mobile_phone_number, class: 'control-label col-md-2' %>
+      <div class="col-md-10">
+        <%= f.text_field :mobile_phone_number, class: 'text_field form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :phone_number, class: 'control-label col-md-2' %>
+      <div class="col-md-10">
+        <%= f.text_field :phone_number, class: 'text_field form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :work_email, class: 'control-label col-md-2' %>
+      <div class="col-md-10">
+        <%= f.text_field :work_email, class: 'text_field form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :studies, class: 'control-label col-md-2' %>
+      <div class="col-md-10">
+        <%= f.text_field :studies, class: 'text_field form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :address, class: 'control-label col-md-2' %>
+      <div class="col-md-10">
+        <%= f.text_field :address, class: 'text_field form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :town, class: 'control-label col-md-2' %>
+      <div class="col-md-10">
+        <%= f.text_field :town, class: 'text_field form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :province, class: 'control-label col-md-2' %>
+      <div class="col-md-10">
+        <%= f.text_field :province, class: 'text_field form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :zip_code, class: 'control-label col-md-2' %>
+      <div class="col-md-10">
+        <%= f.text_field :zip_code, class: 'text_field form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :details, class: 'control-label col-md-2' %>
+      <div class="col-md-10">
+        <%= f.text_field :details, class: 'text_field form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class='col-md-offset-2 col-md-10'>
+        <%= f.submit nil, class: 'btn btn-primary' %>
+        <%= link_to t('.cancel', default: t("helpers.links.cancel")),
+                    teachers_path, class: 'btn btn-default' %>
+      </div>
+    </div>
 <% end %>

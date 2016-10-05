@@ -6,14 +6,14 @@
 #  name                          :string(255)      default("")
 #  surname                       :string(255)      default("")
 #  work_email                    :string(255)      default("")
-#  NIC                           :string(255)
+#  nic                           :string(255)
 #  mobile_phone_number           :string(255)
 #  phone_number                  :string(255)
 #  address                       :string(255)
 #  town                          :string(255)
 #  province                      :string(255)
 #  zip_code                      :string(255)
-#  IBAN                          :string(255)
+#  iban                          :string(255)
 #  photo_file_name               :string(255)
 #  photo_content_type            :string(255)
 #  photo_file_size               :integer
@@ -35,14 +35,14 @@ class Teacher < ActiveRecord::Base
 
   accepts_nested_attributes_for :teacher_user
 
-  has_attached_file :photo, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+  has_attached_file :photo, styles: { medium: "300x300>", thumb: "100x100>" }#, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\z/
 
   validates_uniqueness_of :name , scope: :surname#, conditions: { status: :active}
   #validates_presence_of :default_attendance_management, :default_collection_management
   validates_inclusion_of :default_attendance_management, :default_collection_management, in: [ true, false ]
-  validates_length_of :IBAN, maximum: 75
-  validates_length_of :name, :surname, :work_email, :NIC, :mobile_phone_number, :phone_number,
+  validates_length_of :iban, maximum: 75
+  validates_length_of :name, :surname, :work_email, :nic, :mobile_phone_number, :phone_number,
                       :address, :town, :province, :zip_code, maximum: 255
   validates_associated :teacher_user
 
