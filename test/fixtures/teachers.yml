@@ -41,4 +41,3 @@ teacher_two:
   default_attendance_management: false
   default_collection_management: false
   details: MyText
-  user: user_two
