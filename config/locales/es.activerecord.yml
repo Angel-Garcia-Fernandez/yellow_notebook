@@ -57,6 +57,7 @@ es:
         updated_at: fecha actualización
         teacher_user: usuario
         user: usuario
+        activities: actividades
       teacher_user:
         user: usuario
         teacher: monitor
@@ -73,6 +74,13 @@ es:
         time_week_cycles: horario
         current_num_of_students: nº alumnos actual
         total_num_of_students: nº alumnos apuntados
+        teachers: monitores
+      teacher_activity:
+        teacher: monitor
+        activity: actividad
+        teacher_in_charge: tutor
+        attendance_management: asistencia
+        collection_management: cobros
       school:
         id: nº identificación
         name: nombre
@@ -117,4 +125,6 @@ es:
           attributes:
             teacher_in_charge:
               one_default: debe haber uno y sólo un monitor al cargo
+            teacher:
+              taken: no se puede agregar dos veces al mismo monitor
 

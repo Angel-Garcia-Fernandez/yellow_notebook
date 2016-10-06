@@ -22,10 +22,11 @@ class Activity < ActiveRecord::Base
   has_many :student_activity_sign_ups
   has_many :time_week_cycles
   has_many :teacher_activities
+  has_many :teachers, through: :teacher_activities
 
   validates_presence_of :name
   validates_length_of :name, :classification, maximum: 255
-  #validates_uniqueness_of :code
+  validates_associated :teacher_activities
 
   def to_s
     "#{name} - #{classification}"

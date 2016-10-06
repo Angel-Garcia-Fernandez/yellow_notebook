@@ -18,6 +18,8 @@ class TeacherUser < ActiveRecord::Base
 
   after_save :destroy_nils
 
+  private
+
   def destroy_nils
     if user.nil? or teacher.nil?
       self.destroy

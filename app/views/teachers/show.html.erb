@@ -13,6 +13,8 @@
     <dd><pre class="prettyprint"><%= @teacher.surname %></pre></dd>
     <dt class="label label-default"><%= model_class.human_attribute_name(:nic).capitalize %></dt>
     <dd><pre class="prettyprint"><%= @teacher.nic %></pre></dd>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:studies).capitalize %></dt>
+    <dd><pre class="prettyprint"><%= @teacher.studies %></pre></dd>
     <dt class="label label-default"><%= model_class.human_attribute_name(:iban).capitalize %></dt>
     <dd><pre class="prettyprint"><%= @teacher.iban %></pre></dd>
     <dt class="label label-default"><%= model_class.human_attribute_name(:user).capitalize %></dt>
@@ -20,33 +22,40 @@
     <dt class="label label-default"><%= model_class.human_attribute_name(:default_collection_management).capitalize %></dt>
     <dd><pre class="prettyprint"><%= @teacher.default_collection_management.humanize %></pre></dd>
     <dt class="label label-default"><%= model_class.human_attribute_name(:default_attendance_management).capitalize %></dt>
-    <dd><pre class="prettyprint"><%= @teacher.default_attendance_management.humanize %></pre></dd>
+    <dd><pre class="prettyprint"><%= @teacher.default_collection_management.humanize %></pre></dd>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:activities).capitalize %></dt>
+    <dd><pre class="prettyprint">
+      <% @teacher.activities.each do |a| %>
+          <div><%= link_to a.to_s, activities_path( a.id ) %></div>
+      <% end %>
+    </pre></dd>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:details).capitalize %></dt>
+    <dd><pre class="prettyprint"><%= @teacher.details %></pre></dd>
     <dt class="label label-default"><%= model_class.human_attribute_name(:mobile_phone_number).capitalize %></dt>
     <dd><pre class="prettyprint"><%= @teacher.mobile_phone_number %></pre></dd>
     <dt class="label label-default"><%= model_class.human_attribute_name(:phone_number).capitalize %></dt>
     <dd><pre class="prettyprint"><%= @teacher.phone_number %></pre></dd>
     <dt class="label label-default"><%= model_class.human_attribute_name(:work_email).capitalize %></dt>
     <dd><pre class="prettyprint"><%= @teacher.work_email %></pre></dd>
-    <dt class="label label-default"><%= model_class.human_attribute_name(:studies).capitalize %></dt>
-    <dd><pre class="prettyprint"><%= @teacher.studies %></pre></dd>
     <dt class="label label-default"><%= model_class.human_attribute_name(:address).capitalize %></dt>
     <dd><pre class="prettyprint"><%= @teacher.address %></pre></dd>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:zip_code).capitalize %></dt>
+    <dd><pre class="prettyprint"><%= @teacher.zip_code %></pre></dd>
     <dt class="label label-default"><%= model_class.human_attribute_name(:town).capitalize %></dt>
     <dd><pre class="prettyprint"><%= @teacher.town %></pre></dd>
     <dt class="label label-default"><%= model_class.human_attribute_name(:province).capitalize %></dt>
     <dd><pre class="prettyprint"><%= @teacher.province %></pre></dd>
-    <dt class="label label-default"><%= model_class.human_attribute_name(:zip_code).capitalize %></dt>
-    <dd><pre class="prettyprint"><%= @teacher.zip_code %></pre></dd>
-    <dt class="label label-default"><%= model_class.human_attribute_name(:details).capitalize %></dt>
-    <dd><pre class="prettyprint"><%= @teacher.details %></pre></dd>
   </dl>
 </div>
 
 <div class="form-group">
+
   <%= link_to t('.back', default: t("helpers.links.back")),
               teachers_path, class: 'btn btn-default'  %>
   <%= link_to t('.edit', default: t("helpers.links.edit")),
               edit_teacher_path(@teacher), class: 'btn btn-default' %>
+  <%= link_to t('.edit_activities', default: t("helpers.links.edit_activities")),
+              edit_activities_teacher_path(@teacher), class: 'btn btn-default' %>
   <%= link_to t('.destroy', default: t("helpers.links.destroy")),
               teacher_path(@teacher),
               method: 'delete',

@@ -10,6 +10,7 @@ es:
       new: "Nuevo"
       edit: "Editar"
       edit_password: "Editar contraseña"
+      edit_activities: "Actividades"
       show: "Mostrar"
     titles:
       edit: "Editar"

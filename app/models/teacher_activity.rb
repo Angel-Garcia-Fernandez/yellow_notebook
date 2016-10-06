@@ -18,21 +18,30 @@ class TeacherActivity < ActiveRecord::Base
   belongs_to :teacher
 
   validates_inclusion_of :collection_management, :attendance_management, :teacher_in_charge, in: [true, false]
-  validate :one_default
+  validate :one_and_only_one_default
+  validates_uniqueness_of :teacher, scope: :activity, allow_nil: true
+
+  after_save :destroy_nils
 
   scope :default_account, -> { where( default_account: true ) }
 
   private
-  def one_default
+  def one_and_only_one_default
     invalid = false
-    student_accounts = TeacherActivity.where( activity: activity)
-    if student_accounts.size > 0
-      if student_accounts.default_account.size != 1
+    teachers_for_this_activity = TeacherActivity.where( activity: activity)
+    if teachers_for_this_activity.size > 0
+      if teachers_for_this_activity.default_account.size != 1
         errors.add( :base, :one_default )
         invalid = true
       end
     end
     invalid
+  end
+
+  def destroy_nils
+    if teacher.nil? or activity.nil?
+      self.destroy
+    end
   end
 
 end

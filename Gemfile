@@ -108,3 +108,6 @@ gem 'activerecord_any_of'
 
 # Paperclip for uploading files
 gem 'paperclip', '~> 5.1.0'
+
+# nested fields for form with has many
+gem 'nested_form_fields'
