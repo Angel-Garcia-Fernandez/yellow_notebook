@@ -73,8 +73,14 @@ gem 'bootstrap-sass-extras' # add some extras included in twitter-bootstrap-sass
                               # $ rails g bootstrap:themed Posts
                               # that regenerate the old scaffold views to the bootstrap ones.ç
 gem 'devise-bootstrap-views'
+# Select2 support
+gem 'select2-rails'
+# bootstrap datepicker support
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.42'
 
-gem 'annotate' #annotate database schema in models: bundle exec annotate
+#annotate database schema in models: bundle exec annotate
+gem 'annotate'
 
 # In Rubymine, using the debugger implies  commenting byebug and instaling debase gems.
 # group :development, :test do
@@ -95,13 +101,6 @@ end
 # PDF support
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary-edge', '~> 0.12.3.0' # wkhtmltopdf installer for wicked_pdf
-
-# Select2 support
-gem 'select2-rails'
-
-# bootstrap datepicker support
-gem 'momentjs-rails', '>= 2.9.0'
-gem 'bootstrap3-datetimepicker-rails', '~> 4.17.42'
 
 # Activerecord any_of: OR for scopes
 gem 'activerecord_any_of'
