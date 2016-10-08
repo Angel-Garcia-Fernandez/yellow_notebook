@@ -17,5 +17,6 @@
 //= require select2
 //= require moment
 //= require bootstrap-datetimepicker
+//= require nested_form_fields
 //= require_tree .
 
