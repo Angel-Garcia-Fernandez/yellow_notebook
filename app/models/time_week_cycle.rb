@@ -23,7 +23,7 @@ class TimeWeekCycle < ActiveRecord::Base
   def activity_class_ends_after_start
     invalid = false
     if activity_class_starts_at > activity_class_ends_at
-      errors.add( :activity_class_ends_at, :ends_before_start )
+      errors.add( :activity_class_ends_at, :end_before_start )
       invalid = true
     end
     invalid
@@ -32,7 +32,7 @@ class TimeWeekCycle < ActiveRecord::Base
   def period_ended_after_start
     invalid = false
     if period_started_at.present? and period_ended_at.present? and period_ended_at > period_started_at
-      errors.add( :period_ended_at, :ended_before_start )
+      errors.add( :period_ended_at, :end_before_start )
       invalid = true
     end
     invalid

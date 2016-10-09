@@ -10,6 +10,7 @@ ready = function() {
 function observers () {
     select2_observers();
     datepicker_observer();
+    masks_observer();
 };
 
 

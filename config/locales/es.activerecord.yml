@@ -21,6 +21,9 @@ es:
       student:
         one: alumno
         other: alumnos
+      student_activity_sign_up:
+        one: inscripción en actividad
+        other: inscipciones en actividad
     attributes:
       user:
         id: nº identificación
@@ -109,7 +112,14 @@ es:
         province: provincia
         zip_code: C.P.
         details: detalles
-
+      student_activity_sign_up:
+        id: nº identificación
+        activity_discount: descuento
+        started_at: fecha comienzo
+        ended_at: fecha fin
+        payment_type_eid: tipo pago
+        activity: actividad
+        student: alumno
         
 
     errors:
@@ -121,13 +131,23 @@ es:
         time_week_cycle:
           attributes:
             activity_class_ends_at:
-              ends_before_start: no puede terminar antes de empezar
+              end_before_start: no puede terminar antes de empezar
             period_ended_at:
-              ended_before_start: no puede terminar antes de empezar
+              end_before_start: no puede terminar antes de empezar
+        activity:
+          attributes:
+            ended_at:
+              end_before_start: no puede terminar antes de empezar
+            service_started_at:
+              started_before_end: can't start before it ends
         teacher_activity:
           attributes:
             teacher_in_charge:
               one_default: debe haber uno y sólo un monitor al cargo
             teacher:
               taken: no se puede agregar dos veces al mismo monitor
+        student_activity_sign_up:
+          attributes:
+            student:
+              taken: no se puede inscribir dos veces al mismo alumno en la misma actividad
 

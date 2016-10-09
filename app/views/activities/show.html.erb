@@ -1,4 +1,6 @@
 <%- model_class = Activity -%>
+<%- child_model_class = StudentActivitySignUp -%>
+
 <div class="page-header">
   <h1><%=t '.title', default: model_class.model_name.human.titleize %></h1>
 </div>
@@ -27,6 +29,10 @@
               activities_path, class: 'btn btn-default'  %>
   <%= link_to t('.edit', default: t("helpers.links.edit")),
               edit_activity_path(@activity), class: 'btn btn-default' %>
+  <%= link_to t('.show_x', default: t("helpers.links.show_x", x: child_model_class.model_name.human(count: 2) )),
+              show_students_activity_path(@activity), class: 'btn btn-default' %>
+  <%= link_to t('.edit_x', default: t("helpers.links.edit_x", x: child_model_class.model_name.human(count: 2) )),
+              edit_students_activity_path(@activity), class: 'btn btn-default' %>
   <%= link_to t('.destroy', default: t("helpers.links.destroy")),
               activity_path(@activity),
               method: 'delete',

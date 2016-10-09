@@ -31,7 +31,7 @@ class TeachersController < ApplicationController
   def edit
   end
 
-  # GET /teachers/1/edit_acctivities
+  # GET /teachers/1/edit_activities
   def edit_activities
   end
 
@@ -73,7 +73,7 @@ class TeachersController < ApplicationController
     respond_to do |format|
       if @teacher.update(teacher_params)
         format.html { redirect_to @teacher, notice: 'Teacher was successfully updated.' }
-        format.json { render :show, status: :ok, location: @teacher }
+        format.json { render :show_activities, status: :ok, location: @teacher }
       else
         add_model_error_to_flash @teacher
         format.html { render :edit_activities }

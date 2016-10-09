@@ -19,22 +19,27 @@ Rails.application.routes.draw do
   resources :users do
     get :edit_password, on: :member
   end
+  resources :schools
+  resources :school_representatives
   resources :teachers do
+    get :show_activities, on: :member
     get :edit_activities, on: :member
     put :activities, action: :update_activities, on: :member
     patch :activities, action: :update_activities, on: :member
-    get :show_activities, on: :member
+  end
+  resources :teacher_activities
+  resources :activities do
+    get :show_students, on: :member
+    get :edit_students, on: :member
+    patch :students, action: :update_students, on: :member
+    put :students, action: :update_students, on: :member
   end
   resources :student_activity_sign_ups
-  resources :student_class_data
-  resources :activity_classes
-  resources :school_representatives
-  resources :schools
+  resources :students
   resources :account_details
   resources :guardians
-  resources :students
-  resources :students
-  resources :activities
+
+  resources :activity_classes
+  resources :student_class_data
   resources :time_week_cycles
-  resources :teacher_activities
 end

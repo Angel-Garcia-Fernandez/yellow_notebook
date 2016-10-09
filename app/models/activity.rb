@@ -20,16 +20,33 @@ class Activity < ActiveRecord::Base
   belongs_to :school
   has_many :activity_classes
   has_many :student_activity_sign_ups
+  has_many :students, through: :student_activity_sign_ups
   has_many :time_week_cycles
   has_many :teacher_activities
   has_many :teachers, through: :teacher_activities
 
+  accepts_nested_attributes_for :student_activity_sign_ups, allow_destroy: true, reject_if: proc { |attributes| attributes['student_id'].blank? }
+
   validates_presence_of :name
   validates_length_of :name, :classification, maximum: 255
   validates_associated :teacher_activities
+  validate :end_after_start, if: :starts?
+  validates_absence_of :ended_at, unless: :starts?
+  validates_associated :student_activity_sign_ups
+
+  scope :starts, -> () { where.not( started_at: nil ) }
+  scope :ends, -> () { where.not( ended_at: nil ) }
 
   def to_s
     "#{name} - #{classification}"
+  end
+
+  def starts?
+    started_at.present?
+  end
+
+  def ends?
+    ended_at.present?
   end
 
   def total_num_of_students
@@ -38,5 +55,15 @@ class Activity < ActiveRecord::Base
 
   def current_num_of_students date = DateTime.current
     self.student_activity_sign_ups.currently( date ).count
+  end
+
+  private
+  def end_after_start
+    invalid = false
+    if started_at.present? and ended_at.present? and started_at > ended_at
+      errors.add( :ended_at, :end_before_start )
+      invalid = true
+    end
+    invalid
   end
 end

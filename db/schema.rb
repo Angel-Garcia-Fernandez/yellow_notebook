@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161005172710) do
+ActiveRecord::Schema.define(version: 20161009194213) do
 
   create_table "account_details", force: :cascade do |t|
     t.string   "iban",            limit: 255
@@ -89,14 +89,14 @@ ActiveRecord::Schema.define(version: 20161005172710) do
   end
 
   create_table "student_activity_sign_ups", force: :cascade do |t|
-    t.decimal  "activity_discount",           precision: 5, scale: 4
+    t.decimal  "activity_discount",           precision: 5, scale: 4, default: 0.0, null: false
     t.date     "started_at"
     t.date     "ended_at"
-    t.integer  "payment_type_eid",  limit: 4
-    t.datetime "created_at",                                          null: false
-    t.datetime "updated_at",                                          null: false
-    t.integer  "activity_id",       limit: 4,                         null: false
-    t.integer  "student_id",        limit: 4,                         null: false
+    t.integer  "payment_type_eid",  limit: 4,                         default: 0,   null: false
+    t.datetime "created_at",                                                        null: false
+    t.datetime "updated_at",                                                        null: false
+    t.integer  "activity_id",       limit: 4,                                       null: false
+    t.integer  "student_id",        limit: 4,                                       null: false
   end
 
   add_index "student_activity_sign_ups", ["activity_id"], name: "index_student_activity_sign_ups_on_activity_id", using: :btree

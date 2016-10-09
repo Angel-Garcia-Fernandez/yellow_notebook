@@ -1,7 +1,8 @@
 class ActivitiesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_activity, only: [:show, :edit, :update, :destroy]
+  before_action :set_activity, only: [:show, :show_students, :edit, :edit_students, :update, :update_students, :destroy]
   before_action :set_select_collections, only: [:edit, :new, :update, :create]
+  before_action :set_select_collections_students, only: [ :edit_students, :update_students ]
 
 
   # GET /activities
@@ -15,6 +16,10 @@ class ActivitiesController < ApplicationController
   def show
   end
 
+  # GET /activities/1/show_students
+  def show_students
+  end
+
   # GET /activities/new
   def new
     @activity = Activity.new
@@ -22,6 +27,10 @@ class ActivitiesController < ApplicationController
 
   # GET /activities/1/edit
   def edit
+  end
+
+  # GET /teachers/1/edit_students
+  def edit_students
   end
 
   # POST /activities
@@ -56,6 +65,21 @@ class ActivitiesController < ApplicationController
     end
   end
 
+  # PATCH/PUT /activities/1
+  # PATCH/PUT /activities/1.json
+  def update_students
+    respond_to do |format|
+      if @activity.update(activity_params)
+        format.html { redirect_to @activity, notice: 'Activity was successfully updated.' }
+        format.json { render :show_students, status: :ok, location: @activity }
+      else
+        add_model_error_to_flash @activity
+        format.html { render :edit_students }
+        format.json { render json: @activity.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   # DELETE /activities/1
   # DELETE /activities/1.json
   def destroy
@@ -76,9 +100,15 @@ class ActivitiesController < ApplicationController
     @schools = School.all
   end
 
+  def set_select_collections_students
+    @students = Student.all
+  end
 
   # Never trust parameters from the scary internet, only allow the white list through.
     def activity_params
-      params.require(:activity).permit( :name, :classification, :started_at, :ended_at, :default_price, :details, :school_id)
+      params.require(:activity).permit( :name, :classification, :started_at, :ended_at, :default_price, :details, :school_id,
+                                        student_activity_sign_ups_attributes: [ :id, :_destroy, :student_id,
+                                                                                :started_at, :ended_at,
+                                                                                :activity_discount, :payment_type_eid ] )
     end
 end

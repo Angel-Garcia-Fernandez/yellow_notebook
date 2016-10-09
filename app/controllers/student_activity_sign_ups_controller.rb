@@ -1,6 +1,8 @@
 class StudentActivitySignUpsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_student_activity_sign_up, only: [:show, :edit, :update, :destroy]
+  before_action :set_select_collections, only: [:edit, :new, :update, :create]
+
 
   # GET /student_activity_sign_ups
   # GET /student_activity_sign_ups.json
@@ -32,6 +34,7 @@ class StudentActivitySignUpsController < ApplicationController
         format.html { redirect_to @student_activity_sign_up, notice: 'Student activity sign up was successfully created.' }
         format.json { render :show, status: :created, location: @student_activity_sign_up }
       else
+        add_model_error_to_flash @student_activity_sign_up
         format.html { render :new }
         format.json { render json: @student_activity_sign_up.errors, status: :unprocessable_entity }
       end
@@ -46,6 +49,7 @@ class StudentActivitySignUpsController < ApplicationController
         format.html { redirect_to @student_activity_sign_up, notice: 'Student activity sign up was successfully updated.' }
         format.json { render :show, status: :ok, location: @student_activity_sign_up }
       else
+        add_model_error_to_flash @student_activity_sign_up
         format.html { render :edit }
         format.json { render json: @student_activity_sign_up.errors, status: :unprocessable_entity }
       end
@@ -68,8 +72,13 @@ class StudentActivitySignUpsController < ApplicationController
       @student_activity_sign_up = StudentActivitySignUp.find(params[:id])
     end
 
+  def set_select_collections
+    @students = Student.all
+    @activities = Activity.all
+  end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_activity_sign_up_params
-      params.require(:student_activity_sign_up).permit(:activity_discount, :started_at, :ended_at, :payment_type_eid)
+      params.require(:student_activity_sign_up).permit( :activity_id, :student_id, :started_at, :ended_at, :activity_discount, :payment_type_eid)
     end
 end

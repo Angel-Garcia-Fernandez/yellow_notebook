@@ -17,11 +17,11 @@
   <% @teacher_activities.each do |teacher_activity| %>
       <tr>
         <td>
-          <% teacher = @teacher_activity.teacher %>
+          <% teacher = teacher_activity.teacher %>
           <%= link_to teacher, teacher_path( teacher ) %>
         </td>
         <td>
-          <% activity = @teacher_activity.activity %>
+          <% activity = teacher_activity.activity %>
           <%= link_to activity, activity_path( activity ) %>
         </td>
         <td><%= boolean_glyph teacher_activity.attendance_management %></td>
