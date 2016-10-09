@@ -15,4 +15,12 @@ class ApplicationController < ActionController::Base
     flash[:error] = model_resource.errors.full_messages.join(', ')
   end
 
+  def redirect_to_back_or_default(default = root_url, options = {})
+    if request.env["HTTP_REFERER"].present? and request.env["HTTP_REFERER"] != request.env["REQUEST_URI"]
+      redirect_to :back, options
+    else
+      redirect_to default, options
+    end
+  end
+
 end

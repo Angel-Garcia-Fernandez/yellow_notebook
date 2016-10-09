@@ -12,6 +12,9 @@ es:
       activity:
         one: actividad
         other: actividades
+      teacher_activity:
+        one: asignación de actividad
+        other: asignaciones de actividad
       school:
         one: colegio
         other: colegios

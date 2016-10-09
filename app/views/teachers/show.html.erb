@@ -1,4 +1,5 @@
 <%- model_class = Teacher -%>
+<%- child_model_class = TeacherActivity -%>
 <div class="page-header">
   <h1><%=t '.title', default: model_class.model_name.human.titleize %></h1>
 </div>
@@ -54,7 +55,9 @@
               teachers_path, class: 'btn btn-default'  %>
   <%= link_to t('.edit', default: t("helpers.links.edit")),
               edit_teacher_path(@teacher), class: 'btn btn-default' %>
-  <%= link_to t('.edit_activities', default: t("helpers.links.edit_activities")),
+  <%= link_to t('.show_x', default: t("helpers.links.show_x", x: child_model_class.model_name.human(count: 2) )),
+              show_activities_teacher_path(@teacher), class: 'btn btn-default' %>
+  <%= link_to t('.edit_x', default: t("helpers.links.edit_x", x: child_model_class.model_name.human(count: 2) )),
               edit_activities_teacher_path(@teacher), class: 'btn btn-default' %>
   <%= link_to t('.destroy', default: t("helpers.links.destroy")),
               teacher_path(@teacher),

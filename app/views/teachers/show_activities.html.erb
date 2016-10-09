@@ -1,0 +1,43 @@
+<%- model_class = TeacherActivity -%>
+<div class="page-header">
+  <h1><%=t '.title', default: model_class.model_name.human( count:2 ).titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th><%= model_class.human_attribute_name(:teacher).capitalize %></th>
+    <th><%= model_class.human_attribute_name(:activity).capitalize %></th>
+    <th><%= model_class.human_attribute_name(:attendance_management).capitalize %></th>
+    <th><%= model_class.human_attribute_name(:collection_management).capitalize %></th>
+    <th><%= model_class.human_attribute_name(:teacher_in_charge).capitalize %></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @teacher.teacher_activities.each do |teacher_activity| %>
+      <tr>
+        <td>
+          <% teacher = teacher_activity.teacher %>
+          <%= link_to teacher, teachers_path( teacher ) %>
+        </td>
+        <td>
+          <% activity = teacher_activity.activity %>
+          <%= link_to activity, activities_path( activity ) %>
+        </td>
+        <td><%= boolean_glyph teacher_activity.attendance_management %></td>
+        <td><%= boolean_glyph teacher_activity.collection_management %></td>
+        <td><%= boolean_glyph teacher_activity.teacher_in_charge %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<div class="form-group">
+  <%= link_to t('.back', default: t("helpers.links.back")),
+              #:back,
+              teacher_path( @teacher),
+              class: 'btn btn-default'  %>
+  <%= link_to t('.edit_x', default: t("helpers.links.edit_x",
+                                      x: model_class.model_name.human(count: 2) )),
+              edit_activities_teacher_path(@teacher),
+              class: 'btn btn-default' %>
+</div>

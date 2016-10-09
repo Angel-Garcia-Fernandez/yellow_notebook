@@ -23,14 +23,15 @@ class TeacherActivity < ActiveRecord::Base
 
   after_save :destroy_nils
 
-  scope :default_account, -> { where( default_account: true ) }
+  scope :teachers_in_charge, -> { where( teacher_in_charge: true ) }
+
 
   private
   def one_and_only_one_default
     invalid = false
     teachers_for_this_activity = TeacherActivity.where( activity: activity)
     if teachers_for_this_activity.size > 0
-      if teachers_for_this_activity.default_account.size != 1
+      if teachers_for_this_activity.teachers_in_charge.size != 1
         errors.add( :base, :one_default )
         invalid = true
       end

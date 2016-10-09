@@ -17,3 +17,4 @@ function observers () {
 $(document).ready(ready );
 $(document).ajaxComplete(ready);
 $(document).on('turbolinks:load', ready);
+$(document).on('fields_added.nested_form_fields', ready);
