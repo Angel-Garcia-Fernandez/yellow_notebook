@@ -5,16 +5,22 @@
 
 <div class="fieldset">
   <dl>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:teacher).capitalize %></dt>
+    <dd><pre class="prettyprint">
+      <% teacher = @teacher_activity.teacher %>
+      <%= link_to teacher, teacher_path( teacher ) %>
+    </pre></dd>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:activity).capitalize %></dt>
+    <dd><pre class="prettyprint">
+      <% activity = @teacher_activity.activity %>
+      <%= link_to activity, activity_path( activity ) %>
+    </pre></dd>
       <dt class="label label-default"><%= model_class.human_attribute_name(:attendance_management).capitalize %></dt>
-      <dd><pre class="prettyprint"><%= @teacher_activity.attendance_management %></pre></dd>
+      <dd><pre class="prettyprint"><%= boolean_glyph @teacher_activity.attendance_management %></pre></dd>
       <dt class="label label-default"><%= model_class.human_attribute_name(:collection_management).capitalize %></dt>
-      <dd><pre class="prettyprint"><%= @teacher_activity.collection_management %></pre></dd>
+      <dd><pre class="prettyprint"><%= boolean_glyph @teacher_activity.collection_management %></pre></dd>
       <dt class="label label-default"><%= model_class.human_attribute_name(:teacher_in_charge).capitalize %></dt>
-      <dd><pre class="prettyprint"><%= @teacher_activity.teacher_in_charge %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:activity_id).capitalize %></dt>
-      <dd><pre class="prettyprint"><%= @teacher_activity.activity_id %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:teacher_id).capitalize %></dt>
-      <dd><pre class="prettyprint"><%= @teacher_activity.teacher_id %></pre></dd>
+      <dd><pre class="prettyprint"><%= boolean_glyph @teacher_activity.teacher_in_charge %></pre></dd>
   </dl>
 </div>
 

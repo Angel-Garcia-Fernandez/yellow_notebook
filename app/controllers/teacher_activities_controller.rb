@@ -1,6 +1,7 @@
 class TeacherActivitiesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_teacher_activity, only: [:show, :edit, :update, :destroy]
+  before_action :set_select_collections, only: [:edit, :new, :update, :create]
 
   # GET /teacher_activities
   # GET /teacher_activities.json
@@ -32,6 +33,7 @@ class TeacherActivitiesController < ApplicationController
         format.html { redirect_to @teacher_activity, notice: 'Teacher activity was successfully created.' }
         format.json { render :show, status: :created, location: @teacher_activity }
       else
+        add_model_error_to_flash @teacher_activity
         format.html { render :new }
         format.json { render json: @teacher_activity.errors, status: :unprocessable_entity }
       end
@@ -46,6 +48,7 @@ class TeacherActivitiesController < ApplicationController
         format.html { redirect_to @teacher_activity, notice: 'Teacher activity was successfully updated.' }
         format.json { render :show, status: :ok, location: @teacher_activity }
       else
+        add_model_error_to_flash @teacher_activity
         format.html { render :edit }
         format.json { render json: @teacher_activity.errors, status: :unprocessable_entity }
       end
@@ -68,8 +71,13 @@ class TeacherActivitiesController < ApplicationController
       @teacher_activity = TeacherActivity.find(params[:id])
     end
 
+  def set_select_collections
+    @teachers = Teacher.all
+    @activities = Activity.all
+  end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def teacher_activity_params
-      params.require(:teacher_activity).permit(:attendance_management, :collection_management)
+      params.require(:teacher_activity).permit(:teacher_id, :activity_id, :attendance_management, :collection_management, :teacher_in_charge)
     end
 end
