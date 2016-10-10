@@ -33,10 +33,10 @@ es:
         password_confirmation: confirmar contraseña
         remember_created_at: fecha de recordarme
         sign_in_count: veces logueado
-        current_sign_in_at: fecha logueo actual
-        last_sign_in_at: fecha último logueo
-        current_sign_in_ip: ip logueo actual
-        last_sign_in_ip: ip último logueo
+        current_sign_in_at: fecha último logueo
+        last_sign_in_at: fecha logueo anterior
+        current_sign_in_ip: ip último logueo
+        last_sign_in_ip: ip logueo anterior
         created_at: fecha creación
         updated_at: fecha actualización
         teacher_user: monitor
