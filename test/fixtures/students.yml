@@ -7,7 +7,7 @@
 #  surname                  :string(255)      default("")
 #  nic                      :string(255)
 #  default_discount         :decimal(5, 4)    default(0.0), not null
-#  default_payment_type_eid :integer          default(0), not null
+#  default_payment_type :integer          default(0), not null
 #  scholar_phone_number     :string(255)
 #  phone_number             :string(255)
 #  address                  :string(255)
@@ -26,7 +26,7 @@ one:
   name: MyString
   surname: MyString
   default_discount: 0.99
-  default_payment_type_eid: 1
+  default_payment_type: 1
   scholar_phone_number: MyString
   phone_number: MyString
   address: MyString
@@ -40,7 +40,7 @@ student_two:
   name: MyString
   surname: MyString2
   default_discount: 1
-  default_payment_type_eid: 1
+  default_payment_type: 1
   scholar_phone_number: MyString
   phone_number: MyString
   address: MyString

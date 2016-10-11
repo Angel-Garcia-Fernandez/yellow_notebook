@@ -251,7 +251,7 @@ DEPENDENCIES
   bootstrap-generators
   bootstrap-sass
   bootstrap-sass-extras
-  bootstrap3-datetimepicker-rails (~> 4.17.42)
+  bootstrap3-datetimepicker-rails
   capistrano (~> 3.6)
   capistrano-db-tasks
   capistrano-passenger
@@ -268,7 +268,7 @@ DEPENDENCIES
   humanize_boolean
   jbuilder (~> 2.0)
   jquery-rails
-  momentjs-rails (>= 2.9.0)
+  momentjs-rails
   mysql2 (>= 0.3.13, < 0.5)
   nested_form_fields
   paperclip (~> 5.1.0)

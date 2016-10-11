@@ -79,6 +79,6 @@ class StudentActivitySignUpsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_activity_sign_up_params
-      params.require(:student_activity_sign_up).permit( :activity_id, :student_id, :started_at, :ended_at, :activity_discount, :payment_type_eid)
+      params.require(:student_activity_sign_up).permit( :activity_id, :student_id, :started_at, :ended_at, :activity_discount, :payment_type)
     end
 end

@@ -11,10 +11,15 @@
     <dd><pre class="prettyprint"><%= @student.surname %></pre></dd>
     <dt class="label label-default"><%= model_class.human_attribute_name(:nic).capitalize %></dt>
     <dd><pre class="prettyprint"><%= @student.nic %></pre></dd>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:school).capitalize %></dt>
+    <dd><pre class="prettyprint">
+      <% school = @student.school %>
+      <% link_to school, school_path( school ) if school.present? %>
+    </pre></dd>
     <dt class="label label-default"><%= model_class.human_attribute_name(:default_discount).capitalize %></dt>
     <dd><pre class="prettyprint"><%= number_to_percentage @student.default_discount * 100 %></pre></dd>
-    <dt class="label label-default"><%= model_class.human_attribute_name(:default_payment_type_eid).capitalize %></dt>
-    <dd><pre class="prettyprint"><%= @student.default_payment_type_eid %></pre></dd>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:default_payment_type).capitalize %></dt>
+    <dd><pre class="prettyprint"> <%= model_class.human_enum_name :default_payment_type, @student.default_payment_type %></pre></dd>
     <dt class="label label-default"><%= model_class.human_attribute_name(:scholar_phone_number).capitalize %></dt>
     <dd><pre class="prettyprint"><%= @student.scholar_phone_number %></pre></dd>
     <dt class="label label-default"><%= model_class.human_attribute_name(:phone_number).capitalize %></dt>
@@ -29,6 +34,11 @@
     <dd><pre class="prettyprint"><%= @student.province %></pre></dd>
     <dt class="label label-default"><%= model_class.human_attribute_name(:details).capitalize %></dt>
     <dd><pre class="prettyprint"><%= @student.details %></pre></dd>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:iban).capitalize %></dt>
+    <dd><pre class="prettyprint"><%= @student.iban %></pre></dd>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:account_holder).capitalize %></dt>
+    <dd><pre class="prettyprint"><%= @student.account_holder %></pre></dd>
+
   </dl>
 </div>
 
@@ -37,6 +47,11 @@
               students_path, class: 'btn btn-default'  %>
   <%= link_to t('.edit', default: t("helpers.links.edit")),
               edit_student_path(@student), class: 'btn btn-default' %>
+  <%= link_to t('.show_x', default: t("helpers.links.show_x", x: model_class.model_name.human(count: 2) )),
+              show_activities_student_path(@student), class: 'btn btn-default' %>
+  <%= link_to t('.edit_x', default: t("helpers.links.edit_x", x: model_class.model_name.human(count: 2) )),
+              edit_activities_student_path(@student), class: 'btn btn-default' %>
+
   <%= link_to t('.destroy', default: t("helpers.links.destroy")),
               student_path(@student),
               method: 'delete',

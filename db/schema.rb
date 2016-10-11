@@ -11,19 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161009194213) do
-
-  create_table "account_details", force: :cascade do |t|
-    t.string   "iban",            limit: 255
-    t.boolean  "default_account",             default: true, null: false
-    t.datetime "created_at",                                 null: false
-    t.datetime "updated_at",                                 null: false
-    t.integer  "guardian_id",     limit: 4
-    t.integer  "student_id",      limit: 4,                  null: false
-  end
-
-  add_index "account_details", ["guardian_id"], name: "index_account_details_on_guardian_id", using: :btree
-  add_index "account_details", ["student_id"], name: "index_account_details_on_student_id", using: :btree
+ActiveRecord::Schema.define(version: 20161011010543) do
 
   create_table "activities", force: :cascade do |t|
     t.string   "name",           limit: 255,                           null: false
@@ -92,7 +80,7 @@ ActiveRecord::Schema.define(version: 20161009194213) do
     t.decimal  "activity_discount",           precision: 5, scale: 4, default: 0.0, null: false
     t.date     "started_at"
     t.date     "ended_at"
-    t.integer  "payment_type_eid",  limit: 4,                         default: 0,   null: false
+    t.integer  "payment_type",      limit: 4,                         default: 0,   null: false
     t.datetime "created_at",                                                        null: false
     t.datetime "updated_at",                                                        null: false
     t.integer  "activity_id",       limit: 4,                                       null: false
@@ -115,21 +103,26 @@ ActiveRecord::Schema.define(version: 20161009194213) do
   add_index "student_class_data", ["student_activity_sign_up_id"], name: "index_student_class_data_on_student_activity_sign_up_id", using: :btree
 
   create_table "students", force: :cascade do |t|
-    t.string   "name",                     limit: 255,                           default: ""
-    t.string   "surname",                  limit: 255,                           default: ""
-    t.string   "nic",                      limit: 255
-    t.decimal  "default_discount",                       precision: 5, scale: 4, default: 0.0, null: false
-    t.integer  "default_payment_type_eid", limit: 4,                             default: 0,   null: false
-    t.string   "scholar_phone_number",     limit: 255
-    t.string   "phone_number",             limit: 255
-    t.string   "address",                  limit: 255
-    t.string   "town",                     limit: 255
-    t.string   "province",                 limit: 255
-    t.string   "zip_code",                 limit: 255
-    t.datetime "created_at",                                                                   null: false
-    t.datetime "updated_at",                                                                   null: false
-    t.text     "details",                  limit: 65535
+    t.string   "name",                 limit: 255,                           default: ""
+    t.string   "surname",              limit: 255,                           default: ""
+    t.string   "nic",                  limit: 255
+    t.decimal  "default_discount",                   precision: 5, scale: 4, default: 0.0, null: false
+    t.integer  "default_payment_type", limit: 4,                             default: 0,   null: false
+    t.string   "scholar_phone_number", limit: 255
+    t.string   "phone_number",         limit: 255
+    t.string   "address",              limit: 255
+    t.string   "town",                 limit: 255
+    t.string   "province",             limit: 255
+    t.string   "zip_code",             limit: 255
+    t.datetime "created_at",                                                               null: false
+    t.datetime "updated_at",                                                               null: false
+    t.text     "details",              limit: 65535
+    t.integer  "school_id",            limit: 4
+    t.string   "iban",                 limit: 255
+    t.string   "account_holder",       limit: 255
   end
+
+  add_index "students", ["school_id"], name: "index_students_on_school_id", using: :btree
 
   create_table "teacher_activities", force: :cascade do |t|
     t.boolean  "attendance_management",           default: false, null: false
@@ -209,8 +202,6 @@ ActiveRecord::Schema.define(version: 20161009194213) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["login"], name: "index_users_on_login", unique: true, using: :btree
 
-  add_foreign_key "account_details", "guardians"
-  add_foreign_key "account_details", "students"
   add_foreign_key "activities", "schools"
   add_foreign_key "activity_classes", "activities"
   add_foreign_key "guardians", "students"
@@ -219,6 +210,7 @@ ActiveRecord::Schema.define(version: 20161009194213) do
   add_foreign_key "student_activity_sign_ups", "students"
   add_foreign_key "student_class_data", "activity_classes"
   add_foreign_key "student_class_data", "student_activity_sign_ups"
+  add_foreign_key "students", "schools"
   add_foreign_key "teacher_activities", "activities"
   add_foreign_key "teacher_activities", "teachers"
   add_foreign_key "teacher_users", "teachers"

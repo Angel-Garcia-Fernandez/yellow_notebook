@@ -7,7 +7,7 @@
 #  surname                  :string(255)      default("")
 #  nic                      :string(255)
 #  default_discount         :decimal(5, 4)    default(0.0), not null
-#  default_payment_type_eid :integer          default(0), not null
+#  default_payment_type :integer          default(0), not null
 #  scholar_phone_number     :string(255)
 #  phone_number             :string(255)
 #  address                  :string(255)

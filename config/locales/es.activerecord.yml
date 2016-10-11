@@ -81,6 +81,7 @@ es:
         current_num_of_students: nº alumnos actual
         total_num_of_students: nº alumnos apuntados
         teachers: monitores
+        teacher_in_charge: tutor
       teacher_activity:
         teacher: monitor
         activity: actividad
@@ -103,31 +104,36 @@ es:
         name: nombre
         surname: apellidos
         nic: DNI
+        school: colegio
         default_discount: descuento normal
-        default_payment_type_eid: tipo pago
+        default_payment_type: tipo pago
+        default_payment_types:
+          cash: efectivo
+          bank_transfer: transferencia
         scholar_phone_number: móvil propio
         phone_number: teléfono familiar
         address: dirección
         town: municipio
         province: provincia
         zip_code: C.P.
+        iban: IBAN
+        account_holder: titular cuenta
         details: detalles
       student_activity_sign_up:
         id: nº identificación
         activity_discount: descuento
         started_at: fecha comienzo
         ended_at: fecha fin
-        payment_type_eid: tipo pago
+        payment_type: tipo pago
+        payment_types:
+          cash: efectivo
+          bank_transfer: transferencia
         activity: actividad
         student: alumno
         
 
     errors:
       models:
-        account_detail:
-          attributes:
-            default_account:
-              one_default: debe haber una y sólo una cuenta por defecto
         time_week_cycle:
           attributes:
             activity_class_ends_at:

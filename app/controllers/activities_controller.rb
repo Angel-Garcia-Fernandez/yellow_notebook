@@ -66,7 +66,6 @@ class ActivitiesController < ApplicationController
   end
 
   # PATCH/PUT /activities/1
-  # PATCH/PUT /activities/1.json
   def update_students
     respond_to do |format|
       if @activity.update(activity_params)
@@ -109,6 +108,6 @@ class ActivitiesController < ApplicationController
       params.require(:activity).permit( :name, :classification, :started_at, :ended_at, :default_price, :details, :school_id,
                                         student_activity_sign_ups_attributes: [ :id, :_destroy, :student_id,
                                                                                 :started_at, :ended_at,
-                                                                                :activity_discount, :payment_type_eid ] )
+                                                                                :activity_discount, :payment_type ] )
     end
 end

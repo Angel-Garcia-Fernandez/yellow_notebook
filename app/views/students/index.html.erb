@@ -8,8 +8,9 @@
     <th><%= model_class.human_attribute_name(:name).capitalize %></th>
     <th><%= model_class.human_attribute_name(:surname).capitalize %></th>
     <th><%= model_class.human_attribute_name(:nic).capitalize %></th>
+    <th><%= model_class.human_attribute_name(:school).capitalize %></th>
     <th><%= model_class.human_attribute_name(:default_discount).capitalize %></th>
-    <th><%= model_class.human_attribute_name(:default_payment_type_eid).capitalize %></th>
+    <th><%= model_class.human_attribute_name(:default_payment_type).capitalize %></th>
     <th><%= model_class.human_attribute_name(:scholar_phone_number).capitalize %></th>
     <th><%= model_class.human_attribute_name(:phone_number).capitalize %></th>
     <th><%= model_class.human_attribute_name(:town).capitalize %></th>
@@ -22,8 +23,12 @@
         <td><%= student.name %></td>
         <td><%= student.surname %></td>
         <td><%= student.nic %></td>
+        <td>
+          <% school = student.school %>
+          <% link_to school, school_path( school ) if school.present? %>
+        </td>
         <td><%= student.default_discount %></td>
-        <td><%= student.default_payment_type_eid %></td>
+        <td><%= model_class.human_enum_name :default_payment_type, student.default_payment_type %></td>
         <td><%= student.scholar_phone_number %></td>
         <td><%= student.phone_number %></td>
         <td><%= student.town %></td>

@@ -6,7 +6,7 @@
 #  activity_discount :decimal(5, 4)
 #  started_at        :date
 #  ended_at          :date
-#  payment_type_eid  :integer
+#  payment_type  :integer
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #  activity_id       :integer          not null
@@ -19,7 +19,7 @@ one:
   activity_discount: 1.0
   started_at: 2016-09-19
   ended_at: 2016-09-19
-  payment_type_eid: 1
+  payment_type: 1
   student: student_two
   activity: activity_two
 
@@ -27,6 +27,6 @@ student_activity_sign_up_two:
   activity_discount: 0.85
   started_at: 2016-09-19
   ended_at: 2016-09-19
-  payment_type_eid: 1
+  payment_type: 1
   student: student_two
   activity: activity_two

@@ -36,6 +36,7 @@ class Activity < ActiveRecord::Base
 
   scope :starts, -> () { where.not( started_at: nil ) }
   scope :ends, -> () { where.not( ended_at: nil ) }
+  scope :teacher_in_charge, -> () { joins( :teacher_activities ).merge( TeacherActivity.teacher_in_charge ) }
 
   def to_s
     "#{name} - #{classification}"
@@ -55,6 +56,11 @@ class Activity < ActiveRecord::Base
 
   def current_num_of_students date = DateTime.current
     self.student_activity_sign_ups.currently( date ).count
+  end
+
+  def teacher_in_charge
+    t = self.teacher_activities.teacher_in_charge.first
+    t && t.teacher
   end
 
   private

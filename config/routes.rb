@@ -35,8 +35,12 @@ Rails.application.routes.draw do
     put :students, action: :update_students, on: :member
   end
   resources :student_activity_sign_ups
-  resources :students
-  resources :account_details
+  resources :students do
+    get :show_activities, on: :member
+    get :edit_activities, on: :member
+    patch :activities, action: :update_activities, on: :member
+    put :activities, action: :update_activities, on: :member
+  end
   resources :guardians
 
   resources :activity_classes

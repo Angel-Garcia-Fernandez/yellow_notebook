@@ -17,8 +17,8 @@
     </pre></dd>
     <dt class="label label-default"><%= model_class.human_attribute_name(:activity_discount).capitalize %></dt>
     <dd><pre class="prettyprint"><%= @student_activity_sign_up.activity_discount %></pre></dd>
-    <dt class="label label-default"><%= model_class.human_attribute_name(:payment_type_eid).capitalize %></dt>
-    <dd><pre class="prettyprint"><%= @student_activity_sign_up.payment_type_eid %></pre></dd>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:payment_type).capitalize %></dt>
+    <dd><pre class="prettyprint"><%= model_class.human_enum_name :payment_type, @student_activity_sign_up.payment_type %></pre></dd>
     <dt class="label label-default"><%= model_class.human_attribute_name(:started_at).capitalize %></dt>
     <dd><pre class="prettyprint"><%=l @student_activity_sign_up.started_at, format: :long %></pre></dd>
     <dt class="label label-default"><%= model_class.human_attribute_name(:ended_at).capitalize %></dt>

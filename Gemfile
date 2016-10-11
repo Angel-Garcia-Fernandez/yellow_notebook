@@ -76,8 +76,8 @@ gem 'devise-bootstrap-views'
 # Select2 support
 gem 'select2-rails'
 # bootstrap datepicker support
-gem 'momentjs-rails', '>= 2.9.0'
-gem 'bootstrap3-datetimepicker-rails', '~> 4.17.42'
+gem 'momentjs-rails'#, '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails'#, '~> 4.17.42'
 
 #annotate database schema in models: bundle exec annotate
 gem 'annotate'

@@ -20,7 +20,7 @@ class StudentActivitySignUpsControllerTest < ActionController::TestCase
 
   test "should create student_activity_sign_up" do
     assert_difference('StudentActivitySignUp.count') do
-      post :create, student_activity_sign_up: { activity_discount: @student_activity_sign_up.activity_discount, ended_at: @student_activity_sign_up.ended_at, payment_type_eid: @student_activity_sign_up.payment_type_eid, started_at: @student_activity_sign_up.started_at }
+      post :create, student_activity_sign_up: { activity_discount: @student_activity_sign_up.activity_discount, ended_at: @student_activity_sign_up.ended_at, payment_type: @student_activity_sign_up.payment_type, started_at: @student_activity_sign_up.started_at }
     end
 
     assert_redirected_to student_activity_sign_up_path(assigns(:student_activity_sign_up))
@@ -37,7 +37,7 @@ class StudentActivitySignUpsControllerTest < ActionController::TestCase
   end
 
   test "should update student_activity_sign_up" do
-    patch :update, id: @student_activity_sign_up, student_activity_sign_up: { activity_discount: @student_activity_sign_up.activity_discount, ended_at: @student_activity_sign_up.ended_at, payment_type_eid: @student_activity_sign_up.payment_type_eid, started_at: @student_activity_sign_up.started_at }
+    patch :update, id: @student_activity_sign_up, student_activity_sign_up: { activity_discount: @student_activity_sign_up.activity_discount, ended_at: @student_activity_sign_up.ended_at, payment_type: @student_activity_sign_up.payment_type, started_at: @student_activity_sign_up.started_at }
     assert_redirected_to student_activity_sign_up_path(assigns(:student_activity_sign_up))
   end
 

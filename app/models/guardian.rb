@@ -18,7 +18,7 @@
 
 class Guardian < ActiveRecord::Base
 
-  has_many :account_details
+
   belongs_to :student
 
   validates_presence_of :student

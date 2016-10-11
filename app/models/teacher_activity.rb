@@ -23,7 +23,7 @@ class TeacherActivity < ActiveRecord::Base
 
   after_save :destroy_nils
 
-  scope :teachers_in_charge, -> { where( teacher_in_charge: true ) }
+  scope :teacher_in_charge, -> { where( teacher_in_charge: true ) }
 
 
   private
@@ -31,7 +31,7 @@ class TeacherActivity < ActiveRecord::Base
     invalid = false
     teachers_for_this_activity = TeacherActivity.where( activity: activity)
     if teachers_for_this_activity.size > 0
-      if teachers_for_this_activity.teachers_in_charge.size != 1
+      if teachers_for_this_activity.teacher_in_charge.size != 1
         errors.add( :base, :one_default )
         invalid = true
       end

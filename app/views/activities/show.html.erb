@@ -7,20 +7,28 @@
 
 <div class="fieldset">
   <dl>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:name).capitalize %></dt>
-      <dd><pre class="prettyprint"><%= @activity.name %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:classification).capitalize %></dt>
-      <dd><pre class="prettyprint"><%= @activity.classification %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:started_at).capitalize %></dt>
-      <dd><pre class="prettyprint"><%= @activity.started_at %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:ended_at).capitalize %></dt>
-      <dd><pre class="prettyprint"><%= @activity.ended_at %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:default_price).capitalize %></dt>
-      <dd><pre class="prettyprint"><%= @activity.default_price %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:details).capitalize %></dt>
-      <dd><pre class="prettyprint"><%= @activity.details %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:school).capitalize %></dt>
-      <dd><pre class="prettyprint"><% school = @activity.school %> <%= link_to school, school_path( school ) if school.present? %></pre></dd>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:name).capitalize %></dt>
+    <dd><pre class="prettyprint"><%= @activity.name %></pre></dd>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:classification).capitalize %></dt>
+    <dd><pre class="prettyprint"><%= @activity.classification %></pre></dd>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:teacher_in_charge).capitalize %></dt>
+    <dd><pre class="prettyprint">
+      <% teacher = @activity.teacher_in_charge %>
+      <%= link_to teacher, teacher_path( teacher ) if teacher.present? %>
+    </pre></dd>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:started_at).capitalize %></dt>
+    <dd><pre class="prettyprint"><%= @activity.started_at %></pre></dd>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:ended_at).capitalize %></dt>
+    <dd><pre class="prettyprint"><%= @activity.ended_at %></pre></dd>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:default_price).capitalize %></dt>
+    <dd><pre class="prettyprint"><%= @activity.default_price %></pre></dd>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:details).capitalize %></dt>
+    <dd><pre class="prettyprint"><%= @activity.details %></pre></dd>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:school).capitalize %></dt>
+    <dd><pre class="prettyprint">
+      <% school = @activity.school %>
+      <%= link_to school, school_path( school ) if school.present? %>
+    </pre></dd>
   </dl>
 </div>
 

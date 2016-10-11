@@ -1,2 +1,2 @@
-json.extract! student_activity_sign_up, :id, :activity_discount, :started_at, :ended_at, :payment_type_eid, :created_at, :updated_at
+json.extract! student_activity_sign_up, :id, :activity_discount, :started_at, :ended_at, :payment_type, :created_at, :updated_at
 json.url student_activity_sign_up_url(student_activity_sign_up, format: :json)

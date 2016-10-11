@@ -18,6 +18,7 @@ class School < ActiveRecord::Base
 
   has_many :activities
   has_many :school_representatives
+  has_many :students
 
   validates_length_of :name, :address, :town, :province, :zip_code, :email, :phone, maximum: 255
   validates_presence_of :name

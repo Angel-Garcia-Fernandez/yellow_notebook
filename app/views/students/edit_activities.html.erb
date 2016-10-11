@@ -3,12 +3,12 @@
   <h1><%=t '.title', default: [:'helpers.titles.edit', 'Edit %{model}'], model: model_class.model_name.human.titleize %></h1>
 </div>
 
-<%= form_for @activity, url: students_activity_path( @activity ), method: :patch, html: { class: 'form-horizontal' } do |f| %>
+<%= form_for @student  , url: activities_student_path( @student ), method: :patch, html: { class: 'form-horizontal' } do |f| %>
     <%= f.nested_fields_for :student_activity_sign_ups do |s| %>
         <div class="form-group">
-          <%= s.label :student, class: 'control-label col-md-2' %>
+          <%= s.label :activity, class: 'control-label col-md-2' %>
           <div class="col-md-10">
-            <%= s.collection_select :student_id, @students, :id, :to_s,  { include_blank: true }, {class: 'select-search form-control'} %>
+            <%= s.collection_select :activity_id, @activities, :id, :to_s,  { include_blank: true }, {class: 'select-search form-control'} %>
           </div>
         </div>
         <div class="form-group">
@@ -46,7 +46,7 @@
       <div class='col-md-offset-2 col-md-10'>
         <%= f.submit nil, class: 'btn btn-primary' %>
         <%= link_to t('.cancel', default: t("helpers.links.cancel")),
-                    activity_path( @activity ), class: 'btn btn-default' %>
+                    student_path( @student ), class: 'btn btn-default' %>
         <%= f.add_nested_fields_link :student_activity_sign_ups,
                                      t('helpers.links.add_x', x: model_class.model_name.human ),
                                      class: 'btn btn-default', role: 'button' %>
