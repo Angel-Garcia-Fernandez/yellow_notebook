@@ -3,7 +3,6 @@
 # Table name: activities
 #
 #  id             :integer          not null, primary key
-#  code           :string(255)      not null
 #  name           :string(255)      not null
 #  classification :string(255)
 #  started_at     :date
@@ -25,6 +24,7 @@ class Activity < ActiveRecord::Base
   has_many :teacher_activities
   has_many :teachers, through: :teacher_activities
 
+  accepts_nested_attributes_for :teacher_activities, allow_destroy: true, reject_if: proc { |attributes| attributes['teacher_id'].blank? }
   accepts_nested_attributes_for :student_activity_sign_ups, allow_destroy: true, reject_if: proc { |attributes| attributes['student_id'].blank? }
 
   validates_presence_of :name
@@ -32,11 +32,12 @@ class Activity < ActiveRecord::Base
   validates_associated :teacher_activities
   validate :end_after_start, if: :starts?
   validates_absence_of :ended_at, unless: :starts?
-  validates_associated :student_activity_sign_ups
+  validates_associated :student_activity_sign_ups, :teacher_activities
 
   scope :starts, -> () { where.not( started_at: nil ) }
   scope :ends, -> () { where.not( ended_at: nil ) }
   scope :teacher_in_charge, -> () { joins( :teacher_activities ).merge( TeacherActivity.teacher_in_charge ) }
+
 
   def to_s
     "#{name} - #{classification}"
@@ -44,6 +45,10 @@ class Activity < ActiveRecord::Base
 
   def starts?
     started_at.present?
+  end
+
+  def on_going? date = DateTime.current
+    starts? and date > started_at and ( not ends? or date < ended_at )
   end
 
   def ends?
@@ -56,6 +61,10 @@ class Activity < ActiveRecord::Base
 
   def current_num_of_students date = DateTime.current
     self.student_activity_sign_ups.currently( date ).count
+  end
+
+  def total_num_of_classes
+    self.activity_classes.count
   end
 
   def teacher_in_charge

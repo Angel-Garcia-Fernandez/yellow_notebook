@@ -1,0 +1,28 @@
+<%= form_for @activity_class, html: { class: 'form-horizontal' } do |f| %>
+  <div class="form-group">
+    <%= f.label :started_at, class: 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :started_at, class: 'text_field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :ended_at, class: 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :ended_at, class: 'text_field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :activity_id, class: 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :activity_id, class: 'text_field form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class='col-md-offset-2 col-md-10'>
+      <%= f.submit nil, class: 'btn btn-primary' %>
+      <%= link_to t('.cancel', default: t("helpers.links.cancel")),
+                  activity_classes_path, class: 'btn btn-default' %>
+    </div>
+  </div>
+<% end %>

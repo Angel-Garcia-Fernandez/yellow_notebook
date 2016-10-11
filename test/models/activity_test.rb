@@ -3,7 +3,6 @@
 # Table name: activities
 #
 #  id             :integer          not null, primary key
-#  code           :string(255)      not null
 #  name           :string(255)      not null
 #  classification :string(255)
 #  started_at     :date

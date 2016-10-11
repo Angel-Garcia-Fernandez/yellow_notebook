@@ -9,6 +9,8 @@
     <dd><pre class="prettyprint"><%= @user.login %></pre></dd>
     <dt class="label label-default"><%= model_class.human_attribute_name(:email).capitalize %></dt>
     <dd><pre class="prettyprint"><%= @user.email %></pre></dd>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:role).capitalize %></dt>
+    <dd><pre class="prettyprint"><%= model_class.human_enum_name :role, @user.role %></pre></dd>
     <% teacher = @user.teacher %>
     <% if teacher.present? %>
         <dt class="label label-default"><%= model_class.human_attribute_name(:teacher).capitalize %></dt>

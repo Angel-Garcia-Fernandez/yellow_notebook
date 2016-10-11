@@ -13,8 +13,33 @@
 class ActivityClass < ActiveRecord::Base
 
   belongs_to :activity
+  has_many :teachers, through: :activity
   has_many :student_class_data
 
   validates_presence_of :activity, :started_at, :ended_at
+  validate :end_after_start
+  validate :in_date?
+
+  delegate :teacher_in_charge, to: :activity
+
+  private
+  def in_date?
+    invalid = false
+    if self.activity.starts? and self.started_at >= self.activity.started_at and
+        ( not self.activity.ends? or self.activity.ended_at > self.ended_at )
+      errors.add( :base, :date_time_out_of_range )
+      invalid = true
+    end
+    invalid
+  end
+
+  def end_after_start
+    invalid = false
+    if started_at.present? and ended_at.present? and started_at > ended_at
+      errors.add( :ended_at, :end_before_start )
+      invalid = true
+    end
+    invalid
+  end
 
 end

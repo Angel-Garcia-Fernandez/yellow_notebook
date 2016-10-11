@@ -1,0 +1,40 @@
+<%- model_class = TeacherActivity -%>
+<%- child_model_class = Activity %>
+<div class="page-header">
+  <h1><%=t '.title', default: model_class.model_name.human( count:2 ).titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th><%= model_class.human_attribute_name(:activity).capitalize %></th>
+    <th><%= child_model_class.human_attribute_name(:on_going).capitalize %></th>
+    <th><%= child_model_class.human_attribute_name(:started_at).capitalize %></th>
+    <th><%= child_model_class.human_attribute_name(:ended_at).capitalize %></th>
+    <th><%= child_model_class.human_attribute_name(:school).capitalize %></th>
+    <th><%= model_class.human_attribute_name(:attendance_management).capitalize %></th>
+    <th><%= model_class.human_attribute_name(:collection_management).capitalize %></th>
+    <th><%= child_model_class.human_attribute_name(:total_num_of_students).capitalize %></th>
+    <th><%= child_model_class.human_attribute_name(:total_num_of_classes).capitalize %></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @teacher.teacher_activities.each do |teacher_activity| %>
+      <tr>
+        <td>
+          <%= activity = teacher_activity.activity %>
+        </td>
+        <td><%= boolean_glyph activity.total_num_of_students %></td>
+        <td><%= activity.started_at %></td>
+        <td><%= activity.ended_at %></td>
+        <td>
+          <% school = activity.school %>
+          <% link_to school, school_path( school ) if school.present? %>
+        </td>
+        <td><%= boolean_glyph teacher_activity.attendance_management %></td>
+        <td><%= boolean_glyph teacher_activity.collection_management %></td>
+        <td><%= activity.total_num_of_students %></td>
+        <td><%= activity.total_num_of_classes %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

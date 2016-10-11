@@ -32,6 +32,7 @@ class Teacher < ActiveRecord::Base
   has_one :user, through: :teacher_user
   has_many :teacher_activities
   has_many :activities, through: :teacher_activities
+  has_many :activity_classes, through: :activities
 
   accepts_nested_attributes_for :teacher_user
   accepts_nested_attributes_for :teacher_activities, allow_destroy: true, reject_if: proc { |attributes| attributes['activity_id'].blank? }

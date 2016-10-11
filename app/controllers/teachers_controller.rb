@@ -1,6 +1,6 @@
 class TeachersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_teacher, only: [ :show, :show_activities, :edit, :edit_activities, :update, :update_activities, :destroy]
+  before_action :set_teacher, only: [ :show, :show_my_activities, :show_activities, :edit, :edit_activities, :update, :update_activities, :destroy]
   before_action :construct_teacher_user, only: [:show, :edit, :update]
   before_action :set_select_collections, only: [:edit, :new, :update, :create]
   before_action :set_select_collections_activities, only: [ :edit_activities, :update_activities]
@@ -19,6 +19,9 @@ class TeachersController < ApplicationController
 
   # GET /teachers/1/show_activities
   def show_activities
+  end
+
+  def show_my_activities
   end
 
   # GET /teachers/new

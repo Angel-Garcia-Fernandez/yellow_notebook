@@ -7,6 +7,7 @@
   <tr>
     <th><%= model_class.human_attribute_name(:login).capitalize %></th>
     <th><%= model_class.human_attribute_name(:email).capitalize %></th>
+    <th><%= model_class.human_attribute_name(:role).capitalize %></th>
     <th><%= model_class.human_attribute_name(:teacher).capitalize %></th>
     <th><%= model_class.human_attribute_name(:current_sign_in_at).capitalize %></th>
     <th><%= model_class.human_attribute_name(:sign_in_count).capitalize %></th>
@@ -19,6 +20,7 @@
 
         <td><%= user.login %></td>
         <td><%= user.email %></td>
+        <td><%= model_class.human_enum_name :role, user.role %></td>
         <td><% teacher = user.teacher %> <%= link_to teacher, teacher_path( teacher ) if teacher.present? %></td>
         <td><%= user.current_sign_in_at %></td>
         <td><%= user.sign_in_count %></td>

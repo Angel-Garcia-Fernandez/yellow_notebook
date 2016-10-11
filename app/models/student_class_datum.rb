@@ -15,6 +15,8 @@ class StudentClassDatum < ActiveRecord::Base
 
   belongs_to :activity_class
   belongs_to :student_activity_sign_up
+  has_one :student, through: :student_activity_sign_up
+  has_one :activity, through: :activity_class
 
   validates_presence_of :activity_class, :student_activity_sign_up
   validates_inclusion_of :attended, :paid, in: [true, false]

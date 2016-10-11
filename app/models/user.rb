@@ -14,6 +14,7 @@
 #  last_sign_in_ip     :string(255)
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
+#  role                :integer          default(0), not null
 #
 
 class User < ActiveRecord::Base
@@ -22,6 +23,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :validatable ,
          :rememberable, :registerable, :trackable
 
+  include Enum_I18n
+  enum role: [ :standard, :admin ]
+
   has_one :teacher_user
   has_one :teacher, through: :teacher_user
 
@@ -29,6 +33,8 @@ class User < ActiveRecord::Base
 
   validates_uniqueness_of :login
   validates_associated :teacher_user
+  validates_presence_of :role
+  validates_inclusion_of :role, in: roles.keys
 
   def to_s
     login.to_s

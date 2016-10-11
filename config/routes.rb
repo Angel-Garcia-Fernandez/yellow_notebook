@@ -23,9 +23,16 @@ Rails.application.routes.draw do
   resources :school_representatives
   resources :teachers do
     get :show_activities, on: :member
+    get :show_my_activities, on: :member #monitor management
     get :edit_activities, on: :member
     put :activities, action: :update_activities, on: :member
     patch :activities, action: :update_activities, on: :member
+    resources :activity_classes do #monitor management
+      get :show_student_class_data
+      get :edit_student_class_data
+      put :student_class_data, action: :update_student_class_data, on: :member
+      patch :student_class_data, action: :update_student_class_data, on: :member
+    end
   end
   resources :teacher_activities
   resources :activities do

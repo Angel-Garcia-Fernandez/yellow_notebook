@@ -1,6 +1,7 @@
 class ActivitiesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_activity, only: [:show, :show_students, :edit, :edit_students, :update, :update_students, :destroy]
+  before_action :construct_teacher_activity, only: [:show, :edit, :update]
   before_action :set_select_collections, only: [:edit, :new, :update, :create]
   before_action :set_select_collections_students, only: [ :edit_students, :update_students ]
 
@@ -23,6 +24,7 @@ class ActivitiesController < ApplicationController
   # GET /activities/new
   def new
     @activity = Activity.new
+    @activity.teacher_activities.any? || @activity.teacher_activities.build
   end
 
   # GET /activities/1/edit
@@ -97,10 +99,15 @@ class ActivitiesController < ApplicationController
 
   def set_select_collections
     @schools = School.all
+    @teachers = Teacher.all
   end
 
   def set_select_collections_students
     @students = Student.all
+  end
+
+  def construct_teacher_activity
+    @activity.teacher_activities.any? || @activity.teacher_activities.build
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
@@ -108,6 +115,7 @@ class ActivitiesController < ApplicationController
       params.require(:activity).permit( :name, :classification, :started_at, :ended_at, :default_price, :details, :school_id,
                                         student_activity_sign_ups_attributes: [ :id, :_destroy, :student_id,
                                                                                 :started_at, :ended_at,
-                                                                                :activity_discount, :payment_type ] )
+                                                                                :activity_discount, :payment_type ],
+                                        teacher_activities_attributes: [ :id, :_destroy, :teacher_id, :attendance_management, :collection_management ])
     end
 end

@@ -12,15 +12,17 @@
           </div>
         </div>
         <div class="form-group">
+          <% checked = @teacher.default_attendance_management ? { checked: 'checked' } : {} %>
           <%= a.label :attendance_management, class: 'control-label col-md-2' %>
           <div class="col-md-10">
-            <%= a.check_box :attendance_management, {class: 'form-control'} %>
+            <%= a.check_box :attendance_management, {class: 'form-control'}.merge( checked ) %>
           </div>
         </div>
         <div class="form-group">
+          <% checked = @teacher.default_collection_management ? { checked: 'checked' } : {} %>
           <%= a.label :collection_management, class: 'control-label col-md-2' %>
           <div class="col-md-10">
-            <%= a.check_box :collection_management, {class: 'form-control'} %>
+            <%= a.check_box :collection_management, {class: 'form-control'}.merge( checked ) %>
           </div>
         </div>
         <div class="form-group">

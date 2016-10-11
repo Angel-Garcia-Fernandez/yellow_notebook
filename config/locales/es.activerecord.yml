@@ -12,6 +12,9 @@ es:
       activity:
         one: actividad
         other: actividades
+      activity_class:
+        one: clase
+        other: clases
       teacher_activity:
         one: asignación de actividad
         other: asignaciones de actividad
@@ -24,6 +27,9 @@ es:
       student_activity_sign_up:
         one: inscripción en actividad
         other: inscipciones en actividad
+      student_class_datum:
+        one: registro clase alumno
+        other: lista de alumnos
     attributes:
       user:
         id: nº identificación
@@ -41,6 +47,10 @@ es:
         updated_at: fecha actualización
         teacher_user: monitor
         teacher: monitor
+        role: perfil
+        roles:
+          standard: normal
+          admin: administrador
       teacher:
         id: nº identificación
         name: nombre
@@ -78,10 +88,22 @@ es:
         details: detalles
         school: colegio
         time_week_cycles: horario
-        current_num_of_students: nº alumnos actual
-        total_num_of_students: nº alumnos apuntados
+        current_num_of_students: nº alumnos actuales
+        total_num_of_students: nº alumnos
+        total_num_of_classes: nº de clases
         teachers: monitores
         teacher_in_charge: tutor
+        on_going: en curso
+      activity_class:
+        activity: actividad
+        started_at: día/hora comienzo
+        ended_at: día/hora fin
+        student_class_data: lista de clase
+      student_class_datum:
+        attended: asistencia
+        paid: pago
+        student_activity_sign_up: inscripción
+        student: alumno
       teacher_activity:
         teacher: monitor
         activity: actividad
