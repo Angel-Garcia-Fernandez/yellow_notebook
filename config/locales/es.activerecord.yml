@@ -168,6 +168,12 @@ es:
               end_before_start: no puede terminar antes de empezar
             service_started_at:
               started_before_end: can't start before it ends
+        activity_class:
+          attributes:
+            ended_at:
+              end_before_start: no puede terminar antes de empezar
+            base:
+              date_time_out_of_range: class can't be out of activity duration range
         teacher_activity:
           attributes:
             teacher_in_charge:

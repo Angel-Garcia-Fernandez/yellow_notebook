@@ -12,8 +12,8 @@ function set_default_to_target( event ) {
     defaults = sender_option.data('defaults');
     ( typeof defaults === 'undefined' ) ? defaults = [] : defaults = defaults.split(' ');
     for( i= 0; i < targets.length; i++) {
-        $(event.target).closest('.default_on_click_wrapper').
-            find(".default_on_click_target[data-target='"+targets[i]+"']").
-            prop('checked',Boolean(defaults[i]));
+        checkbox = $(event.target).closest('.default_on_click_wrapper').
+            find(".default_on_click_target[data-target='"+targets[i]+"']");
+        checkbox.prop('checked',defaults[i] === 'true');
     }
 }

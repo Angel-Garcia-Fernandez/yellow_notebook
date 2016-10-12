@@ -1,6 +1,9 @@
 class Teachers::ActivityClassesController < TeachersControllerController
-  before_action :authenticate_user!
-  before_action :set_activity_class, only: [:show, :edit, :update, :destroy]
+  #before_action :authenticate_user!
+  before_action :set_activity_class, only: [:show, :show_student_class_data, :edit, :edit_student_class_data, :update, :update_student_class_data, :destroy]
+  before_action :set_select_collections, only: [:edit, :new, :update, :create]
+  before_action :set_select_collections_student_class_data, only: [ :edit_student_class_data, :update_student_class_data]
+
 
   # GET /activity_classes
   # GET /activity_classes.json
@@ -83,13 +86,22 @@ class Teachers::ActivityClassesController < TeachersControllerController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_activity_class
-      @activity_class = ActivityClass.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_activity_class
+    @activity_class = ActivityClass.find(params[:id])
+    @teacher = Teacher.find( params[:teacher_id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def activity_class_params
-      params.require(:activity_class).permit(:started_at, :ended_at)
-    end
+  def set_select_collections
+    @activities = Activity.all
+  end
+
+  def set_select_collections_student_class_data
+
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def activity_class_params
+    params.require(:activity_class).permit(:started_at, :ended_at)
+  end
 end

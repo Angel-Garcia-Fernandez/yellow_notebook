@@ -42,7 +42,7 @@
       </div>
     </div>
 
-    <%= f.fields_for :teacher_activities do |a| %>
+    <%= f.nested_fields_for :teacher_activities do |a| %>
         <div class='default_on_click_wrapper'>
           <div class="form-group">
             <%= a.label :teacher, class: 'control-label col-md-2' %>
