@@ -96,6 +96,7 @@ es:
         on_going: en curso
       activity_class:
         activity: actividad
+        activity_id: actividad
         started_at: día/hora comienzo
         ended_at: día/hora fin
         student_class_data: lista de clase

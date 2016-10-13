@@ -75,7 +75,7 @@ class TeachersController < ApplicationController
   def update_activities
     respond_to do |format|
       if @teacher.update(teacher_params)
-        format.html { redirect_to @teacher, notice: 'Teacher was successfully updated.' }
+        format.html { redirect_to show_activites_teacher( @teacher ), notice: 'Teacher was successfully updated.' }
         format.json { render :show_activities, status: :ok, location: @teacher }
       else
         add_model_error_to_flash @teacher

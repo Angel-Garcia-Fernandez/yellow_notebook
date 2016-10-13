@@ -16,15 +16,17 @@ class ActivityClass < ActiveRecord::Base
   has_many :teachers, through: :activity
   has_many :student_class_data
 
+  accepts_nested_attributes_for :student_class_data
+
   validates_presence_of :activity, :started_at, :ended_at
   validate :end_after_start
   validate :in_date?
+  validates_associated :student_class_data
 
   delegate :teacher_in_charge, to: :activity
 
-  def number_of_students_signed
-    self.activity.student_activity_sign_ups
-    StudentActivitySignUp.signed_for( self.activity ).count
+  def number_of_students_signed date = DateTime.current
+    StudentActivitySignUp.signed_for( self.activity, date ).count
   end
 
   private

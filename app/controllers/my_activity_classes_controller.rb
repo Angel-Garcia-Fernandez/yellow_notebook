@@ -40,9 +40,10 @@ class MyActivityClassesController < ApplicationController
 
     respond_to do |format|
       if @activity_class.save
-        format.html { redirect_to @activity_class, notice: 'Activity class was successfully created.' }
+        format.html { redirect_to [@teacher, @activity_class], notice: 'Activity class was successfully created.' }
         format.json { render :show, status: :created, location: @activity_class }
       else
+        add_model_error_to_flash @activity_class
         format.html { render :new }
         format.json { render json: @activity_class.errors, status: :unprocessable_entity }
       end
@@ -54,9 +55,10 @@ class MyActivityClassesController < ApplicationController
   def update
     respond_to do |format|
       if @activity_class.update(activity_class_params)
-        format.html { redirect_to @activity_class, notice: 'Activity class was successfully updated.' }
+        format.html { redirect_to [@teacher, @activity_class], notice: 'Activity class was successfully updated.' }
         format.json { render :show, status: :ok, location: @activity_class }
       else
+        add_model_error_to_flash @activity_class
         format.html { render :edit }
         format.json { render json: @activity_class.errors, status: :unprocessable_entity }
       end
@@ -66,9 +68,10 @@ class MyActivityClassesController < ApplicationController
   def update_student_class_data
     respond_to do |format|
       if @activity_class.update(activity_class_params)
-        format.html { redirect_to @activity_class, notice: 'Activity class was successfully updated.' }
+        format.html { redirect_to [@teacher, @activity_class], notice: 'Activity class was successfully updated.' }
         format.json { render :show, status: :ok, location: @activity_class }
       else
+        add_model_error_to_flash @activity_class
         format.html { render :edit }
         format.json { render json: @activity_class.errors, status: :unprocessable_entity }
       end
@@ -102,6 +105,7 @@ class MyActivityClassesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def activity_class_params
-    params.require(:activity_class).permit(:started_at, :ended_at)
+    params.require(:activity_class).permit(:activity_id, :started_at, :ended_at,
+                                           student_class_data_attributes: [ ] )
   end
 end

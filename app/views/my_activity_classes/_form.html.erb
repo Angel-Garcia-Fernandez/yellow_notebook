@@ -1,4 +1,5 @@
-<%= form_for @activity_class, html: { class: 'form-horizontal' } do |f| %>
+<%- action = ( action_name == 'new' ? :post : :patch )-%>
+<%= form_for [@teacher, @activity_class], url: teacher_activity_class_path( @teacher, @activity_class ), method: action,  html: { class: 'form-horizontal' } do |f| %>
     <div class="form-group">
       <%= f.label :activity, class: 'control-label col-md-2' %>
       <div class="col-md-10">

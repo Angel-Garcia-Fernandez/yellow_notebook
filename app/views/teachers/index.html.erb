@@ -1,4 +1,5 @@
 <%- model_class = Teacher -%>
+<%- child_model_class = TeacherActivity -%>
 <div class="page-header">
   <h1><%=t '.title', default: model_class.model_name.human( count: 2).titleize %></h1>
 </div>
@@ -36,6 +37,10 @@
           <%- end -%>
           <%= link_to teacher_path(teacher), method: :delete, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'btn btn-xs', title: "#{ t('.destroy', default: t('helpers.links.destroy')) }" do %>
               <%= glyph 'remove' %>
+          <%- end -%>
+          <%= link_to edit_activities_teacher_path(teacher), class: 'btn btn-xs',
+                      title: "#{ t('helpers.links.edit_x', x: child_model_class.model_name.human( count: 2 )) }" do %>
+              <%= glyph 'tent' %>
           <%- end -%>
         </td>
       </tr>
