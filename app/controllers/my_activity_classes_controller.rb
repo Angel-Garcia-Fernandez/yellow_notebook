@@ -1,5 +1,5 @@
-class Teachers::ActivityClassesController < TeachersControllerController
-  #before_action :authenticate_user!
+class MyActivityClassesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_activity_class, only: [:show, :show_student_class_data, :edit, :edit_student_class_data, :update, :update_student_class_data, :destroy]
   before_action :set_select_collections, only: [:edit, :new, :update, :create]
   before_action :set_select_collections_student_class_data, only: [ :edit_student_class_data, :update_student_class_data]

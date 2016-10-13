@@ -15,13 +15,15 @@
     <th><%= model_class.human_attribute_name(:collection_management).capitalize %></th>
     <th><%= child_model_class.human_attribute_name(:total_num_of_students).capitalize %></th>
     <th><%= child_model_class.human_attribute_name(:total_num_of_classes).capitalize %></th>
+    <th><%=t '.actions', default: t("helpers.actions") %></th>
   </tr>
   </thead>
   <tbody>
   <% @teacher.teacher_activities.each do |teacher_activity| %>
       <tr>
         <td>
-          <%= activity = teacher_activity.activity %>
+          <% activity = teacher_activity.activity %>
+          <%= link_to activity , teacher_activity_show_activity_classes_path( @teacher, activity ) %>
         </td>
         <td><%= boolean_glyph activity.total_num_of_students %></td>
         <td><%= activity.started_at %></td>
@@ -34,7 +36,16 @@
         <td><%= boolean_glyph teacher_activity.collection_management %></td>
         <td><%= activity.total_num_of_students %></td>
         <td><%= activity.total_num_of_classes %></td>
+        <td>
+          <%= link_to teacher_activity_show_activity_classes_path( @teacher, activity ), class: 'btn btn-xs', title: "#{ t('helpers.links.show_x', x: ActivityClass) }"  do %>
+              <%= glyph 'time' %>
+          <%- end -%>
+        </td>
       </tr>
   <% end %>
   </tbody>
 </table>
+
+<%= link_to t("helpers.links.new_x", x: ActivityClass.model_name.human ),
+            new_activity_class_path,
+            class: 'btn btn-primary' %>

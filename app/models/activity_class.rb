@@ -22,6 +22,11 @@ class ActivityClass < ActiveRecord::Base
 
   delegate :teacher_in_charge, to: :activity
 
+  def number_of_students_signed
+    self.activity.student_activity_sign_ups
+    StudentActivitySignUp.signed_for( self.activity ).count
+  end
+
   private
   def in_date?
     invalid = false

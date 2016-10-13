@@ -21,7 +21,7 @@
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">
-            <li><%= link_to t('.my_activities'), show_my_activities_teacher_path( teacher ) %></li>
+            <li><%= link_to t('.my_activities'), teacher_activities_path( teacher ) %></li>
             <li><%= link_to t('.my_classes'), teacher_activity_classes_path( teacher ) %></li>
           </ul>
         </li>

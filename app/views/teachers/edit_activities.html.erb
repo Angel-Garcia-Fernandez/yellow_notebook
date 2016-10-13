@@ -3,7 +3,7 @@
   <h1><%=t '.title', default: [:'helpers.titles.edit', 'Edit %{model}'], model: model_class.model_name.human.titleize %></h1>
 </div>
 
-<%= form_for @teacher, url: activities_teacher_path( @teacher ), method: :patch, html: { class: 'form-horizontal' } do |f| %>
+<%= form_for @teacher, url: update_activities_teacher_path( @teacher ), method: :patch, html: { class: 'form-horizontal' } do |f| %>
     <%= f.nested_fields_for :teacher_activities do |a| %>
         <div class="form-group">
           <%= a.label :activity, class: 'control-label col-md-2' %>

@@ -99,6 +99,7 @@ es:
         started_at: día/hora comienzo
         ended_at: día/hora fin
         student_class_data: lista de clase
+        number_of_students_signed: alumnos apuntados
       student_class_datum:
         attended: asistencia
         paid: pago
@@ -173,7 +174,7 @@ es:
             ended_at:
               end_before_start: no puede terminar antes de empezar
             base:
-              date_time_out_of_range: class can't be out of activity duration range
+              date_time_out_of_range: no se puede crear una clase fuera del rango de la actividad
         teacher_activity:
           attributes:
             teacher_in_charge:

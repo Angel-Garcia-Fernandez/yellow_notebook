@@ -4,6 +4,15 @@
 </div>
 
 <%= form_for @student  , url: activities_student_path( @student ), method: :patch, html: { class: 'form-horizontal' } do |f| %>
+
+    <div class="form-group">
+      <div class='col-md-offset-2 col-md-10'>
+        <%= f.add_nested_fields_link :student_activity_sign_ups,
+                                     t('helpers.links.add_x', x: model_class.model_name.human ),
+                                     class: 'btn btn-primary', role: 'button' %>
+      </div>
+    </div>
+
     <%= f.nested_fields_for :student_activity_sign_ups do |s| %>
         <div class="form-group">
           <%= s.label :activity, class: 'control-label col-md-2' %>
@@ -42,14 +51,12 @@
         </div>
     <% end %>
 
+
     <div class="form-group">
       <div class='col-md-offset-2 col-md-10'>
         <%= f.submit nil, class: 'btn btn-primary' %>
         <%= link_to t('.cancel', default: t("helpers.links.cancel")),
                     student_path( @student ), class: 'btn btn-default' %>
-        <%= f.add_nested_fields_link :student_activity_sign_ups,
-                                     t('helpers.links.add_x', x: model_class.model_name.human ),
-                                     class: 'btn btn-default', role: 'button' %>
       </div>
     </div>
 <% end %>

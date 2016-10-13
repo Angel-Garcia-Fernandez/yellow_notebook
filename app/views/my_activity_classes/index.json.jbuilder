@@ -1,0 +1,1 @@
+json.array! @activity_classes, partial: 'my_activity_classes/activity_class', as: :activity_class

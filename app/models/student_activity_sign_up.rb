@@ -22,11 +22,15 @@ class StudentActivitySignUp < ActiveRecord::Base
 
   validates_uniqueness_of :student, scope: :activity, allow_nil: true
   validates_presence_of :activity_discount, :payment_type
-  validates_inclusion_of :default_payment_type, in: payment_types.keys
+  validates_inclusion_of :payment_type, in: payment_types.keys
   validates_numericality_of  :activity_discount, greater_than_or_equal_to: 0.0, less_than_or_equal_to: 1.0
 
-
   after_save :destroy_nils
+
+  scope :signed_for, -> ( activities, date = DateTime.current ) { where( activity: activities ).
+      joins( :activity ).merge( Activity.on_going( date ) ).where("started_at is null or started_at <= ? ", date).
+      where(" ended_at >= ? or ended_at is null", date) }
+
 
   private
 
