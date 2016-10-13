@@ -176,6 +176,7 @@ es:
               end_before_start: no puede terminar antes de empezar
             base:
               date_time_out_of_range: no se puede crear una clase fuera del rango de la actividad
+              activity_has_not_started: no se puede crear una clase si la actividad no tiene fecha de comienzo
         teacher_activity:
           attributes:
             teacher_in_charge:

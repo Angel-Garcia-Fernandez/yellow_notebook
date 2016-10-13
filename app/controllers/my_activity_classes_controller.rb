@@ -1,6 +1,7 @@
 class MyActivityClassesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_activity_class, only: [:show, :show_student_class_data, :edit, :edit_student_class_data, :update, :update_student_class_data, :destroy]
+  before_action :set_teacher, only: [:index, :show, :show_student_class_data, :edit, :edit_student_class_data, :create, :update, :update_student_class_data, :destroy]
   before_action :set_select_collections, only: [:edit, :new, :update, :create]
   before_action :set_select_collections_student_class_data, only: [ :edit_student_class_data, :update_student_class_data]
 
@@ -90,9 +91,14 @@ class MyActivityClassesController < ApplicationController
 
   private
   # Use callbacks to share common setup or constraints between actions.
-  def set_activity_class
-    @activity_class = ActivityClass.find(params[:id])
+  def set_teacher
     @teacher = Teacher.find( params[:teacher_id])
+  end
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_activity_class
+    #@teacher.activities.find_by id: params[:id] #si este nil, se dice que pelo
+    @activity_class = ActivityClass.find(params[:id])
   end
 
   def set_select_collections

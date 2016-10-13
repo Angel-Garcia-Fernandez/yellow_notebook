@@ -20,6 +20,7 @@ class ActivityClass < ActiveRecord::Base
 
   validates_presence_of :activity, :started_at, :ended_at
   validate :end_after_start
+  validate :activity_must_start
   validate :in_date?
   validates_associated :student_class_data
 
@@ -32,9 +33,20 @@ class ActivityClass < ActiveRecord::Base
   private
   def in_date?
     invalid = false
-    if self.activity.starts? and self.started_at >= self.activity.started_at and
-        ( not self.activity.ends? or self.activity.ended_at > self.ended_at )
-      errors.add( :base, :date_time_out_of_range )
+    if self.activity.starts?
+      if self.started_at >= self.activity.started_at and
+          ( not self.activity.ends? or self.activity.ended_at > self.ended_at )
+        errors.add( :base, :date_time_out_of_range )
+        invalid = true
+      end
+    end
+    invalid
+  end
+
+  def activity_must_start
+    invalid = false
+    if self.activity.starts?
+      errors.add( :base, :activity_has_not_started)
       invalid = true
     end
     invalid
