@@ -1,7 +1,7 @@
 class MyActivityClassesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_activity_class, only: [:show, :show_student_class_data, :edit, :edit_student_class_data, :update, :update_student_class_data, :destroy]
-  before_action :set_teacher, only: [:index, :show, :show_student_class_data, :edit, :edit_student_class_data, :create, :update, :update_student_class_data, :destroy]
+  before_action :set_teacher, only: [:index, :new, :show, :show_student_class_data, :edit, :edit_student_class_data, :create, :update, :update_student_class_data, :destroy]
   before_action :set_select_collections, only: [:edit, :new, :update, :create]
   before_action :set_select_collections_student_class_data, only: [ :edit_student_class_data, :update_student_class_data]
 
@@ -84,7 +84,7 @@ class MyActivityClassesController < ApplicationController
   def destroy
     @activity_class.destroy
     respond_to do |format|
-      format.html { redirect_to activity_classes_url, notice: 'Activity class was successfully destroyed.' }
+      format.html { redirect_to teacher_activity_classes_path( @teacher ), notice: 'Activity class was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -102,7 +102,7 @@ class MyActivityClassesController < ApplicationController
   end
 
   def set_select_collections
-    @activities = Activity.all
+    @activities = @teacher.activities
   end
 
   def set_select_collections_student_class_data

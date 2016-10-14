@@ -36,7 +36,7 @@ class Activity < ActiveRecord::Base
 
   scope :starts, -> () { where.not( started_at: nil ) }
   scope :ends, -> () { where.not( ended_at: nil ) }
-  scope :on_going, -> ( date = DateTime.current ) { starts.where( "ended_at is null or ended_at >= ?", date )}
+  scope :on_going, -> ( date = DateTime.current ) { starts.where( "activities.ended_at is null or activities.ended_at >= ?", date )}
   scope :teacher_in_charge, -> () { joins( :teacher_activities ).merge( TeacherActivity.teacher_in_charge ) }
 
 

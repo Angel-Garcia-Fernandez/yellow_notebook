@@ -34,8 +34,8 @@ class ActivityClass < ActiveRecord::Base
   def in_date?
     invalid = false
     if self.activity.starts?
-      if self.started_at >= self.activity.started_at and
-          ( not self.activity.ends? or self.activity.ended_at > self.ended_at )
+      if self.started_at < self.activity.started_at or
+          ( self.activity.ends? and self.ended_at > self.activity.ended_at )
         errors.add( :base, :date_time_out_of_range )
         invalid = true
       end
@@ -45,7 +45,7 @@ class ActivityClass < ActiveRecord::Base
 
   def activity_must_start
     invalid = false
-    if self.activity.starts?
+    if not self.activity.starts?
       errors.add( :base, :activity_has_not_started)
       invalid = true
     end

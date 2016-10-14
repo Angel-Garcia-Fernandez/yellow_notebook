@@ -27,9 +27,12 @@ class StudentActivitySignUp < ActiveRecord::Base
 
   after_save :destroy_nils
 
-  scope :signed_for, -> ( activities, date = DateTime.current ) { where( activity: activities ).
-      joins( :activity ).merge( Activity.on_going( date ) ).where("started_at is null or started_at <= ? ", date).
-      where(" ended_at >= ? or ended_at is null", date) }
+  scope :starts_before, -> ( date = DateTime.current ) { where( "student_activity_sign_ups.started_at <= ?", date ) }
+  scope :ends_after, -> ( date = DateTime.current ) { where( "student_activity_sign_ups.ended_at >= ?", date ) }
+  scope :signed_for, -> ( activities, date = DateTime.current ) {
+    where( activity: activities ).joins( :activity ).merge( Activity.on_going( date ) ).
+    merge( self.where.any_of( {started_at: nil}, starts_before( date ) ) ).
+    merge( self.where.any_of( { ended_at: nil }, ends_after( date ) ) ) }
 
 
   private

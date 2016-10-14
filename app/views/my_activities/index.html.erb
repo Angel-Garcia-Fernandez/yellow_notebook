@@ -23,9 +23,9 @@
       <tr>
         <td>
           <% activity = teacher_activity.activity %>
-          <%= link_to activity , teacher_activity_show_activity_classes_path( @teacher, activity ) %>
+          <%= link_to activity , show_activity_classes_teacher_activity_path( @teacher, activity ) %>
         </td>
-        <td><%= boolean_glyph activity.total_num_of_students %></td>
+        <td><%= boolean_glyph activity.on_going? %></td>
         <td><%= activity.started_at %></td>
         <td><%= activity.ended_at %></td>
         <td>
@@ -37,7 +37,7 @@
         <td><%= activity.total_num_of_students %></td>
         <td><%= activity.total_num_of_classes %></td>
         <td>
-          <%= link_to teacher_activity_show_activity_classes_path( @teacher, activity ), class: 'btn btn-xs', title: "#{ t('helpers.links.show_x', x: ActivityClass) }"  do %>
+          <%= link_to show_activity_classes_teacher_activity_path( @teacher, activity ), class: 'btn btn-xs', title: "#{ t('helpers.links.show_x', x: ActivityClass) }"  do %>
               <%= glyph 'time' %>
           <%- end -%>
         </td>
