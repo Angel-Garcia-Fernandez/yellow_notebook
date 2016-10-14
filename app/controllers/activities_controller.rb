@@ -23,8 +23,6 @@ class ActivitiesController < ApplicationController
 
   # GET /activities/new
   def new
-    # @activity = Activity.new
-    # @activity.teacher_activities.any? || @activity.teacher_activities.build
   end
 
   # GET /activities/1/edit

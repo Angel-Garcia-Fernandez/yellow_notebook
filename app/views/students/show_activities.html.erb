@@ -23,8 +23,8 @@
           <% activity = student_activity_sign_up.activity %>
           <%= link_to activity, activity_path( activity ) %>
         </td>
-        <td><%= student_activity_sign_up.activity_discount %></td>
         <td><%= model_class.human_enum_name :payment_type, student_activity_sign_up.payment_type %></td>
+        <td><%= student_activity_sign_up.activity_discount %></td>
         <td><%=l student_activity_sign_up.started_at, format: :long if student_activity_sign_up.started_at.present?%></td>
         <td><%=l student_activity_sign_up.ended_at, format: :long if student_activity_sign_up.ended_at.present? %></td>
       </tr>

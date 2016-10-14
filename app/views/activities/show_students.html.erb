@@ -16,12 +16,12 @@
   <% @activity.student_activity_sign_ups.each do |student_activity_sign_up| %>
       <tr>
         <td>
-          <% activity = student_activity_sign_up.activity %>
-          <%= link_to activity, activity_path( activity ) %>
-        </td>
-        <td>
           <% student = student_activity_sign_up.student %>
           <%= link_to student, student_path( student ) %>
+        </td>
+        <td>
+          <% activity = student_activity_sign_up.activity %>
+          <%= link_to activity, activity_path( activity ) %>
         </td>
         <td><%= student_activity_sign_up.activity_discount %></td>
         <td><%= model_class.human_enum_name :payment_type, student_activity_sign_up.payment_type %></td>
