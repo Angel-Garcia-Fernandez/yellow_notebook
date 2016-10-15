@@ -1,7 +1,7 @@
 class MyActivityClassesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_activity_class, only: [:show, :show_student_class_data, :edit, :edit_student_class_data, :update, :update_student_class_data, :destroy]
-  before_action :set_teacher, only: [:index, :new, :show, :show_student_class_data, :edit, :edit_student_class_data, :create, :update, :update_student_class_data, :destroy]
+  before_action :set_activity_class, only: [:show, :show_student_class_data, :edit, :edit_student_class_data, :update, :update_student_class_data, :add_all_student_to_class, :destroy]
+  before_action :set_teacher, only: [:index, :new, :show, :show_student_class_data, :edit, :edit_student_class_data, :create, :update, :update_student_class_data, :add_all_student_to_class, :destroy]
   before_action :set_select_collections, only: [:edit, :new, :update, :create]
   before_action :set_select_collections_student_class_data, only: [ :edit_student_class_data, :update_student_class_data]
 
@@ -31,7 +31,8 @@ class MyActivityClassesController < ApplicationController
   end
 
   def edit_student_class_data
-
+    puts "hola"
+    puts "hola"
   end
 
   # POST /activity_classes
@@ -79,6 +80,10 @@ class MyActivityClassesController < ApplicationController
     end
   end
 
+  def add_all_student_to_class
+
+  end
+
   # DELETE /activity_classes/1
   # DELETE /activity_classes/1.json
   def destroy
@@ -106,7 +111,11 @@ class MyActivityClassesController < ApplicationController
   end
 
   def set_select_collections_student_class_data
-
+    @activity_class.destroy
+    respond_to do |format|
+      format.html { redirect_to teacher_activity_classes_path( @teacher ), notice: 'Activity class was successfully destroyed.' }
+      format.json { head :no_content }
+      end
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

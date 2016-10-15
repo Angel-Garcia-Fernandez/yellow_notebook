@@ -40,10 +40,9 @@ class Student < ActiveRecord::Base
   validates_numericality_of  :default_discount, greater_than_or_equal_to: 0.0, less_than_or_equal_to: 1.0, allow_nil: true
   #validates_uniqueness_of :name, scope: [ :surname ], if: 'nic.blank?'
   validates_uniqueness_of :nic, allow_blank: true, allow_nil: true
-  validates_associated :student_activity_sign_ups
   validates_length_of :iban, maximum: 75
   validates_inclusion_of :default_payment_type, in: default_payment_types.keys
-
+  validates_associated :student_activity_sign_ups
 
 
   def to_s

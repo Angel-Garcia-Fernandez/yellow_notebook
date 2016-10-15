@@ -187,4 +187,10 @@ es:
           attributes:
             student:
               taken: no se puede inscribir dos veces al mismo alumno en la misma actividad
+        student_class_datum:
+          attributes:
+            activity_class:
+              student_is_not_signed_for_class: debe estar inscrito para la actividad a la hora de la clase
+            student_activity_sign_up:
+              taken: no se puede registrar dos veces al mismo alumno en la misma clase
 

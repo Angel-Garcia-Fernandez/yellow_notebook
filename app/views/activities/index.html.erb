@@ -25,8 +25,8 @@
           <% teacher = activity.teacher_in_charge %>
           <%= link_to teacher, teacher_path( teacher ) if teacher.present? %>
         </td>
-        <td><%= activity.started_at %></td>
-        <td><%= activity.ended_at %></td>
+        <td><%= activity.started_at.try(:strftime,'%d/%m/%Y') %></td>
+        <td><%= activity.ended_at.try(:strftime,'%d/%m/%Y') %></td>
         <td><%= number_to_currency activity.default_price, unit: '€   ' %></td>
         <td>
           <% school = activity.school %>

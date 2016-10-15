@@ -26,8 +26,20 @@ class ActivityClass < ActiveRecord::Base
 
   delegate :teacher_in_charge, to: :activity
 
+  def to_s
+    "#{activity} (#{started_at}-#{ended_at})"
+  end
+
   def number_of_students_signed date = DateTime.current
     StudentActivitySignUp.signed_for( self.activity, date ).count
+  end
+
+  def build_students_signed_up
+    StudentActivitySignUp.signed_for( self.activity, self.started_at ).each do |s|
+      if not self.student_class_data.find_by( student_activity_sign_up: s ).any?
+        self.student_class_data.build( student_class_data: s )
+      end
+    end
   end
 
   private

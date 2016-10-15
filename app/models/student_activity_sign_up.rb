@@ -19,7 +19,11 @@ class StudentActivitySignUp < ActiveRecord::Base
 
   belongs_to :activity
   belongs_to :student
+  has_many :student_class_data
 
+  before_validation :build_student_class_data
+
+  #validates_presence_of :activity, :student # no hace falta por el destroy_nils
   validates_uniqueness_of :student, scope: :activity, allow_nil: true
   validates_presence_of :activity_discount, :payment_type
   validates_inclusion_of :payment_type, in: payment_types.keys
@@ -34,6 +38,14 @@ class StudentActivitySignUp < ActiveRecord::Base
     merge( self.where.any_of( {started_at: nil}, starts_before( date ) ) ).
     merge( self.where.any_of( { ended_at: nil }, ends_after( date ) ) ) }
 
+
+  def build_student_class_data
+    self.activity.activity_classes.each do |c|
+      if not c.student_class_data.find_by( student_activity_sign_up: self ).any?
+        self.student_class_data.build( activity_class: c ) #necesito el accepts_nested_attributes??
+      end
+    end
+  end
 
   private
 

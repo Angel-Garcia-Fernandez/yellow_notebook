@@ -32,7 +32,8 @@ class Activity < ActiveRecord::Base
   validates_associated :teacher_activities
   validate :end_after_start, if: :starts?
   validates_absence_of :ended_at, unless: :starts?
-  validates_associated :student_activity_sign_ups, :teacher_activities
+  validates_associated :student_activity_sign_ups, :teacher_activities, :activity_classes
+
 
   scope :starts, -> () { where.not( started_at: nil ) }
   scope :ends, -> () { where.not( ended_at: nil ) }

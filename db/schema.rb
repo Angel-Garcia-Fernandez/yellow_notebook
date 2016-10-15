@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161011013259) do
+ActiveRecord::Schema.define(version: 20161014184910) do
 
   create_table "activities", force: :cascade do |t|
     t.string   "name",           limit: 255,                           null: false
@@ -91,12 +91,12 @@ ActiveRecord::Schema.define(version: 20161011013259) do
   add_index "student_activity_sign_ups", ["student_id"], name: "index_student_activity_sign_ups_on_student_id", using: :btree
 
   create_table "student_class_data", force: :cascade do |t|
-    t.boolean  "attended",                              default: false
-    t.boolean  "paid",                                  default: false
-    t.datetime "created_at",                                            null: false
-    t.datetime "updated_at",                                            null: false
-    t.integer  "activity_class_id",           limit: 4,                 null: false
-    t.integer  "student_activity_sign_up_id", limit: 4,                 null: false
+    t.boolean  "attended"
+    t.boolean  "paid"
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+    t.integer  "activity_class_id",           limit: 4, null: false
+    t.integer  "student_activity_sign_up_id", limit: 4, null: false
   end
 
   add_index "student_class_data", ["activity_class_id"], name: "index_student_class_data_on_activity_class_id", using: :btree

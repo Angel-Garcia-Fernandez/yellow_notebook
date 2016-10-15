@@ -17,9 +17,9 @@
       <%= link_to teacher, teacher_path( teacher ) if teacher.present? %>
     </pre></dd>
     <dt class="label label-default"><%= model_class.human_attribute_name(:started_at).capitalize %></dt>
-    <dd><pre class="prettyprint"><%= @activity.started_at %></pre></dd>
+    <dd><pre class="prettyprint"><%= @activity.started_at.try(:strftime,'%d/%m/%Y') %></pre></dd>
     <dt class="label label-default"><%= model_class.human_attribute_name(:ended_at).capitalize %></dt>
-    <dd><pre class="prettyprint"><%= @activity.ended_at %></pre></dd>
+    <dd><pre class="prettyprint"><%= @activity.ended_at.try(:strftime,'%d/%m/%Y') %></pre></dd>
     <dt class="label label-default"><%= model_class.human_attribute_name(:default_price).capitalize %></dt>
     <dd><pre class="prettyprint"><%= @activity.default_price %></pre></dd>
     <dt class="label label-default"><%= model_class.human_attribute_name(:details).capitalize %></dt>
