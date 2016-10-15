@@ -34,7 +34,7 @@ Rails.application.routes.draw do
       put :update_student_class_data, on: :member
       patch :update_student_class_data, on: :member
       resources :student_class_data, controller: :my_student_class_data,
-          only: [:edit, :show, :update]
+          only: [:edit, :show, :update, :destroy]
     end
     resources :activities, only: :index, controller: :my_activities do #monitor management
       get :show_activity_classes, on: :member

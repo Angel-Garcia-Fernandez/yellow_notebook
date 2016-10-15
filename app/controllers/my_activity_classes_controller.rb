@@ -31,8 +31,6 @@ class MyActivityClassesController < ApplicationController
   end
 
   def edit_student_class_data
-    puts "hola"
-    puts "hola"
   end
 
   # POST /activity_classes

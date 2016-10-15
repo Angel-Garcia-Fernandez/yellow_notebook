@@ -1,0 +1,34 @@
+<%= form_for @student_class_datum, html: { class: 'form-horizontal' } do |f| %>
+    <div class="form-group">
+      <%= f.label :activity_class_id, class: 'control-label col-md-2' %>
+      <div class="col-md-10">
+        <%= f.collection_select :activity_class_id, @activity_classes, :id, :to_s,  { include_blank: true }, {class: 'select-search form-control'} %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :student_activity_sign_up_id, class: 'control-label col-md-2' %>
+      <div class="col-md-10">
+        <%= f.collection_select :student_activity_sign_up_id, @student_activity_sign_ups, :id, :to_s,  { include_blank: true }, {class: 'select-search form-control'} %>
+      </div>
+    </div>
+    <div class="form-group">
+    <%= f.label :attended, class: 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.check_box :attended, class: 'text_field form-control' %>
+    </div>
+  </div>
+    <div class="form-group">
+    <%= f.label :paid, class: 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.check_box :paid, class: 'text_field form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class='col-md-offset-2 col-md-10'>
+      <%= f.submit nil, class: 'btn btn-primary' %>
+      <%= link_to t('.cancel', default: t("helpers.links.cancel")),
+                  student_class_data_path, class: 'btn btn-default' %>
+    </div>
+  </div>
+<% end %>
