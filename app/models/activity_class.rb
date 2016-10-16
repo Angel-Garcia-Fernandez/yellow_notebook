@@ -18,6 +18,8 @@ class ActivityClass < ActiveRecord::Base
 
   accepts_nested_attributes_for :student_class_data
 
+  before_validation :build_students_signed_up
+
   validates_presence_of :activity, :started_at, :ended_at
   validate :end_after_start
   validate :activity_must_start
@@ -36,8 +38,8 @@ class ActivityClass < ActiveRecord::Base
 
   def build_students_signed_up
     StudentActivitySignUp.signed_for( self.activity, self.started_at ).each do |s|
-      if not self.student_class_data.find_by( student_activity_sign_up: s ).any?
-        self.student_class_data.build( student_class_data: s )
+      if self.student_class_data.find_by( student_activity_sign_up: s ).blank?
+        self.student_class_data.build( student_activity_sign_up: s )
       end
     end
   end

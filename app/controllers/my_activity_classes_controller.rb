@@ -109,11 +109,7 @@ class MyActivityClassesController < ApplicationController
   end
 
   def set_select_collections_student_class_data
-    @activity_class.destroy
-    respond_to do |format|
-      format.html { redirect_to teacher_activity_classes_path( @teacher ), notice: 'Activity class was successfully destroyed.' }
-      format.json { head :no_content }
-      end
+
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

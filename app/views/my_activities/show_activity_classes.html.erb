@@ -35,7 +35,7 @@
           <%- end -%>
           <%= link_to show_student_class_data_teacher_activity_class_path( @teacher, activity_class ), class: 'btn btn-xs',
                       title: "#{ t('helpers.links.show_x', x: child_model_class.model_name.human( count: 2 )) }" do %>
-              <%= glyph 'list_alt' %>
+              <%= glyph 'list-alt' %>
           <%- end -%>
         </td>
       </tr>
@@ -43,6 +43,13 @@
   </tbody>
 </table>
 
-<%= link_to t('.new', default: t("helpers.links.new")),
-            new_teacher_activity_class_path( @teacher ),
-            class: 'btn btn-primary' %>
+<div class="form-group">
+  <%= link_to t('.back', default: t("helpers.links.back")),
+              #:back,
+              teacher_activities_path( @teacher ),
+              class: 'btn btn-default'  %>
+  <%= link_to t('.edit_x', default: t("helpers.links.edit_x",
+                                      x: child_model_class.model_name.human(count: 2) )),
+              edit_activities_teacher_path(@teacher),
+              class: 'btn btn-default' %>
+</div>

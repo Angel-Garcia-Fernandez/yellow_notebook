@@ -21,21 +21,20 @@ class StudentClassDatum < ActiveRecord::Base
   validates_presence_of :activity_class, :student_activity_sign_up
   validates_uniqueness_of :student_activity_sign_up, scope: :activity_class, allow_nil: true
   #validates_inclusion_of :attended, :paid, in: [true, false]
-  validate :student_is_signed_for_class
+  validate :student_is_signed_for_class?
 
   def to_s
     "#{activity_class} - #{student}"
   end
 
   private
-  def student_is_signed_for_class
+  def student_is_signed_for_class?
     invalid = false
-    if not self.student_activity_sign_up.signed_for( self.activity, self.activity_class.started_at ).any?
+    if not self.student_activity_sign_up.signed_for?( self.activity_class.started_at )
       errors.add( :activity_class, :student_is_not_signed_for_class )
       invalid = true
     end
     invalid
-
   end
 
 end

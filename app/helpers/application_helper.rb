@@ -1,10 +1,13 @@
 module ApplicationHelper
 
   def boolean_glyph boolean
-    if boolean
-      glyph 'ok'
-    else
-      glyph 'remove'
+    case boolean
+      when nil
+        glyph 'question-sign'
+      when true
+        glyph 'ok'
+      when false
+        glyph 'remove'
     end
   end
 

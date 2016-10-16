@@ -19,7 +19,7 @@ class MyStudentClassDataController < ApplicationController
   def update
     respond_to do |format|
       if @student_class_datum.update(student_class_datum_params)
-        format.html { redirect_to [ @teacher, @student_class_datum ], notice: 'Student class datum was successfully updated.' }
+        format.html { redirect_to [ @teacher, @activity_class, @student_class_datum ], notice: 'Student class datum was successfully updated.' }
         format.json { render :show, status: :ok, location: @student_class_datum }
       else
         format.html { render :edit }

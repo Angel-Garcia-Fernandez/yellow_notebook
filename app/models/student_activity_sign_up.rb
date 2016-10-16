@@ -38,13 +38,22 @@ class StudentActivitySignUp < ActiveRecord::Base
     merge( self.where.any_of( {started_at: nil}, starts_before( date ) ) ).
     merge( self.where.any_of( { ended_at: nil }, ends_after( date ) ) ) }
 
+  def to_s
+    "#{student} - #{activity}"
+  end
 
   def build_student_class_data
     self.activity.activity_classes.each do |c|
-      if not c.student_class_data.find_by( student_activity_sign_up: self ).any?
+      if c.student_class_data.find_by( student_activity_sign_up: self ).blank?
         self.student_class_data.build( activity_class: c ) #necesito el accepts_nested_attributes??
       end
     end
+  end
+
+  def signed_for? date = DateTime.current
+    ( self.activity.on_going?( date ) and
+        ( self.started_at.nil? or self.started_at <= date ) and
+        ( self.ended_at.nil? or self.ended_at >= date ) )
   end
 
   private

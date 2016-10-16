@@ -1,15 +1,22 @@
-<%= form_for @student_class_datum, html: { class: 'form-horizontal' } do |f| %>
+<%- url = url_for( controller: controller_name, action: @action ) -%>
+<%= form_for [@teacher, @activity_class, @student_class_datum], url: url, html: { class: 'form-horizontal' } do |f| %>
     <div class="form-group">
       <%= f.label :activity_class_id, class: 'control-label col-md-2' %>
       <div class="col-md-10">
-        <%= f.collection_select :activity_class_id, @activity_classes, :id, :to_s,  { include_blank: true }, {class: 'select-search form-control'} %>
+        <%# f.collection_select :activity_class_id, @activity_classes, :id, :to_s,  { include_blank: true }, {class: 'select-search form-control'} %>
+        <div class='text-field form-control'>
+          <%= f.object.activity_class %>
+        </div>
       </div>
     </div>
     <div class="form-group">
       <%= f.label :student_activity_sign_up_id, class: 'control-label col-md-2' %>
       <div class="col-md-10">
-        <%= f.collection_select :student_activity_sign_up_id, @student_activity_sign_ups, :id, :to_s,  { include_blank: true }, {class: 'select-search form-control'} %>
-      </div>
+        <%#= f.collection_select :student_activity_sign_up_id, @student_activity_sign_ups, :id, :to_s,  { include_blank: true }, {class: 'select-search form-control'} %>
+        <div class='text-field form-control'>
+          <%= f.object.student_activity_sign_up %>
+        </div>
+        </div>
     </div>
     <div class="form-group">
     <%= f.label :attended, class: 'control-label col-md-2' %>
