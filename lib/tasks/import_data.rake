@@ -101,22 +101,34 @@ namespace :import_data do
 
   private
   def corregir_centro centro
+    centro_ = centro
     case centro
-      when
-      "CEIP ALBAICIN" - colegio no encontrada
-      "CEIP FERNÁNDEZ PÓZAR" - colegio no encontrada
-      "ISABEL LA CATÓLICA" - colegio no encontrada
-      "JOSÉ DE LA VEGA" - colegio no encontrada
-      "NTRA. SRA DE LA LUZ" - colegio no encontrada
-      "NTRA. SRA DE LUZ" - colegio no encontrada
-      "NTRA. SRA DE LOS REMEDIOS" - colegio no encontrada
-      "PERAFAN DE RIVERA" - colegio no encontrada
-      "PERAFÁN DE RIVERA" - colegio no encontrada
-      "REGGIO" - colegio no encontrada
-      "RRCC" - colegio no encontrada
-      "SERAFINA ANDRADES" - colegio no encontrada
+      when "CEIP EL ALBAICIN"
+        centro_ = "CEIP ALBAICIN"
+      when "CEIP FERNÁNDEZ PÓZAR"
+        centro_ = "CEIP FRANCISCO FERNANDEZ POZAR"
+      when "ISABEL LA CATÓLICA"
+        centro_ = "CEIP ISABEL LA CATOLICA"
+      when "JOSÉ DE LA VEGA"
+        centro_ = "CEIP JOSE DE LA VEGA BARRIOS"
+      when "NTRA. SRA DE LA LUZ"
+        centro_ = "CEIP NUESTRA SEÑORA DE LA LUZ"
+      when "NTRA. SRA DE LUZ"
+        centro_ = "CEIP NUESTRA SEÑORA DE LA LUZ"
+      when "NTRA. SRA DE LOS REMEDIOS"
+        centro_ = "CEIP NUESTRA SEÑORA DE LOS REMEDIOS"
+      when "PERAFAN DE RIVERA"
+        centro_ = "CEIP PERAFAN DE RIVERA"
+      when "PERAFÁN DE RIVERA"
+        centro_ = "CEIP PERAFAN DE RIVERA"
+      when "REGGIO"
+        centro_ = "CEIP REGGIO"
+      when "RRCC"
+        centro_ = "CEIP REYES CATOLICOS"
+      when "SERAFINA ANDRADES"
+        centro_ = "CEIP SERAFINA ANDRADES"
     end
-    centro
+    centro_
   end
 
 end
