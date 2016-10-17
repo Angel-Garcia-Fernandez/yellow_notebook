@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all.order( :name )
+    @users = User.all.order( :login )
   end
 
   # GET /users/1
