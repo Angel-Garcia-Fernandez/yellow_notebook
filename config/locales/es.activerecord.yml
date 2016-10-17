@@ -142,6 +142,7 @@ es:
         zip_code: C.P.
         iban: IBAN
         account_holder: titular cuenta
+        account_holder_nic: dni titular cuenta
         details: detalles
       student_activity_sign_up:
         id: nº identificación
