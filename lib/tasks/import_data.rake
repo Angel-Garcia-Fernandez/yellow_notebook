@@ -4,7 +4,7 @@ namespace :import_data do
   desc "import data from an csv file"
   task add_students: :environment do
 
-    filename = 'tmp/alumnos.csv'
+    filename = 'db/alumnos.csv'
     #file = File.read( filename )
     array_actividades = Array.new
     array_colegios = Array.new
