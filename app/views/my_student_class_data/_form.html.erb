@@ -27,7 +27,8 @@
     <div class="form-group">
     <%= f.label :paid, class: 'control-label col-md-2' %>
     <div class="col-md-10">
-      <%= f.check_box :paid, class: 'text_field form-control' %>
+      <%#= f.check_box :paid, class: 'text_field form-control' %>
+      <div class='text_field form-control'><%= f.object.paid %></div>
     </div>
   </div>
 

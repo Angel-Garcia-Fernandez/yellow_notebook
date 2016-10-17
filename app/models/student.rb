@@ -20,6 +20,7 @@
 #  school_id            :integer
 #  iban                 :string(255)
 #  account_holder       :string(255)
+#  account_holder_nic   :string(255)
 #
 
 class Student < ActiveRecord::Base
@@ -35,7 +36,7 @@ class Student < ActiveRecord::Base
   accepts_nested_attributes_for :student_activity_sign_ups, allow_destroy: true, reject_if: proc { |attributes| attributes['activity_id'].blank? }
 
   validates_length_of :name, :surname, :nic, :scholar_phone_number, :phone_number, :address, :town,
-                      :province, :zip_code, :account_holder, maximum: 255
+                      :province, :zip_code, :account_holder, :account_holder_nic, maximum: 255
   validates_presence_of :default_discount, :default_payment_type
   validates_numericality_of  :default_discount, greater_than_or_equal_to: 0.0, less_than_or_equal_to: 1.0, allow_nil: true
   #validates_uniqueness_of :name, scope: [ :surname ], if: 'nic.blank?'

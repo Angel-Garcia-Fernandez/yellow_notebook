@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161014184910) do
+ActiveRecord::Schema.define(version: 20161016170120) do
 
   create_table "activities", force: :cascade do |t|
     t.string   "name",           limit: 255,                           null: false
@@ -120,6 +120,7 @@ ActiveRecord::Schema.define(version: 20161014184910) do
     t.integer  "school_id",            limit: 4
     t.string   "iban",                 limit: 255
     t.string   "account_holder",       limit: 255
+    t.string   "account_holder_nic",   limit: 255
   end
 
   add_index "students", ["school_id"], name: "index_students_on_school_id", using: :btree

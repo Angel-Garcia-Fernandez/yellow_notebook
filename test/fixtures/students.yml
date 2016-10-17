@@ -20,6 +20,7 @@
 #  school_id            :integer
 #  iban                 :string(255)
 #  account_holder       :string(255)
+#  account_holder_nic   :string(255)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

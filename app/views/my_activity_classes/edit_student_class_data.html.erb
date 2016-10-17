@@ -20,7 +20,10 @@
             <td><%= a.object.activity_class %></td>
             <td><%= a.object.student_activity_sign_up %></td>
             <td><%= a.check_box :attended %></td>
-            <td><%= a.check_box :paid %></td>
+            <td>
+              <%#= a.check_box :paid %>
+              <%= boolean_glyph a.object.paid %>
+            </td>
             <td>
               <%= a.remove_nested_fields_link t('helpers.links.remove_x', x: model_class.model_name.human ),
                                               data: { confirm:  t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) },
