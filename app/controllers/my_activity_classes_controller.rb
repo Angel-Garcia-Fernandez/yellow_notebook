@@ -72,7 +72,7 @@ class MyActivityClassesController < ApplicationController
         format.json { render :show, status: :ok, location: @activity_class }
       else
         add_model_error_to_flash @activity_class
-        format.html { render :edit }
+        format.html { render :edit_student_class_data }
         format.json { render json: @activity_class.errors, status: :unprocessable_entity }
       end
     end
@@ -115,6 +115,6 @@ class MyActivityClassesController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def activity_class_params
     params.require(:activity_class).permit(:activity_id, :started_at, :ended_at,
-                                           student_class_data_attributes: [ ] )
+                                           student_class_data_attributes: [ :id, :_destroy, :attended ] )
   end
 end

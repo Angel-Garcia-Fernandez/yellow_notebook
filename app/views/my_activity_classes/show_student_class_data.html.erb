@@ -1,11 +1,15 @@
 <%- model_class = StudentClassDatum -%>
 <div class="page-header">
   <h1><%=t '.title', default: model_class.model_name.human( count:2 ).titleize %></h1>
+  <h2>
+    <%= model_class.human_attribute_name(:activity_class).capitalize %>:
+    <%= @activity_class %>
+  </h2>
 </div>
+
 <table class="table table-striped">
   <thead>
   <tr>
-    <th><%= model_class.human_attribute_name(:activity_class).capitalize %></th>
     <th><%= model_class.human_attribute_name(:student_activity_sign_up).capitalize %></th>
     <th><%= model_class.human_attribute_name(:attended).capitalize %></th>
     <th><%= model_class.human_attribute_name(:paid).capitalize %></th>
@@ -15,10 +19,6 @@
   <tbody>
   <% @activity_class.student_class_data.each do |student_class_datum| %>
       <tr>
-        <td>
-          <% activity_class = student_class_datum.activity_class %>
-          <%= link_to activity_class, show_activity_classes_teacher_activity_path( @teacher, activity_class.activity ) %>
-        </td>
         <td><%= student_class_datum.student_activity_sign_up.student %></td>
         <td><%= boolean_glyph student_class_datum.attended %></td>
         <td><%= boolean_glyph student_class_datum.paid %></td>

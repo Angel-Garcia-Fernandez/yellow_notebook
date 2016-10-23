@@ -29,7 +29,7 @@ class ActivityClass < ActiveRecord::Base
   delegate :teacher_in_charge, to: :activity
 
   def to_s
-    "#{activity} (#{started_at}-#{ended_at})"
+    "#{I18n.l started_at.to_date} #{ started_at.strftime "%H:%M" } - #{ ended_at.strftime "%H:%M" } (#{activity})"
   end
 
   def number_of_students_signed date = DateTime.current
@@ -38,8 +38,10 @@ class ActivityClass < ActiveRecord::Base
 
   def build_students_signed_up
     StudentActivitySignUp.signed_for( self.activity, self.started_at ).each do |s|
-      if self.student_class_data.find_by( student_activity_sign_up: s ).blank?
-        self.student_class_data.build( student_activity_sign_up: s )
+      if self.student_class_data.find_by( activity_class: self, student_activity_sign_up: s ).blank?
+      #if self.student_class_data.find_by( student_activity_sign_up: s ).blank?
+        self.student_class_data.build( activity_class: self, student_activity_sign_up: s )
+        #self.student_class_data.build( student_activity_sign_up: s )
       end
     end
   end

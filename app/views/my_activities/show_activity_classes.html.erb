@@ -2,11 +2,14 @@
 <%- child_model_class = StudentClassDatum -%>
 <div class="page-header">
   <h1><%=t '.title', default: model_class.model_name.human( count:2 ).titleize %></h1>
+  <h2>
+    <%= model_class.human_attribute_name(:activity).capitalize %>:
+    <%= link_to @activity, show_activity_classes_teacher_activity_path( @teacher, @activity ) %>
+  </h2>
 </div>
 <table class="table table-striped">
   <thead>
   <tr>
-    <th><%= model_class.human_attribute_name(:activity).capitalize %></th>
     <th><%= model_class.human_attribute_name(:started_at).capitalize %></th>
     <th><%= model_class.human_attribute_name(:ended_at).capitalize %></th>
     <th><%= model_class.human_attribute_name(:number_of_students_signed).capitalize %></th>
@@ -15,11 +18,6 @@
   </thead>
   <tbody>
   <% @activity_classes.each do |activity_class| %>
-      <tr>
-        <td>
-          <% activity = activity_class.activity %>
-          <%= link_to activity, show_activity_classes_teacher_activity_path( @teacher, activity ) %>
-        </td>
         <td><%= activity_class.started_at.try(:strftime,'%d/%m/%Y %H:%M') %></td>
         <td><%= activity_class.ended_at.try(:strftime,'%d/%m/%Y %H:%M') %></td>
         <td><%= activity_class.number_of_students_signed %></td>
@@ -48,8 +46,4 @@
               #:back,
               teacher_activities_path( @teacher ),
               class: 'btn btn-default'  %>
-  <%= link_to t('.edit_x', default: t("helpers.links.edit_x",
-                                      x: child_model_class.model_name.human(count: 2) )),
-              edit_activities_teacher_path(@teacher),
-              class: 'btn btn-default' %>
 </div>

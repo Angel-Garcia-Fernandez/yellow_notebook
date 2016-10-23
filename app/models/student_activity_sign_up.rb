@@ -44,8 +44,10 @@ class StudentActivitySignUp < ActiveRecord::Base
 
   def build_student_class_data
     self.activity.activity_classes.each do |c|
-      if c.student_class_data.find_by( student_activity_sign_up: self ).blank?
-        self.student_class_data.build( activity_class: c ) #necesito el accepts_nested_attributes??
+      if self.signed_for?( c.started_at ) and c.student_class_data.find_by( student_activity_sign_up: self, activity_class: c ).blank?
+      #if self.signed_for?( c.started_at ) and c.student_class_data.find_by( activity_class: c ).blank?
+        self.student_class_data.build( student_activity_sign_up: self, activity_class: c )
+        #self.student_class_data.build( activity_class: c )
       end
     end
   end

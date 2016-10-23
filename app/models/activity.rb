@@ -42,7 +42,7 @@ class Activity < ActiveRecord::Base
 
 
   def to_s
-    "#{name} - #{classification}"
+    "#{name} - #{classification} - #{school}"
   end
 
   def starts?
