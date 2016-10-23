@@ -28,8 +28,8 @@ class ActivityClass < ActiveRecord::Base
 
   delegate :teacher_in_charge, to: :activity
 
-  def to_s
-    "#{I18n.l started_at.to_date} #{ started_at.strftime "%H:%M" } - #{ ended_at.strftime "%H:%M" } (#{activity})"
+  def to_s short = false
+    "#{I18n.l started_at.to_date} #{ started_at.strftime "%H:%M" } - #{ ended_at.strftime "%H:%M" } #{"(#{activity})" if not short}"
   end
 
   def number_of_students_signed date = DateTime.current

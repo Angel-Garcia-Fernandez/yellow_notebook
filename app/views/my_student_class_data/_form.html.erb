@@ -1,42 +1,35 @@
 <%- url = url_for( controller: controller_name, action: @action ) -%>
 <%= form_for [@teacher, @activity_class, @student_class_datum], url: url, html: { class: 'form-horizontal' } do |f| %>
     <div class="form-group">
-      <%= f.label :activity_class_id, class: 'control-label col-md-2' %>
+
+      <dt class="label label-default"><%= f.object.class.human_attribute_name(:activity_class).capitalize %></dt>
+      <dd><pre class="prettyprint"><%= f.object.activity_class.try( :to_s, true ) %></pre></dd>
+      <dt class="label label-default"><%= f.object.class.human_attribute_name(:activity).capitalize %></dt>
+      <dd><pre class="prettyprint"><%= f.object.activity %></pre></dd>
+      <dt class="label label-default"><%= f.object.class.human_attribute_name(:student_activity_sign_up).capitalize %></dt>
+      <dd><pre class="prettyprint"><%= f.object.student_activity_sign_up.try( :student ) %></pre></dd>
+      <dt class="label label-default"><%= f.object.class.human_attribute_name(:paid).capitalize %></dt>
+      <dd><pre class="prettyprint"><%= f.object.paid.humanize %></pre></dd>
+
+    </div>
+    <div class="form-group">
+      <%= f.label :attended, class: 'control-label col-md-2' %>
       <div class="col-md-10">
-        <%# f.collection_select :activity_class_id, @activity_classes, :id, :to_s,  { include_blank: true }, {class: 'select-search form-control'} %>
-        <div class='text-field form-control'>
-          <%= f.object.activity_class %>
-        </div>
+        <%= f.check_box :attended, class: 'text_field form-control' %>
       </div>
     </div>
-    <div class="form-group">
-      <%= f.label :student_activity_sign_up_id, class: 'control-label col-md-2' %>
-      <div class="col-md-10">
-        <%#= f.collection_select :student_activity_sign_up_id, @student_activity_sign_ups, :id, :to_s,  { include_blank: true }, {class: 'select-search form-control'} %>
-        <div class='text-field form-control'>
-          <%= f.object.student_activity_sign_up %>
-        </div>
-        </div>
-    </div>
-    <div class="form-group">
-    <%= f.label :attended, class: 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.check_box :attended, class: 'text_field form-control' %>
-    </div>
-  </div>
-    <div class="form-group">
-    <%= f.label :paid, class: 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%#= f.check_box :paid, class: 'text_field form-control' %>
-      <div class='text_field form-control'><%= f.object.paid %></div>
-    </div>
-  </div>
+    <!--<div class="form-group">-->
+      <!--<%#= f.label :paid, class: 'control-label col-md-2' %>-->
+      <!--<div class="col-md-10">-->
+        <!--<%#= f.check_box :paid, class: 'text_field form-control' %>-->
+      <!--</div>-->
+    <!--</div>-->
 
-  <div class="form-group">
-    <div class='col-md-offset-2 col-md-10'>
-      <%= f.submit nil, class: 'btn btn-primary' %>
-      <%= link_to t('.cancel', default: t("helpers.links.cancel")),
-                  student_class_data_path, class: 'btn btn-default' %>
+    <div class="form-group">
+      <div class='col-md-offset-2 col-md-10'>
+        <%= f.submit nil, class: 'btn btn-primary' %>
+        <%= link_to t('.cancel', default: t("helpers.links.cancel")),
+                    student_class_data_path, class: 'btn btn-default' %>
+      </div>
     </div>
-  </div>
 <% end %>

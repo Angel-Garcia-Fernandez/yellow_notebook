@@ -102,6 +102,7 @@ es:
         student_class_data: lista de clase
         number_of_students_signed: alumnos apuntados
       student_class_datum:
+        activity: actividad
         activity_class: clase
         attended: asistencia
         paid: pago

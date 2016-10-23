@@ -68,7 +68,7 @@ class MyActivityClassesController < ApplicationController
   def update_student_class_data
     respond_to do |format|
       if @activity_class.update(activity_class_params)
-        format.html { redirect_to [@teacher, @activity_class], notice: 'Activity class was successfully updated.' }
+        format.html { redirect_to show_student_class_data_teacher_activity_class_path( @teacher, @activity_class), notice: 'Activity class was successfully updated.' }
         format.json { render :show, status: :ok, location: @activity_class }
       else
         add_model_error_to_flash @activity_class
