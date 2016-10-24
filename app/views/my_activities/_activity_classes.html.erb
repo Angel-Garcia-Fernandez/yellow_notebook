@@ -1,0 +1,34 @@
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th><%= model_class.human_attribute_name(:started_at).capitalize %></th>
+    <th><%= model_class.human_attribute_name(:ended_at).capitalize %></th>
+    <th><%= model_class.human_attribute_name(:number_of_students_signed).capitalize %></th>
+    <th><%=t '.actions', default: t("helpers.actions") %></th>
+  </tr>
+  </thead>
+  <tbody>
+  <%# @activity_classes.each do |activity_class| %>
+  <% activity_classes.each do |activity_class| %>
+      <td><%= activity_class.started_at.try(:strftime,'%d/%m/%Y %H:%M') %></td>
+      <td><%= activity_class.ended_at.try(:strftime,'%d/%m/%Y %H:%M') %></td>
+      <td><%= activity_class.number_of_students_signed( activity_class.started_at )%></td>
+      <td>
+        <%= link_to teacher_activity_class_path( @teacher, activity_class ), class: 'btn btn-xs', title: "#{ t('.show', default: t('helpers.links.show')) }" do %>
+            <%= glyph 'info-sign' %>
+        <%- end -%>
+        <%#= link_to edit_teacher_activity_class_path( @teacher, activity_class ), class: 'btn btn-xs', title: "#{ t('.edit', default: t('helpers.links.edit')) }" do %>
+        <%#= glyph 'pencil' %>
+        <%#- end -%>
+        <%#= link_to teacher_activity_class_path( @teacher, activity_class ), method: :delete, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'btn btn-xs', title: "#{ t('.destroy', default: t('helpers.links.destroy')) }" do %>
+        <%#= glyph 'remove' %>
+        <%#- end -%>
+        <%= link_to show_student_class_data_teacher_activity_class_path( @teacher, activity_class ), class: 'btn btn-xs',
+                    title: "#{ t('helpers.links.show_x', x: child_model_class.model_name.human( count: 2 )) }" do %>
+            <%= glyph 'list-alt' %>
+        <%- end -%>
+      </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

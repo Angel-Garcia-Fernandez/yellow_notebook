@@ -23,6 +23,10 @@ class StudentClassDatum < ActiveRecord::Base
   #validates_inclusion_of :attended, :paid, in: [true, false]
   validate :student_is_signed_for_class?
 
+
+  scope :attendance_completed, -> { where.not( attended: nil ) }
+  scope :attendance_incompleted, -> { where( attended: nil ) }
+
   def to_s
     "#{activity_class} - #{student}"
   end

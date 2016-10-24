@@ -12,6 +12,9 @@ class MyActivitiesController < ApplicationController
 
   def show_activity_classes
     @activity_classes = @teacher.activity_classes
+    @complete = @activity_classes.attendance_completed
+    @incomplete = @activity_classes.attendance_incompleted.starts_before DateTime.current
+    @pending = @activity_classes.attendance_incompleted.ends_after DateTime.current
   end
 
   private
