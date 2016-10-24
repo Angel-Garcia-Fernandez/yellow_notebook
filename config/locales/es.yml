@@ -47,3 +47,8 @@ es:
       title: "Sobre cuaderno amarillo"
       welcome: "Bienvenido a cuaderno amarillo"
       body: "El administrador para actividades de tiempo libre."
+  my_activities:
+    show_activity_classes:
+      completed: completadas
+      incompleted: pendientes
+      pending: por venir
