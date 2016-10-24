@@ -11,7 +11,7 @@ class MyActivitiesController < ApplicationController
   end
 
   def show_activity_classes
-    @activity_classes = @teacher.activity_classes
+    @activity_classes = @teacher.activity_classes.order( :started_at )
     @completed = @activity_classes.attendance_completed
     @incompleted = @activity_classes.attendance_incompleted.starts_before DateTime.current
     @pending = @activity_classes.attendance_incompleted.ends_after DateTime.current

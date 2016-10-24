@@ -28,6 +28,7 @@ class Activity < ActiveRecord::Base
   accepts_nested_attributes_for :student_activity_sign_ups, allow_destroy: true, reject_if: proc { |attributes| attributes['student_id'].blank? }
 
   validates_presence_of :name
+  validates_uniqueness_of :name, scope: [:school]
   validates_length_of :name, :classification, maximum: 255
   validates_associated :teacher_activities
   validate :end_after_start, if: :starts?
