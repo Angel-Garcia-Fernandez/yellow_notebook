@@ -1,5 +1,7 @@
 <%- model_class = Activity -%>
-<%- child_model_class = StudentActivitySignUp -%>
+<%- child_model_class = StudentClassDatum -%>
+<%- child_model_class2 = TimeWeekCycle -%>
+<%- child_model_class3 = ActivityClass -%>
 
 <div class="page-header">
   <h1><%=t '.title', default: model_class.model_name.human.titleize %></h1>
@@ -20,6 +22,8 @@
     <dd><pre class="prettyprint"><%= date_format @activity.started_at %></pre></dd>
     <dt class="label label-default"><%= model_class.human_attribute_name(:ended_at).capitalize %></dt>
     <dd><pre class="prettyprint"><%= date_format @activity.ended_at %></pre></dd>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:time_week_cycles).capitalize %></dt>
+    <dd><pre class="prettyprint"><%= @activity.time_week_cycles.order(:week_day, :activity_class_starts_at).map( &:to_s ).join(', ') %></pre></dd>
     <dt class="label label-default"><%= model_class.human_attribute_name(:default_price).capitalize %></dt>
     <dd><pre class="prettyprint"><%= @activity.default_price %></pre></dd>
     <dt class="label label-default"><%= model_class.human_attribute_name(:details).capitalize %></dt>
@@ -39,8 +43,16 @@
               edit_activity_path(@activity), class: 'btn btn-default' %>
   <%= link_to t('.show_x', default: t("helpers.links.show_x", x: child_model_class.model_name.human(count: 2) )),
               show_students_activity_path(@activity), class: 'btn btn-default' %>
-  <%= link_to t('.edit_x', default: t("helpers.links.edit_x", x: child_model_class.model_name.human(count: 2) )),
+  <%#= link_to t('.edit_x', default: t("helpers.links.edit_x", x: child_model_class.model_name.human(count: 2) )),
               edit_students_activity_path(@activity), class: 'btn btn-default' %>
+  <%= link_to t('.show_x', default: t("helpers.links.show_x", x: child_model_class2.model_name.human(count: 2) )),
+              show_time_week_cycles_activity_path(@activity), class: 'btn btn-default' %>
+  <%#= link_to t('.edit_x', default: t("helpers.links.edit_x", x: child_model_class2.model_name.human(count: 2) )),
+              edit_time_week_cycles_activity_path(@activity), class: 'btn btn-default' %>
+  <%= link_to t('.show_x', default: t("helpers.links.show_x", x: child_model_class3.model_name.human(count: 2) )),
+              show_activity_classes_activity_path(@activity), class: 'btn btn-default' %>
+  <%#= link_to t('.edit_x', default: t("helpers.links.edit_x", x: child_model_class3.model_name.human(count: 2) )),
+              edit_activity_classes_activity_path(@activity), class: 'btn btn-default' %>
   <%= link_to t('.destroy', default: t("helpers.links.destroy")),
               activity_path(@activity),
               method: 'delete',

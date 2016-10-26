@@ -1,5 +1,8 @@
 <%- model_class = Activity -%>
 <%- child_model_class = StudentClassDatum -%>
+<%- child_model_class2 = TimeWeekCycle -%>
+<%- child_model_class3 = ActivityClass -%>
+
 <div class="page-header">
   <h1><%=t '.title', default: model_class.model_name.human( count:2 ).titleize %></h1>
 </div>
@@ -45,6 +48,14 @@
           <%= link_to show_students_activity_path( activity ), class: 'btn btn-xs',
                       title: t('.show_x', default: t("helpers.links.show_x", x: child_model_class.model_name.human(count: 2) )) do %>
               <%= glyph 'knight' %>
+          <%- end -%>
+          <%= link_to show_time_week_cycles_activity_path( activity ), class: 'btn btn-xs',
+                      title: t('.show_x', default: t("helpers.links.show_x", x: child_model_class2.model_name.human(count: 2) )) do %>
+              <%= glyph 'calendar' %>
+          <%- end -%>
+          <%= link_to show_activity_classes_activity_path( activity ), class: 'btn btn-xs',
+                      title: t('.show_x', default: t("helpers.links.show_x", x: child_model_class3.model_name.human(count: 2) )) do %>
+              <%= glyph 'time' %>
           <%- end -%>
         </td>
       </tr>

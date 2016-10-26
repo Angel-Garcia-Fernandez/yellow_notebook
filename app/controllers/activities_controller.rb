@@ -1,9 +1,14 @@
 class ActivitiesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_activity, only: [:show, :show_students, :edit, :edit_students, :update, :update_students, :destroy]
+  before_action :set_activity, only: [:show, :show_students, :show_time_week_cycles, :show_activity_classes,
+                                      :edit, :edit_students, :edit_time_week_cycles, :edit_activity_classes,
+                                      :update, :update_students, :update_time_week_cycles, :update_activity_classes,
+                                      :destroy]
   before_action :new_activity, only: :new
   before_action :set_select_collections, only: [:edit, :new, :update, :create]
   before_action :set_select_collections_students, only: [ :edit_students, :update_students ]
+  before_action :set_select_collections_time_week_cycles, only: [ :edit_time_week_cycles, :update_time_week_cycles ]
+  before_action :set_select_collections_activity_classes, only: [ :edit_activity_classes, :update_activity_classes ]
 
 
   # GET /activities
@@ -21,6 +26,12 @@ class ActivitiesController < ApplicationController
   def show_students
   end
 
+  def show_time_week_cycles
+  end
+
+  def show_activity_classes
+  end
+
   # GET /activities/new
   def new
   end
@@ -31,6 +42,12 @@ class ActivitiesController < ApplicationController
 
   # GET /teachers/1/edit_students
   def edit_students
+  end
+
+  def edit_time_week_cycles
+  end
+
+  def edit_activity_classes
   end
 
   # POST /activities
@@ -79,6 +96,32 @@ class ActivitiesController < ApplicationController
     end
   end
 
+  def update_time_week_cycles
+    respond_to do |format|
+      if @activity.update(activity_params)
+        format.html { redirect_to @activity, notice: 'Activity was successfully updated.' }
+        format.json { render :show_time_week_cycles, status: :ok, location: @activity }
+      else
+        add_model_error_to_flash @activity
+        format.html { render :edit_time_week_cycles }
+        format.json { render json: @activity.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def update_activity_classes
+    respond_to do |format|
+      if @activity.update(activity_params)
+        format.html { redirect_to @activity, notice: 'Activity was successfully updated.' }
+        format.json { render :show_activity_classes, status: :ok, location: @activity }
+      else
+        add_model_error_to_flash @activity
+        format.html { render :edit_activity_classes }
+        format.json { render json: @activity.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   # DELETE /activities/1
   # DELETE /activities/1.json
   def destroy
@@ -108,12 +151,22 @@ class ActivitiesController < ApplicationController
     @students = Student.all
   end
 
+  def set_select_collections_time_week_cycles
+  end
+
+  def set_select_collections_activity_classes
+  end
+
   # Never trust parameters from the scary internet, only allow the white list through.
     def activity_params
       params.require(:activity).permit( :name, :classification, :started_at, :ended_at, :default_price, :details, :school_id,
                                         student_activity_sign_ups_attributes: [ :id, :_destroy, :student_id,
                                                                                 :started_at, :ended_at,
                                                                                 :activity_discount, :payment_type ],
-                                        teacher_activities_attributes: [ :id, :_destroy, :teacher_id, :attendance_management, :collection_management, :teacher_in_charge ])
+                                        teacher_activities_attributes: [ :id, :_destroy, :teacher_id, :attendance_management,
+                                                                         :collection_management, :teacher_in_charge ],
+                                        time_week_cycles_attributes: [ :id, :_destroy, :activity_class_starts_at, :activity_class_ends_at,
+                                                                       :period_started_at, :period_ended_at, :week_day ],
+                                        activity_classes_attributes: [ :id, :_destroy, :started_at, :ended_at ] )
     end
 end

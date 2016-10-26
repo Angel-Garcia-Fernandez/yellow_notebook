@@ -10,6 +10,7 @@
 #  created_at               :datetime         not null
 #  updated_at               :datetime         not null
 #  activity_id              :integer          not null
+#  week_day                 :integer
 #
 
 require 'test_helper'

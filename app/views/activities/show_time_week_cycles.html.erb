@@ -1,0 +1,44 @@
+<%- model_class = TimeWeekCycle -%>
+<div class="page-header">
+  <h1><%=t '.title', default: model_class.model_name.human( count:2 ).titleize %></h1>
+  <h2>
+    <%= model_class.human_attribute_name(:activity).capitalize %>:
+    <%= @activity %>
+  </h2>
+</div>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th><%= model_class.human_attribute_name(:week_day).capitalize %></th>
+    <th><%= model_class.human_attribute_name(:activity_class_starts_at).capitalize %></th>
+    <th><%= model_class.human_attribute_name(:activity_class_ends_at).capitalize %></th>
+    <th><%= model_class.human_attribute_name(:period_started_at).capitalize %></th>
+    <th><%= model_class.human_attribute_name(:period_ended_at).capitalize %></th>
+  </tr>
+  <tbody>
+  <% @activity.time_week_cycles.each do |time_week_cycle| %>
+      <tr>
+        <td><%= model_class.human_enum_name :week_day, time_week_cycle.week_day %></td>
+        <td><%= time_format time_week_cycle.activity_class_starts_at %></td>
+        <td><%= time_format time_week_cycle.activity_class_ends_at %></td>
+        <td><%= date_format time_week_cycle.period_started_at %></td>
+        <td><%= date_format time_week_cycle.period_ended_at %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<div class="form-group">
+  <%= link_to t('.back', default: t("helpers.links.back")),
+              #:back,
+              activity_path( @activity),
+              class: 'btn btn-default'  %>
+  <%= link_to t('.edit_x', default: t("helpers.links.edit_x",
+                                      x: model_class.model_name.human(count: 2) )),
+              edit_time_week_cycles_activity_path(@activity),
+              class: 'btn btn-default' %>
+  <%#= link_to t('.edit_x', default: t("helpers.links.edit_x", #create classes from schedule - glyph calendar
+                                      x: model_class.model_name.human(count: 2) )),
+              edit_time_week_cycles_activity_path(@activity),
+              class: 'btn btn-default' %>
+</div>

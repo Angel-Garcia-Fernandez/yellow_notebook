@@ -17,15 +17,17 @@
 class Activity < ActiveRecord::Base
 
   belongs_to :school
+  has_many :time_week_cycles
   has_many :activity_classes
   has_many :student_activity_sign_ups
   has_many :students, through: :student_activity_sign_ups
-  has_many :time_week_cycles
   has_many :teacher_activities
   has_many :teachers, through: :teacher_activities
 
   accepts_nested_attributes_for :teacher_activities, allow_destroy: true, reject_if: proc { |attributes| attributes['teacher_id'].blank? }
   accepts_nested_attributes_for :student_activity_sign_ups, allow_destroy: true, reject_if: proc { |attributes| attributes['student_id'].blank? }
+  accepts_nested_attributes_for :time_week_cycles, allow_destroy: true#, reject_if: proc { |attributes| attributes['student_id'].blank? }
+  accepts_nested_attributes_for :activity_classes, allow_destroy: true#, reject_if: proc { |attributes| attributes['student_id'].blank? }
 
   validates_presence_of :name
   validates_uniqueness_of :name, scope: [:school]
@@ -33,7 +35,7 @@ class Activity < ActiveRecord::Base
   validates_associated :teacher_activities
   validate :end_after_start, if: :starts?
   validates_absence_of :ended_at, unless: :starts?
-  validates_associated :student_activity_sign_ups, :teacher_activities, :activity_classes
+  validates_associated :student_activity_sign_ups, :teacher_activities, :activity_classes, :time_week_cycles
 
 
   scope :starts, -> () { where.not( started_at: nil ) }
@@ -73,6 +75,10 @@ class Activity < ActiveRecord::Base
   def teacher_in_charge
     t = self.teacher_activities.teacher_in_charge.first
     t && t.teacher
+  end
+
+  def time_week_cycles?
+    self.time_week_cycles.any?
   end
 
   private

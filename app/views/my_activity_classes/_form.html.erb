@@ -7,23 +7,23 @@
       </div>
     </div>
     <div class="form-group">
-    <%= f.label :started_at, class: 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :started_at, class: 'datetimepicker text_field form-control', value: datetime_format( f.object.started_at ) %>
+      <%= f.label :started_at, class: 'control-label col-md-2' %>
+      <div class="col-md-10">
+        <%= f.text_field :started_at, class: 'datetimepicker text_field form-control', value: datetime_format( f.object.started_at ) %>
+      </div>
     </div>
-  </div>
     <div class="form-group">
-    <%= f.label :ended_at, class: 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :ended_at, class: 'datetimepicker text_field form-control', value: datetime_format( f.object.ended_at ) %>
+      <%= f.label :ended_at, class: 'control-label col-md-2' %>
+      <div class="col-md-10">
+        <%= f.text_field :ended_at, class: 'datetimepicker text_field form-control', value: datetime_format( f.object.ended_at ) %>
+      </div>
     </div>
-  </div>
 
-  <div class="form-group">
-    <div class='col-md-offset-2 col-md-10'>
-      <%= f.submit nil, class: 'btn btn-primary' %>
-      <%= link_to t('.cancel', default: t("helpers.links.cancel")),
-                  teacher_activity_classes_path( @teacher ), class: 'btn btn-default' %>
+    <div class="form-group">
+      <div class='col-md-offset-2 col-md-10'>
+        <%= f.submit nil, class: 'btn btn-primary' %>
+        <%= link_to t('.cancel', default: t("helpers.links.cancel")),
+                    teacher_activity_classes_path( @teacher ), class: 'btn btn-default' %>
+      </div>
     </div>
-  </div>
 <% end %>

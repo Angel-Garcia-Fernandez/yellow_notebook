@@ -10,6 +10,7 @@
 #  created_at               :datetime         not null
 #  updated_at               :datetime         not null
 #  activity_id              :integer          not null
+#  week_day                 :integer
 #
 
 class TimeWeekCycle < ActiveRecord::Base
@@ -22,6 +23,11 @@ class TimeWeekCycle < ActiveRecord::Base
   validates_presence_of :activity_class_ends_at, :activity_class_starts_at, :activity, :week_day
   validate :period_ended_after_start
   validates_inclusion_of :week_day, in: week_days.keys
+
+  def to_s
+    "#{ self.class.human_enum_name( :week_day, week_day ) } #{activity_class_starts_at.try(:strftime, '%H:%M')}-#{activity_class_ends_at.try(:strftime, '%H:%M')}"
+  end
+
 
   private
   # def activity_class_ends_after_start

@@ -30,6 +30,10 @@ es:
       student_class_datum:
         one: registro clase alumno
         other: lista de alumnos
+      time_week_cycle:
+        one: clase semanal
+        other: horario semanal
+
     attributes:
       user:
         id: nº identificación
@@ -167,7 +171,7 @@ es:
         week_days:
           sunday: domingo
           monday: lunes
-          tueday: martes
+          tuesday: martes
           wednesday: miércoles
           thursday: jueves
           friday: viernes

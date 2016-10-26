@@ -42,6 +42,16 @@ Rails.application.routes.draw do
   end
   resources :teacher_activities
   resources :activities do
+    get :show_time_week_cycles, on: :member
+    get :edit_time_week_cycles, on: :member
+    patch :update_time_week_cycles, on: :member
+    put :update_time_week_cycles, on: :member
+
+    get :show_activity_classes, on: :member
+    get :edit_activity_classes, on: :member
+    patch :update_activity_classes, on: :member
+    put :update_activity_classes, on: :member
+
     get :show_students, on: :member
     get :edit_students, on: :member
     patch :students, action: :update_students, on: :member
@@ -58,5 +68,5 @@ Rails.application.routes.draw do
 
   resources :activity_classes
   resources :student_class_data
-  resources :time_week_cycles
+  #resources :time_week_cycles
 end

@@ -4,18 +4,18 @@
 </div>
 <table class="table table-striped">
   <thead>
-    <tr>
-      <th><%= model_class.human_attribute_name(:activity_id).capitalize %></th>
-      <th><%= model_class.human_attribute_name(:week_day).capitalize %></th>
-      <th><%= model_class.human_attribute_name(:activity_class_starts_at).capitalize %></th>
-      <th><%= model_class.human_attribute_name(:activity_class_ends_at).capitalize %></th>
-      <th><%= model_class.human_attribute_name(:period_started_at).capitalize %></th>
-      <th><%= model_class.human_attribute_name(:period_ended_at).capitalize %></th>
-      <th><%=t '.actions', default: t("helpers.actions") %></th>
-    </tr>
+  <tr>
+    <th><%= model_class.human_attribute_name(:activity_id).capitalize %></th>
+    <th><%= model_class.human_attribute_name(:week_day).capitalize %></th>
+    <th><%= model_class.human_attribute_name(:activity_class_starts_at).capitalize %></th>
+    <th><%= model_class.human_attribute_name(:activity_class_ends_at).capitalize %></th>
+    <th><%= model_class.human_attribute_name(:period_started_at).capitalize %></th>
+    <th><%= model_class.human_attribute_name(:period_ended_at).capitalize %></th>
+    <th><%=t '.actions', default: t("helpers.actions") %></th>
+  </tr>
   </thead>
   <tbody>
-    <% @time_week_cycles.each do |time_week_cycle| %>
+  <% @time_week_cycles.each do |time_week_cycle| %>
       <tr>
         <td><%= time_week_cycle.activity %></td>
         <td><%= model_class.human_enum_name :week_day, time_week_cycle.week_day %></td>
@@ -25,17 +25,17 @@
         <td><%= date_format time_week_cycle.period_ended_at %></td>
         <td>
           <%= link_to time_week_cycle_path(time_week_cycle), class: 'btn btn-xs', title: "#{ t('.show', default: t('helpers.links.show')) }" do %>
-            <%= glyph 'info-sign' %>
+              <%= glyph 'info-sign' %>
           <%- end -%>
           <%= link_to edit_time_week_cycle_path(time_week_cycle), class: 'btn btn-xs', title: "#{ t('.edit', default: t('helpers.links.edit')) }" do %>
-            <%= glyph 'pencil' %>
+              <%= glyph 'pencil' %>
           <%- end -%>
           <%= link_to time_week_cycle_path(time_week_cycle), method: :delete, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'btn btn-xs', title: "#{ t('.destroy', default: t('helpers.links.destroy')) }" do %>
-            <%= glyph 'remove' %>
+              <%= glyph 'remove' %>
           <%- end -%>
         </td>
       </tr>
-    <% end %>
+  <% end %>
   </tbody>
 </table>
 

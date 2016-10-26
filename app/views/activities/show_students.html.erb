@@ -1,12 +1,15 @@
 <%- model_class = StudentActivitySignUp -%>
 <div class="page-header">
   <h1><%=t '.title', default: model_class.model_name.human( count:2 ).titleize %></h1>
+  <h2>
+    <%= model_class.human_attribute_name(:activity).capitalize %>:
+    <%= @activity %>
+  </h2>
 </div>
 <table class="table table-striped">
   <thead>
   <tr>
     <th><%= model_class.human_attribute_name(:student).capitalize %></th>
-    <th><%= model_class.human_attribute_name(:activity).capitalize %></th>
     <th><%= model_class.human_attribute_name(:payment_type).capitalize %></th>
     <th><%= model_class.human_attribute_name(:activity_discount).capitalize %></th>
     <th><%= model_class.human_attribute_name(:started_at).capitalize %></th>
@@ -18,10 +21,6 @@
         <td>
           <% student = student_activity_sign_up.student %>
           <%= link_to student, student_path( student ) %>
-        </td>
-        <td>
-          <% activity = student_activity_sign_up.activity %>
-          <%= link_to activity, activity_path( activity ) %>
         </td>
         <td><%= student_activity_sign_up.activity_discount %></td>
         <td><%= model_class.human_enum_name :payment_type, student_activity_sign_up.payment_type %></td>
