@@ -5,26 +5,24 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id).capitalize %></th>
+      <th><%= model_class.human_attribute_name(:activity_id).capitalize %></th>
+      <th><%= model_class.human_attribute_name(:week_day).capitalize %></th>
       <th><%= model_class.human_attribute_name(:activity_class_starts_at).capitalize %></th>
       <th><%= model_class.human_attribute_name(:activity_class_ends_at).capitalize %></th>
       <th><%= model_class.human_attribute_name(:period_started_at).capitalize %></th>
       <th><%= model_class.human_attribute_name(:period_ended_at).capitalize %></th>
-      <th><%= model_class.human_attribute_name(:activity_id).capitalize %></th>
-      <th><%= model_class.human_attribute_name(:created_at).capitalize %></th>
       <th><%=t '.actions', default: t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
     <% @time_week_cycles.each do |time_week_cycle| %>
       <tr>
-        <td><%= time_week_cycle.id %></td>
-          <td><%= time_week_cycle.activity_class_starts_at %></td>
-          <td><%= time_week_cycle.activity_class_ends_at %></td>
-          <td><%= time_week_cycle.period_started_at %></td>
-          <td><%= time_week_cycle.period_ended_at %></td>
-          <td><%= time_week_cycle.activity_id %></td>
-        <td><%=l time_week_cycle.created_at, format: :long %></td>
+        <td><%= time_week_cycle.activity %></td>
+        <td><%= model_class.human_enum_name :week_day, time_week_cycle.week_day %></td>
+        <td><%= time_format time_week_cycle.activity_class_starts_at %></td>
+        <td><%= time_format time_week_cycle.activity_class_ends_at %></td>
+        <td><%= date_format time_week_cycle.period_started_at %></td>
+        <td><%= date_format time_week_cycle.period_ended_at %></td>
         <td>
           <%= link_to time_week_cycle_path(time_week_cycle), class: 'btn btn-xs', title: "#{ t('.show', default: t('helpers.links.show')) }" do %>
             <%= glyph 'info-sign' %>

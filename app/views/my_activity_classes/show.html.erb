@@ -7,9 +7,9 @@
 <div class="fieldset">
   <dl>
       <dt class="label label-default"><%= model_class.human_attribute_name(:started_at).capitalize %></dt>
-      <dd><pre class="prettyprint"><%= @activity_class.started_at.try(:strftime,'%d/%m/%Y %H:%M') %></pre></dd>
+      <dd><pre class="prettyprint"><%= datetime_format @activity_class.started_at %></pre></dd>
       <dt class="label label-default"><%= model_class.human_attribute_name(:ended_at).capitalize %></dt>
-      <dd><pre class="prettyprint"><%= @activity_class.ended_at.try(:strftime,'%d/%m/%Y %H:%M') %></pre></dd>
+      <dd><pre class="prettyprint"><%= datetime_format @activity_class.ended_at %></pre></dd>
       <dt class="label label-default"><%= model_class.human_attribute_name(:activity_id).capitalize %></dt>
       <dd><pre class="prettyprint">
         <% activity = @activity_class.activity %>

@@ -10,7 +10,6 @@
       <th><%= model_class.human_attribute_name(:position).capitalize %></th>
       <th><%= model_class.human_attribute_name(:details).capitalize %></th>
       <th><%= model_class.human_attribute_name(:school_id).capitalize %></th>
-      <th><%= model_class.human_attribute_name(:created_at).capitalize %></th>
       <th><%=t '.actions', default: t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -22,7 +21,6 @@
           <td><%= school_representative.position %></td>
           <td><%= school_representative.details %></td>
           <td><%= school_representative.school_id %></td>
-        <td><%=l school_representative.created_at, format: :long %></td>
         <td>
           <%= link_to school_representative_path(school_representative), class: 'btn btn-xs', title: "#{ t('.show', default: t('helpers.links.show')) }" do %>
             <%= glyph 'info-sign' %>

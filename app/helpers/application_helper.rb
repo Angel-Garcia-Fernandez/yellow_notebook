@@ -21,4 +21,24 @@ module ApplicationHelper
                        selected: ( selected || collection.keys.first )
   end
 
+  def enum_humanize object, enum_symbol
+    model = object.class
+    key = object.send( enum_symbol )
+    #model.human_enum_name enum_symbol, key
+    model.send( :human_enum_name, enum_symbol, key )
+  end
+
+  def time_format date_time
+    date_time.try( :strftime, '%H:%M' )
+  end
+
+  def date_format date_time
+    date_time.try( :strftime, '%d/%m/%Y' )
+  end
+
+  def datetime_format date_time
+    #l date_time, format: long if date_time.present?
+    date_time.try(:strftime,'%d/%m/%Y %H:%M')
+  end
+
 end

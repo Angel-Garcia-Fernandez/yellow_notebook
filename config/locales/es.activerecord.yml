@@ -157,6 +157,21 @@ es:
           bank_transfer: transferencia
         activity: actividad
         student: alumno
+      time_week_cycle:
+        period_ended_at: comienzo de horario
+        period_started_at: fin de horario
+        activity_class_starts_at: hora comienzo
+        activity_class_ends_at: hora fin
+        activity: actividad
+        week_day: día de la semana
+        week_days:
+          sunday: domingo
+          monday: lunes
+          tueday: martes
+          wednesday: miércoles
+          thursday: jueves
+          friday: viernes
+          saturday: sábado
         
 
     errors:

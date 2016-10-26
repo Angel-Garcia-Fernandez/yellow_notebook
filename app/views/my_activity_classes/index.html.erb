@@ -17,8 +17,8 @@
     <% @activity_classes.each do |activity_class| %>
       <tr>
         <td><%= activity_class.activity %></td>
-          <td><%= activity_class.started_at.try(:strftime,'%d/%m/%Y %H:%M') %></td>
-          <td><%= activity_class.ended_at.try(:strftime,'%d/%m/%Y %H:%M') %></td>
+          <td><%= datetime_format activity_class.started_at %></td>
+          <td><%= datetime_format activity_class.ended_at %></td>
           <td><%= activity_class.number_of_students_signed %></td>
         <td>
           <%= link_to teacher_activity_class_path( @teacher, activity_class), class: 'btn btn-xs', title: "#{ t('.show', default: t('helpers.links.show')) }" do %>

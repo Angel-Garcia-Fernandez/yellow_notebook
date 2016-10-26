@@ -26,13 +26,13 @@
         <div class="form-group">
           <%= s.label :started_at, class: 'control-label col-md-2' %>
           <div class="col-md-10">
-            <%= s.text_field :started_at, class: 'datepicker text_field form-control', value: s.object.started_at.try(:strftime,'%d/%m/%Y') %>
+            <%= s.text_field :started_at, class: 'datepicker text_field form-control', value: date_format( s.object.started_at ) %>
           </div>
         </div>
         <div class="form-group">
           <%= s.label :ended_at, class: 'control-label col-md-2' %>
           <div class="col-md-10">
-            <%= s.text_field :ended_at, class: 'datepicker text_field form-control', value: s.object.ended_at.try(:strftime,'%d/%m/%Y') %>
+            <%= s.text_field :ended_at, class: 'datepicker text_field form-control', value: date_format( s.object.ended_at ) %>
           </div>
         </div>
         <div class="form-group">

@@ -15,7 +15,6 @@
       <th><%= model_class.human_attribute_name(:province).capitalize %></th>
       <th><%= model_class.human_attribute_name(:zip_code).capitalize %></th>
       <th><%= model_class.human_attribute_name(:student_id).capitalize %></th>
-      <th><%= model_class.human_attribute_name(:created_at).capitalize %></th>
       <th><%=t '.actions', default: t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -32,7 +31,6 @@
           <td><%= guardian.province %></td>
           <td><%= guardian.zip_code %></td>
           <td><%= guardian.student_id %></td>
-        <td><%=l guardian.created_at, format: :long %></td>
         <td>
           <%= link_to guardian_path(guardian), class: 'btn btn-xs', title: "#{ t('.show', default: t('helpers.links.show')) }" do %>
             <%= glyph 'info-sign' %>

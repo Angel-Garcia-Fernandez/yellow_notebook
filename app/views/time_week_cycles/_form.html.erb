@@ -1,40 +1,48 @@
 <%= form_for @time_week_cycle, html: { class: 'form-horizontal' } do |f| %>
-  <div class="form-group">
-    <%= f.label :activity_class_starts_at, class: 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :activity_class_starts_at, class: 'text_field form-control' %>
+    <div class="form-group">
+      <%= f.label :week_day, class: 'control-label col-md-2' %>
+      <div class="col-md-10">
+        <%= f.select :week_day, enum_options_for_select( f.object, :week_day ), { include_blank: true }, class: 'select-search text_field form-control' %>
+      </div>
     </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :activity_class_ends_at, class: 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :activity_class_ends_at, class: 'text_field form-control' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :period_started_at, class: 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :period_started_at, class: 'text_field form-control' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :period_ended_at, class: 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :period_ended_at, class: 'text_field form-control' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :activity_id, class: 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :activity_id, class: 'text_field form-control' %>
-    </div>
-  </div>
 
-  <div class="form-group">
-    <div class='col-md-offset-2 col-md-10'>
-      <%= f.submit nil, class: 'btn btn-primary' %>
-      <%= link_to t('.cancel', default: t("helpers.links.cancel")),
-                  time_week_cycles_path, class: 'btn btn-default' %>
+    <div class="form-group">
+      <%= f.label :activity_class_starts_at, class: 'control-label col-md-2' %>
+      <div class="col-md-10">
+        <%= f.text_field :activity_class_starts_at, class: 'timepicker text_field form-control' %>
+      </div>
     </div>
-  </div>
+    <div class="form-group">
+      <%= f.label :activity_class_ends_at, class: 'control-label col-md-2' %>
+      <div class="col-md-10">
+        <%= f.text_field :activity_class_ends_at, class: 'timepicker text_field form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :activity, class: 'control-label col-md-2' %>
+      <div class="col-md-10">
+        <%= f.collection_select :activity_id, @activities, :id, :to_s,  { include_blank: true }, {class: 'select-search form-control'} %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :period_started_at, class: 'control-label col-md-2' %>
+      <div class="col-md-10">
+        <%= f.text_field :period_started_at, class: 'datepicker text_field form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :period_ended_at, class: 'control-label col-md-2' %>
+      <div class="col-md-10">
+        <%= f.text_field :period_ended_at, class: 'datepicker text_field form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class='col-md-offset-2 col-md-10'>
+        <%= f.submit nil, class: 'btn btn-primary' %>
+        <%= link_to t('.cancel', default: t("helpers.links.cancel")),
+                    time_week_cycles_path, class: 'btn btn-default' %>
+      </div>
+    </div>
 <% end %>

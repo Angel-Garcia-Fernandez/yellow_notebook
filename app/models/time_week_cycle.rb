@@ -14,20 +14,24 @@
 
 class TimeWeekCycle < ActiveRecord::Base
 
+  include Enum_I18n
+  enum week_day: [ :sunday, :monday, :tuesday, :wednesday, :thursday, :friday, :saturday ]
+
   belongs_to :activity
 
-  validates_presence_of :activity_class_ends_at, :activity_class_starts_at, :activity
-  validate :activity_class_ends_after_start, :period_ended_after_start
+  validates_presence_of :activity_class_ends_at, :activity_class_starts_at, :activity, :week_day
+  validate :period_ended_after_start
+  validates_inclusion_of :week_day, in: week_days.keys
 
   private
-  def activity_class_ends_after_start
-    invalid = false
-    if activity_class_starts_at > activity_class_ends_at
-      errors.add( :activity_class_ends_at, :end_before_start )
-      invalid = true
-    end
-    invalid
-  end
+  # def activity_class_ends_after_start
+  #   invalid = false
+  #   if activity_class_starts_at > activity_class_ends_at
+  #     errors.add( :activity_class_ends_at, :end_before_start )
+  #     invalid = true
+  #   end
+  #   invalid
+  # end
 
   def period_ended_after_start
     invalid = false

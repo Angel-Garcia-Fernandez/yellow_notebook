@@ -27,8 +27,8 @@
         </td>
         <td><%= student_activity_sign_up.activity_discount %></td>
         <td><%= model_class.human_enum_name :payment_type, student_activity_sign_up.payment_type %></td>
-        <td><%=l( student_activity_sign_up.started_at, format: :long ) if student_activity_sign_up.started_at.present? %></td>
-        <td><%=l( student_activity_sign_up.ended_at, format: :long ) if student_activity_sign_up.ended_at.present? %></td>
+        <td><%= datetime_format student_activity_sign_up.started_at %></td>
+        <td><%= datetime_format student_activity_sign_up.ended_at %></td>
 
         <td>
           <%= link_to student_activity_sign_up_path(student_activity_sign_up), class: 'btn btn-xs', title: "#{ t('.show', default: t('helpers.links.show')) }" do %>

@@ -9,7 +9,6 @@
       <th><%= model_class.human_attribute_name(:started_at).capitalize %></th>
       <th><%= model_class.human_attribute_name(:ended_at).capitalize %></th>
       <th><%= model_class.human_attribute_name(:activity_id).capitalize %></th>
-      <th><%= model_class.human_attribute_name(:created_at).capitalize %></th>
       <th><%=t '.actions', default: t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -20,7 +19,6 @@
           <td><%= activity_class.started_at %></td>
           <td><%= activity_class.ended_at %></td>
           <td><%= activity_class.activity_id %></td>
-        <td><%=l activity_class.created_at, format: :long %></td>
         <td>
           <%= link_to activity_class_path(activity_class), class: 'btn btn-xs', title: "#{ t('.show', default: t('helpers.links.show')) }" do %>
             <%= glyph 'info-sign' %>

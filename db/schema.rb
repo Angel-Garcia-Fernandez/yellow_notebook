@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161016170120) do
+ActiveRecord::Schema.define(version: 20161026123848) do
 
   create_table "activities", force: :cascade do |t|
     t.string   "name",           limit: 255,                           null: false
@@ -182,6 +182,7 @@ ActiveRecord::Schema.define(version: 20161016170120) do
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
     t.integer  "activity_id",              limit: 4, null: false
+    t.integer  "week_day",                 limit: 1
   end
 
   add_index "time_week_cycles", ["activity_id"], name: "index_time_week_cycles_on_activity_id", using: :btree

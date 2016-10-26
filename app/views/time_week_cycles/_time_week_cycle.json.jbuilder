@@ -1,2 +1,2 @@
-json.extract! time_week_cycle, :id, :period_started_at, :period_ended_at, :activity_started_at, :activity_ended_at, :created_at, :updated_at
+json.extract! time_week_cycle, :id, :week_day, :period_started_at, :period_ended_at, :activity_started_at, :activity_ended_at, :created_at, :updated_at
 json.url time_week_cycle_url(time_week_cycle, format: :json)

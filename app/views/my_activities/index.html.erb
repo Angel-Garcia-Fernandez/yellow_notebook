@@ -26,8 +26,8 @@
           <%= link_to activity , show_activity_classes_teacher_activity_path( @teacher, activity ) %>
         </td>
         <td><%= boolean_glyph activity.on_going? %></td>
-        <td><%= activity.started_at.try(:strftime,'%d/%m/%Y') %></td>
-        <td><%= activity.ended_at.try(:strftime,'%d/%m/%Y') %></td>
+        <td><%= date_format activity.started_at %></td>
+        <td><%= date_format activity.ended_at %></td>
         <td>
           <% school = activity.school %>
           <% link_to school, school_path( school ) if school.present? %>
