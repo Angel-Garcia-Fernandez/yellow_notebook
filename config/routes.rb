@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
   resources :users do
     get :edit_password, on: :member
+    get :edit_teacher_user, on: :member
   end
   resources :schools
   resources :school_representatives

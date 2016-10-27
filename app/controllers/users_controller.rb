@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user, only: [ :edit, :edit_password, :update, :destroy]
+  before_action :set_user, only: [ :edit, :edit_password, :edit_teacher_user, :update, :destroy]
   before_action :set_select_collections, only: [:edit, :new, :update, :create]
 
 
@@ -30,6 +30,10 @@ class UsersController < ApplicationController
   # GET /users/1/edit_password
   def edit_password
     render :edit_password
+  end
+
+  def edit_teacher_user
+    render :edit_teacher_user
   end
 
   # POST /users

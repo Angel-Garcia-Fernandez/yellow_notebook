@@ -24,7 +24,7 @@ class ActivityClass < ActiveRecord::Base
   validate :end_after_start
   validate :activity_must_start
   validate :in_date?
-  validate :no_overlapping
+  #validate :no_overlapping
   validates_associated :student_class_data
 
   delegate :teacher_in_charge, to: :activity
@@ -46,11 +46,11 @@ class ActivityClass < ActiveRecord::Base
   end
 
   def attendance_completed?
-    self.student_class_data.count == self.student_class_data.attendance_complete.count
+    self.student_class_data.length == self.student_class_data.attendance_complete.length
   end
 
   def number_of_students_signed date = DateTime.current
-    StudentActivitySignUp.signed_for( self.activity, date ).count
+    StudentActivitySignUp.signed_for( self.activity, date ).length
   end
 
   def build_students_signed_up
