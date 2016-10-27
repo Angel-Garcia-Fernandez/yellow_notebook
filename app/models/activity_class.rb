@@ -33,7 +33,7 @@ class ActivityClass < ActiveRecord::Base
   scope :ends_after, -> ( date = DateTime.current ) { where( "activity_classes.ended_at >= ?", date ) }
   scope :attendance_incompleted, -> {
     joins( :student_class_data ).
-      merge( StudentClassDatum.attendance_incompleted )
+      merge( StudentClassDatum.where( activity_class: self ).attendance_incompleted )
   }
 
   scope :attendance_completed, -> {
