@@ -162,8 +162,8 @@ es:
         activity: actividad
         student: alumno
       time_week_cycle:
-        period_ended_at: comienzo de horario
-        period_started_at: fin de horario
+        period_started_at: comienzo vigencia de horario
+        period_ended_at: fin vigencia de horario
         activity_class_starts_at: hora comienzo
         activity_class_ends_at: hora fin
         activity: actividad

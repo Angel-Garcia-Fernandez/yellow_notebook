@@ -97,13 +97,13 @@ class ActivityClass < ActiveRecord::Base
   def no_overlapping
     invalid = false
     if started_at.present? and activity.present?
-      last_class_before = ActivityClass.where( activity: self.activity ).starts_before( self.ended_at ).order( :ended_at ).last
-      if last_class_before.present? and not last_class_before.ended_at > self.started_at
+      last_class_before = ActivityClass.where.not( id: self ).where( activity: self.activity ).starts_before( self.ended_at ).order( :ended_at ).last
+      if last_class_before.present? and not last_class_before.ended_at <= self.started_at
         errors.add( :started_at, :overlapped )
         invalid = true
       else
-        first_class_after = ActivityClass.where( activity: self.activity ).starts_before( self.started_at ).order( :started_at ).first
-        if first_class_after.present? and not first_class_after.started_at < self.ended_at
+        first_class_after = ActivityClass.where.not( id: self ).where( activity: self.activity ).ends_after( self.started_at ).order( :started_at ).first
+        if first_class_after.present? and not first_class_after.started_at <= self.ended_at
           errors.add(:ended_at, :overlapped )
           invalid = true
         end

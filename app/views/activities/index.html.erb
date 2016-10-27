@@ -15,6 +15,8 @@
     <th><%= model_class.human_attribute_name(:started_at).capitalize %></th>
     <th><%= model_class.human_attribute_name(:ended_at).capitalize %></th>
     <th><%= model_class.human_attribute_name(:default_price).capitalize %></th>
+    <th><%= child_model_class.human_attribute_name(:total_num_of_students).capitalize %></th>
+    <th><%= child_model_class.human_attribute_name(:total_num_of_classes).capitalize %></th>
     <th><%= model_class.human_attribute_name(:school).capitalize %></th>
     <th><%=t '.actions', default: t("helpers.actions") %></th>
   </tr>
@@ -31,6 +33,8 @@
         <td><%= date_format activity.started_at %></td>
         <td><%= date_format activity.ended_at %></td>
         <td><%= number_to_currency activity.default_price, unit: '€   ' %></td>
+        <td><%= activity.total_num_of_students %></td>
+        <td><%= activity.total_num_of_classes %></td>
         <td>
           <% school = activity.school %>
           <%= link_to school, school_path( school ) if school.present? %>

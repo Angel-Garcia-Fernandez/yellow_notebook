@@ -20,26 +20,26 @@
         <div class="form-group">
           <%= s.label :activity_class_starts_at, class: 'control-label col-md-2' %>
           <div class="col-md-10">
-            <%= s.text_field :activity_class_starts_at, class: 'timepicker text_field form-control' %>
+            <%= s.text_field :activity_class_starts_at, class: 'timepicker text_field form-control', value: time_format( s.object.activity_class_starts_at ) %>
           </div>
         </div>
         <div class="form-group">
           <%= s.label :activity_class_ends_at, class: 'control-label col-md-2' %>
           <div class="col-md-10">
-            <%= s.text_field :activity_class_ends_at, class: 'timepicker text_field form-control' %>
+            <%= s.text_field :activity_class_ends_at, class: 'timepicker text_field form-control', value: time_format( s.object.activity_class_ends_at ) %>
           </div>
         </div>
 
         <div class="form-group">
           <%= s.label :period_started_at, class: 'control-label col-md-2' %>
           <div class="col-md-10">
-            <%= s.text_field :period_started_at, class: 'datepicker text_field form-control' %>
+            <%= s.text_field :period_started_at, class: 'datepicker text_field form-control', value: date_format( s.object.period_started_at ) %>
           </div>
         </div>
         <div class="form-group">
           <%= s.label :period_ended_at, class: 'control-label col-md-2' %>
           <div class="col-md-10">
-            <%= s.text_field :period_ended_at, class: 'datepicker text_field form-control' %>
+            <%= s.text_field :period_ended_at, class: 'datepicker text_field form-control', value: date_format( s.object.period_ended_at ) %>
           </div>
         </div>
 
