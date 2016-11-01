@@ -53,12 +53,14 @@ Rails.application.routes.draw do
     patch :update_activity_classes, on: :member
     put :update_activity_classes, on: :member
 
+    put :create_activity_classes, on: :member
+    resources :activity_classes, only: :destroy, action: :destroy_activity_class, controller: :activities
+
     get :show_students, on: :member
     get :edit_students, on: :member
     patch :students, action: :update_students, on: :member
     put :students, action: :update_students, on: :member
 
-    put :create_activity_classes, on: :member
   end
   resources :student_activity_sign_ups
   resources :students do

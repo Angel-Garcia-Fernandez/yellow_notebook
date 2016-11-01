@@ -5,6 +5,7 @@ class ActivitiesController < ApplicationController
                                       :create_activity_classes,
                                       :update, :update_students, :update_time_week_cycles, :update_activity_classes,
                                       :destroy]
+  before_action :set_activity_class, only: :destroy_activity_class
   before_action :new_activity, only: :new
   before_action :set_select_collections, only: [:edit, :new, :update, :create]
   before_action :set_select_collections_students, only: [ :edit_students, :update_students ]
@@ -143,11 +144,24 @@ class ActivitiesController < ApplicationController
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_activity
-      @activity = Activity.find(params[:id])
+  def destroy_activity_class
+    @activity_class.destroy
+    respond_to do |format|
+      format.html { redirect_to show_activity_classes_activity_url( @activity ), notice: 'Activity Class was successfully destroyed.' }
+      format.json { head :no_content }
     end
+  end
+
+  private
+  # Use callbacks to share common setup or constraints between actions.
+  def set_activity
+    @activity = Activity.find(params[:id])
+  end
+
+  def set_activity_class
+    @activity = Activity.find( params[:activity_id] )
+    @activity_class = @activity.activity_classes.find( params[:id])
+  end
 
   def new_activity
     @activity = Activity.new
