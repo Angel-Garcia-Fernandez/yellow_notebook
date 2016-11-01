@@ -99,6 +99,7 @@ es:
         teacher_in_charge: tutor
         on_going: en curso
       activity_class:
+        ranged_time: horario
         activity: actividad
         activity_id: actividad
         started_at: día/hora comienzo

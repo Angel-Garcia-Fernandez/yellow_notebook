@@ -2,6 +2,7 @@ class ActivitiesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_activity, only: [:show, :show_students, :show_time_week_cycles, :show_activity_classes,
                                       :edit, :edit_students, :edit_time_week_cycles, :edit_activity_classes,
+                                      :create_activity_classes,
                                       :update, :update_students, :update_time_week_cycles, :update_activity_classes,
                                       :destroy]
   before_action :new_activity, only: :new
@@ -30,6 +31,7 @@ class ActivitiesController < ApplicationController
   end
 
   def show_activity_classes
+    @activity_classes = @activity.activity_classes.order started_at: :desc
   end
 
   # GET /activities/new
@@ -64,6 +66,15 @@ class ActivitiesController < ApplicationController
         format.html { render :new }
         format.json { render json: @activity.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def create_activity_classes
+    if @activity.create_classes_from_time_week_cycles
+      redirect_to @activity, notice: 'Activity was successfully created.'
+    else
+      add_model_error_to_flash @activity
+      render :show
     end
   end
 

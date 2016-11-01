@@ -81,6 +81,26 @@ class Activity < ActiveRecord::Base
     self.time_week_cycles.any?
   end
 
+  def create_classes_from_time_week_cycles
+    transaction do
+      if self.started_at.present? and self.ended_at.present?
+        self.time_week_cycles.each do |twc|
+          starting_time = twc.period_started_at.present? ? [self.started_at, twc.period_started_at].max : self.started_at
+          ending_time = twc.period_ended_at.present? ? [self.ended_at, twc.period_ended_at].min : self.ended_at
+
+          (starting_time..ending_time).to_a.select{ |k| k.wday == twc.week_day_number }.each do |d|
+            started_at = d.beginning_of_day.change hour: twc.activity_class_starts_at.hour, min: twc.activity_class_starts_at.min
+            ended_at = d.beginning_of_day.change hour: twc.activity_class_ends_at.hour, min: twc.activity_class_ends_at.min
+            if twc.activity_class_ends_at.seconds_since_midnight < twc.activity_class_starts_at.seconds_since_midnight
+              ended_at = ended_at.advance( days: 1 )
+            end
+            ActivityClass.find_or_create_by activity: self, started_at: started_at, ended_at: ended_at
+          end
+        end
+      end
+    end
+  end
+
   private
   def end_after_start
     invalid = false

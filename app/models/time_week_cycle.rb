@@ -28,6 +28,10 @@ class TimeWeekCycle < ActiveRecord::Base
     "#{ self.class.human_enum_name( :week_day, week_day ) } #{activity_class_starts_at.try(:strftime, '%H:%M')}-#{activity_class_ends_at.try(:strftime, '%H:%M')}"
   end
 
+  def week_day_number
+    TimeWeekCycle.week_days[ week_day ]
+  end
+
 
   private
   # def activity_class_ends_after_start

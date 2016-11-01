@@ -4,6 +4,7 @@ es:
     actions: "Acciones"
     links:
       add_x: "Añadir %{x}"
+      add_x_from_y: "Añadir %{x} a partir de %{y}"
       back: "Volver"
       cancel: "Cancelar"
       confirm: "¿Estás seguro?"

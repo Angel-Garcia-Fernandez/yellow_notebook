@@ -25,7 +25,7 @@ class ActivityClass < ActiveRecord::Base
   validate :activity_must_start
   validate :in_date?
   #validate :no_overlapping
-  validates_associated :student_class_data
+  #validates_associated :student_class_data
 
   delegate :teacher_in_charge, to: :activity
 
@@ -57,8 +57,9 @@ class ActivityClass < ActiveRecord::Base
     StudentActivitySignUp.signed_for( self.activity, self.started_at ).each do |s|
       if self.student_class_data.find_by( activity_class: self, student_activity_sign_up: s ).blank?
         #if self.student_class_data.find_by( student_activity_sign_up: s ).blank?
-        self.student_class_data.build( activity_class: self, student_activity_sign_up: s )
+        s = self.student_class_data.build( activity_class: self, student_activity_sign_up: s )
         #self.student_class_data.build( student_activity_sign_up: s )
+        puts( s.to_s )
       end
     end
   end

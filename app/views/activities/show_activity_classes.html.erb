@@ -9,15 +9,13 @@
 <table class="table table-striped">
   <thead>
   <tr>
-    <th><%= model_class.human_attribute_name(:started_at).capitalize %></th>
-    <th><%= model_class.human_attribute_name(:ended_at).capitalize %></th>
+    <th><%= model_class.human_attribute_name(:ranged_time).capitalize %></th>
     <th><%= model_class.human_attribute_name(:number_of_students_signed).capitalize %></th>
   </tr>
   <tbody>
-  <% @activity.activity_classes.each do |activity_class| %>
+  <% @activity_classes.each do |activity_class| %>
       <tr>
-        <td><%= datetime_format activity_class.started_at %></td>
-        <td><%= datetime_format activity_class.ended_at %></td>
+        <td><%= datetime_range_format activity_class.started_at, activity_class.ended_at %></td>
         <td><%= activity_class.number_of_students_signed %></td>
       </tr>
   <% end %>
