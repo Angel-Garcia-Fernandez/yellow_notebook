@@ -46,7 +46,7 @@ class ActivityClass < ActiveRecord::Base
   end
 
   def attendance_completed?
-    self.student_class_data.length == self.student_class_data.attendance_complete.length
+    self.student_class_data.length == self.student_class_data.attendance_completed.length
   end
 
   def number_of_students_signed date = DateTime.current

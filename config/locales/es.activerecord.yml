@@ -106,6 +106,7 @@ es:
         ended_at: día/hora fin
         student_class_data: lista de clase
         number_of_students_signed: alumnos apuntados
+        attendance_completed: lista pasada
       student_class_datum:
         activity: actividad
         activity_class: clase
