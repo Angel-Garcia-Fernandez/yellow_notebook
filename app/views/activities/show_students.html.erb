@@ -22,8 +22,8 @@
           <% student = student_activity_sign_up.student %>
           <%= link_to student, student_path( student ) %>
         </td>
-        <td><%= student_activity_sign_up.activity_discount %></td>
         <td><%= model_class.human_enum_name :payment_type, student_activity_sign_up.payment_type %></td>
+        <td><%= student_activity_sign_up.activity_discount %></td>
         <td><%= datetime_format student_activity_sign_up.started_at %></td>
         <td><%= datetime_format student_activity_sign_up.ended_at %></td>
       </tr>
