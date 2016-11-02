@@ -10,14 +10,15 @@ namespace :import_data do
     array_colegios = Array.new
 
     File.open( filename , "r").each_line do |line|
-      vector = line.split(';').map &:strip
-      #NIE;Nombre;Bon.;Subgrupo;Actividad;Estado;F. Inicio;F. Fin;Cuenta Bancaria;NIF TIT.;Titular;Teléfono;Domicilio;CENTRO ;MONITOR
+      ActiveRecord::Base.transaction do
+        vector = line.split(';').map &:strip
+        #NIE;Nombre;Bon.;Subgrupo;Actividad;Estado;F. Inicio;F. Fin;Cuenta Bancaria;NIF TIT.;Titular;Teléfono;Domicilio;CENTRO ;MONITOR
 
-      if vector[0].present? and vector[0] != "NIE"
+        if vector[0].present? and vector[0] != "NIE"
 
-        vector[13] = corregir_centro vector[13]
+          vector[13] = corregir_centro vector[13]
 
-        hash = {
+          hash = {
             nie: vector[0], #student.nic
             nombre: vector[1], #student.surname, student.name
             bon: vector[2], #student.default_discount / 100, #student_activity_sign_up.activity_discount / 100
@@ -33,57 +34,61 @@ namespace :import_data do
             domicilio: vector[12],#student.address
             centro: vector[13], #school.name
             monitor: vector[14] #teacher.name
-        }
+          }
 
-        student = Student.find_by nic: hash[:nie]
+          student = Student.find_by nic: hash[:nie]
 
-        if student.blank?
-          hash[:nombre] = hash[:nombre].split(', ')
-          name = hash[:nombre][1]
-          surname = hash[:nombre][0]
-          student = Student.new( nic: hash[:nie], name: name, surname: surname,  address: hash[:domicilio], phone_number: hash[:telefono],
-                                 iban: hash[:cuenta_bancaria], account_holder: hash[:titular], account_holder_nic: hash[:nif_titular] )
-          if not student.save
-            puts student.errors.messages
+          if student.blank?
+            hash[:nombre] = hash[:nombre].split(', ')
+            name = hash[:nombre][1]
+            surname = hash[:nombre][0]
+            student = Student.new( nic: hash[:nie], name: name, surname: surname,  address: hash[:domicilio], phone_number: hash[:telefono],
+                                   iban: hash[:cuenta_bancaria], account_holder: hash[:titular], account_holder_nic: hash[:nif_titular] )
+            # if not student.save
+            #   puts student.errors.messages
+            # end
+            student.save!
           end
 
+          school = School.find_by name: hash[:centro]
+
+          if school.blank?
+            school = School.new( name: hash[:centro])
+            # if not school.save
+            #   puts school.errors.messages
+            # end
+            school.save!
+            unless array_colegios.include? hash[:centro]
+              array_colegios << hash[:centro]
+            end
+          end
+
+          activity = Activity.find_by name: hash[:actividad], school: school
+          if activity.blank?
+            activity = Activity.new( name: hash[:actividad], school: school, classification: "#{hash[:subgrupo]} - CREADA AUTOMÁTICA" )
+            # if not activity.save
+            #   puts activity.errors.messages
+            # end
+            activity.save!
+            unless array_actividades.include? [ hash[:actividad], hash[:centro] ]
+              array_actividades << [ hash[:actividad], hash[:centro] ]
+            end
+          end
+
+          sign_up = StudentActivitySignUp.find_by activity: activity, student: student
+          if sign_up.blank?
+            sign_up = StudentActivitySignUp.new( activity: activity, student: student,
+                                                 started_at: hash[:f_inicio], ended_at: hash[:f_fin],
+                                                 activity_discount: hash[:bon].to_i/100 )
+            # if not sign_up.save
+            #   puts sign_up.errors.messages
+            # end
+            sign_up.save!
+          end
+
+        else
+          puts "línea en blanco"
         end
-
-        school = School.find_by name: hash[:centro]
-
-        if school.blank?
-          school = School.new( name: hash[:centro])
-          if not school.save
-            puts school.errors.messages
-          end
-          if not array_colegios.include? hash[:centro]
-            array_colegios << hash[:centro]
-          end
-        end
-
-        activity = Activity.find_by name: hash[:actividad], school: school
-        if activity.blank?
-          activity = Activity.new( name: hash[:actividad], school: school, classification: "#{hash[:subgrupo]} - CREADA AUTOMÁTICA" )
-          if not activity.save
-            puts activity.errors.messages
-          end
-          if not array_actividades.include? [ hash[:actividad], hash[:centro] ]
-            array_actividades << [ hash[:actividad], hash[:centro] ]
-          end
-        end
-
-        sign_up = StudentActivitySignUp.find_by activity: activity, student: student
-        if sign_up.blank?
-          sign_up = StudentActivitySignUp.new( activity: activity, student: student,
-                       started_at: hash[:f_inicio], ended_at: hash[:f_fin],
-                       activity_discount: hash[:bon].to_i/100 )
-          if not sign_up.save
-            puts sign_up.errors.messages
-          end
-        end
-
-      else
-        puts "línea en blanco"
       end
     end
 
