@@ -45,7 +45,7 @@ class TimeWeekCycle < ActiveRecord::Base
 
   def period_ended_after_start
     invalid = false
-    if period_started_at.present? and period_ended_at.present? and period_ended_at > period_started_at
+    if period_started_at.present? and period_ended_at.present? and not period_ended_at > period_started_at
       errors.add( :period_ended_at, :end_before_start )
       invalid = true
     end
