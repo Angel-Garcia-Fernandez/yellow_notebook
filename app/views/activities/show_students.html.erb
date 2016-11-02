@@ -16,7 +16,7 @@
     <th><%= model_class.human_attribute_name(:ended_at).capitalize %></th>  </tr>
   </thead>
   <tbody>
-  <% @activity.student_activity_sign_ups.each do |student_activity_sign_up| %>
+  <% @students.each do |student_activity_sign_up| %>
       <tr>
         <td>
           <% student = student_activity_sign_up.student %>

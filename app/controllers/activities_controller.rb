@@ -26,6 +26,7 @@ class ActivitiesController < ApplicationController
 
   # GET /activities/1/show_students
   def show_students
+    @students = @activity.student_activity_sign_ups.joins( :student ).merge( Student.order( :surname ) )
   end
 
   def show_time_week_cycles
