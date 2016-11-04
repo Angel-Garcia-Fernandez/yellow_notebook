@@ -63,6 +63,13 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update(user_params)
+        if params[:user][:password].present?
+          if current_user == @user
+            bypass_sign_in @user
+          else
+
+          end
+        end
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
