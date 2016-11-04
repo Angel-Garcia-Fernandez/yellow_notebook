@@ -40,7 +40,7 @@
 
 <div class="form-group">
 
-    <%= link_to t('.cancel', default: t("helpers.links.cancel")),
+    <%= link_to t('.back', default: t("helpers.links.back")),
                 show_activity_classes_teacher_activity_path( @teacher, @activity_class.activity ), class: 'btn btn-default' %>
     <%= link_to t("helpers.links.edit_x", x: model_class.model_name.human( count: 2 )),
                 edit_student_class_data_teacher_activity_class_path( @teacher, @activity_class ), class: 'btn btn-default' %>
