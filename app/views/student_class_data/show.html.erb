@@ -5,24 +5,26 @@
 
 <div class="fieldset">
   <dl>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:attended).capitalize %></dt>
-      <dd><pre class="prettyprint"><%= @student_class_datum.attended %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:paid).capitalize %></dt>
-      <dd><pre class="prettyprint"><%= @student_class_datum.paid %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:activity_class_id).capitalize %></dt>
-      <dd><pre class="prettyprint"><%= @student_class_datum.activity_class_id %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:student_activity_sign_up_id).capitalize %></dt>
-      <dd><pre class="prettyprint"><%= @student_class_datum.student_activity_sign_up_id %></pre></dd>
-  </dl>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:activity_class).capitalize %></dt>
+    <dd><pre class="prettyprint"><%= @student_class_datum.activity_class.try( :to_s, true ) %></pre></dd>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:activity).capitalize %></dt>
+    <dd><pre class="prettyprint"><%= @student_class_datum.activity %></pre></dd>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:student_activity_sign_up).capitalize %></dt>
+    <dd><pre class="prettyprint"><%= @student_class_datum.student_activity_sign_up.try( :student ) %></pre></dd>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:attended).capitalize %></dt>
+    <dd><pre class="prettyprint"><%= @student_class_datum.attended.humanize %></pre></dd>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:paid).capitalize %></dt>
+    <dd><pre class="prettyprint"><%= @student_class_datum.paid.humanize %></pre></dd>  </dl>
 </div>
 
 <div class="form-group">
   <%= link_to t('.back', default: t("helpers.links.back")),
-              student_class_data_path, class: 'btn btn-default'  %>
+              activity_activity_class_student_class_data_path( @activity, @activity_class ), class: 'btn btn-default'  %>
   <%= link_to t('.edit', default: t("helpers.links.edit")),
-              edit_student_class_datum_path(@student_class_datum), class: 'btn btn-default' %>
+              edit_activity_activity_class_student_class_datum_path( @activity, @activity_class, @student_class_datum ),
+              class: 'btn btn-default' %>
   <%= link_to t('.destroy', default: t("helpers.links.destroy")),
-              student_class_datum_path(@student_class_datum),
+              activity_activity_class_student_class_datum_path( @activity, @activity_class, @student_class_datum ),
               method: 'delete',
               data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) },
               class: 'btn btn-danger' %>

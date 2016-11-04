@@ -1,34 +1,43 @@
-<%= form_for @student_class_datum, html: { class: 'form-horizontal' } do |f| %>
-  <div class="form-group">
-    <%= f.label :attended, class: 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :attended, class: 'text_field form-control' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :paid, class: 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :paid, class: 'text_field form-control' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :activity_class_id, class: 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :activity_class_id, class: 'text_field form-control' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :student_activity_sign_up_id, class: 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :student_activity_sign_up_id, class: 'text_field form-control' %>
-    </div>
-  </div>
+<%= form_for [@activity, @activity_class, @student_class_datum], html: { class: 'form-horizontal' } do |f| %>
+    <dt class="label label-default"><%= f.object.class.human_attribute_name(:activity_class).capitalize %></dt>
+    <dd><pre class="prettyprint"><%= f.object.activity_class.try( :to_s, true ) %></pre></dd>
+    <dt class="label label-default"><%= f.object.class.human_attribute_name(:activity).capitalize %></dt>
+    <dd><pre class="prettyprint"><%= f.object.activity %></pre></dd>
+    <dt class="label label-default"><%= f.object.class.human_attribute_name(:student_activity_sign_up).capitalize %></dt>
+    <dd><pre class="prettyprint"><%= f.object.student_activity_sign_up.try( :student ) %></pre></dd>
+    <dt class="label label-default"><%= f.object.class.human_attribute_name(:paid).capitalize %></dt>
+    <dd><pre class="prettyprint"><%= f.object.paid.humanize %></pre></dd>
 
-  <div class="form-group">
-    <div class='col-md-offset-2 col-md-10'>
+    <div class="form-group">
+      <%= f.label :attended, class: 'control-label col-md-2' %>
+      <div class="col-md-10">
+        <%= f.check_box :attended, class: 'text_field form-control' %>
+      </div>
+    </div>
+    <!--<div class="form-group">-->
+    <!--<%#= f.label :paid, class: 'control-label col-md-2' %>-->
+    <!--<div class="col-md-10">-->
+    <!--<%#= f.check_box :paid, class: 'text_field form-control' %>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="form-group">-->
+    <!--<%#= f.label :activity_class_id, class: 'control-label col-md-2' %>-->
+    <!--<div class="col-md-10">-->
+    <!--<%#= f.text_field :activity_class_id, class: 'text_field form-control' %>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="form-group">-->
+    <!--<%#= f.label :student_activity_sign_up_id, class: 'control-label col-md-2' %>-->
+    <!--<div class="col-md-10">-->
+    <!--<%#= f.text_field :student_activity_sign_up_id, class: 'text_field form-control' %>-->
+    <!--</div>-->
+    <!--</div>-->
+
+    <div class="form-group">
       <%= f.submit nil, class: 'btn btn-primary' %>
       <%= link_to t('.cancel', default: t("helpers.links.cancel")),
-                  student_class_data_path, class: 'btn btn-default' %>
+                  activity_activity_class_student_class_data_path( @activity, @activity_class),
+                  class: 'btn btn-default' %>
+
     </div>
-  </div>
 <% end %>
