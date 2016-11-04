@@ -30,6 +30,7 @@ class ActivityClass < ActiveRecord::Base
   delegate :teacher_in_charge, to: :activity
 
   scope :starts_before, -> ( date = DateTime.current ) { where( "activity_classes.started_at <= ?", date ) }
+  scope :starts_after, -> ( date = DateTime.current ) { where( "activity_classes.started_at > ?", date ) }
   scope :ends_after, -> ( date = DateTime.current ) { where( "activity_classes.ended_at >= ?", date ) }
   scope :attendance_incompleted, -> {
     joins( :student_class_data ).

@@ -1,0 +1,1 @@
+json.array! @attendance_sumaries, partial: 'attendance_sumaries/attendance_sumary', as: :attendance_sumary

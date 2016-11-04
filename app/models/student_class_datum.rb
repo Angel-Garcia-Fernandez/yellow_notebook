@@ -35,7 +35,7 @@ class StudentClassDatum < ActiveRecord::Base
   def student_is_signed_for_class?
     invalid = false
     if self.student_activity_sign_up.present?
-      if not self.student_activity_sign_up.signed_for?( self.activity_class.started_at )
+      unless self.student_activity_sign_up.signed_for?( self.activity_class.started_at )
         errors.add( :activity_class, :student_is_not_signed_for_class )
         invalid = true
       end
