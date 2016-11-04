@@ -10,17 +10,18 @@ class AttendanceSumariesController < ApplicationController
 
   # GET /database_exploitations/get_attendance_summary
   def get_attendance_summary
-    @database_exploitation = DatabaseExploitation.new
+    @attendance_sumary = AttendanceSumary.new
   end
 
 
   # POST /database_exploitations/attendance_summary
   def attendance_summary
-    @database_exploitation = DatabaseExploitation.new(database_exploitation_params)
+    @attendance_sumary = AttendanceSumary.new(database_exploitation_params)
 
     if @database_exploitation.save
-      format.axlsx { render format: :axlsx,  @database_exploitation. }
+      format.axlsx { render format: :axlsx,  @attendance_sumary }
     else
+      add_model_error_to_flash @attendance_sumary
       format.html { render :get_attendance_summary }
     end
 
