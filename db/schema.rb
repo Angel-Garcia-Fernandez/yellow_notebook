@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161026123848) do
+ActiveRecord::Schema.define(version: 20161104203615) do
 
   create_table "activities", force: :cascade do |t|
     t.string   "name",           limit: 255,                           null: false
@@ -36,6 +36,15 @@ ActiveRecord::Schema.define(version: 20161026123848) do
   end
 
   add_index "activity_classes", ["activity_id"], name: "index_activity_classes_on_activity_id", using: :btree
+
+  create_table "attendance_summaries", id: false, force: :cascade do |t|
+    t.integer "activity_id",           limit: 4, default: 0, null: false
+    t.integer "school_id",             limit: 4, default: 0
+    t.integer "student_id",            limit: 4, default: 0, null: false
+    t.integer "student_class_data_id", limit: 4, default: 0
+    t.integer "activity_class_id",     limit: 4, default: 0, null: false
+    t.boolean "attended"
+  end
 
   create_table "guardians", force: :cascade do |t|
     t.string   "nic",          limit: 255, default: "", null: false

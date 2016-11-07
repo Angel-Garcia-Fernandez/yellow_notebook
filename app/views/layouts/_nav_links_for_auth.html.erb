@@ -1,6 +1,14 @@
 <% if user_signed_in? %>
     <% if current_user.admin? %>
         <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#"> <%= t('.database_exploition') %>
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><%= link_to t('.attendance_summary'), new_attendance_summary_path %></li>
+          </ul>
+        </li>
+        <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#"> <%= t('.admin') %>
             <span class="caret"></span>
           </a>

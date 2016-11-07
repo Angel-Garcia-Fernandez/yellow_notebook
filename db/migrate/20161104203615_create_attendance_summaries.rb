@@ -1,6 +1,6 @@
-class CreateAttendanceSumaries < ActiveRecord::Migration
+class CreateAttendanceSummaries < ActiveRecord::Migration
   def up
-    self.connection.execute %Q( CREATE OR REPLACE VIEW attendance_sumaries AS
+    self.connection.execute %Q( CREATE OR REPLACE VIEW attendance_summaries AS
             SELECT
               act.id as activity_id,
               sch.id as school_id,
@@ -13,13 +13,13 @@ class CreateAttendanceSumaries < ActiveRecord::Migration
               student_activity_sign_ups sig on sig.activity_id = act.id inner join
               students stu on sig.student_id = stu.id left join
               schools sch on act.school_id = sch.id inner join
-              activity_class cla on cla.activity_id = act.id left join
+              activity_classes cla on cla.activity_id = act.id left join
               student_class_data dat on sig.id = dat.student_activity_sign_up_id;
           )
   end
 
   def down
-    self.connection.execute "DROP VIEW IF EXISTS attendance_sumaries;"
+    self.connection.execute "DROP VIEW IF EXISTS attendance_summaries;"
   end
 
 end

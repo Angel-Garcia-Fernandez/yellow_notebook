@@ -24,6 +24,8 @@ es:
       title: 'El cuaderno amarillo'
       description: 'Aplicación para gestionar actividades de tiempo libre.'
     nav_links_for_auth:
+      database_exploition: 'Explotación BD'
+      attendance_summary: 'Resumen de asistencia'
       admin: 'Administración'
       users: 'Usuarios'
       teachers: 'Monitores'
@@ -52,3 +54,7 @@ es:
       completed: completadas
       incompleted: pendientes
       pending: por venir
+  attendance_summaries:
+    show:
+      #book_name: "resumen_asistencia-from%{time}"
+      worksheet_name: "resumen_asistencia"

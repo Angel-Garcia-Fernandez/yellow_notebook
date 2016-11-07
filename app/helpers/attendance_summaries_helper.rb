@@ -1,0 +1,2 @@
+module AttendanceSummariesHelper
+end

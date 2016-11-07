@@ -1,0 +1,18 @@
+model = AttendanceSummary
+wb = xlsx_package.workbook
+wb.add_worksheet(name: t( '.worksheet_name' ) ) do |sheet|
+    sheet.add_row [
+            model.human_attribute_name( :activity ),
+            model.human_attribute_name( :school ),
+            model.human_attribute_name( :student ),
+            model.human_attribute_name( :attendance_sum )
+    ]
+  @attendance_sum.each do |registry|
+    sheet.add_row [
+            registry.activity.try(:name),
+            registry.school,
+            registry.student,
+            registry.attendance_sum
+    ]
+  end
+end

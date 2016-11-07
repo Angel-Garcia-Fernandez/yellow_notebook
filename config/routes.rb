@@ -85,8 +85,6 @@ Rails.application.routes.draw do
   #resources :time_week_cycles
 
   # data_exploitation
-  resources :attendance_sumaries, only: [:index] do
-    post :attendance_summary
-    get :get_attendance_summary
+  resources :attendance_summaries, only: [ :new, :create, :show ] do
   end
 end

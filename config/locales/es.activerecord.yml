@@ -33,6 +33,8 @@ es:
       time_week_cycle:
         one: clase semanal
         other: horario semanal
+      attendance_summary:
+        one: resumen de asistencia
 
     attributes:
       user:
@@ -178,6 +180,13 @@ es:
           thursday: jueves
           friday: viernes
           saturday: sábado
+      attendance_summary:
+        activity: actividad
+        school: colegio
+        student: alumno
+        attendance_sum: suma asistencia
+        period_started_at: comienzo periodo
+        period_ended_at: fin periodo
         
 
     errors:

@@ -1,1 +1,0 @@
-json.partial! "attendance_sumaries/attendance_sumary", attendance_sumary: @attendance_sumary
