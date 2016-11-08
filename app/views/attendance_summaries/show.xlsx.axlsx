@@ -11,7 +11,7 @@ wb.add_worksheet(name: t( '.worksheet_name' ) ) do |sheet|
     sheet.add_row [
             registry.activity.try(:name),
             registry.school,
-            registry.student,
+            registry.student.try( :to_s, true ),
             registry.attendance_sum
     ]
   end

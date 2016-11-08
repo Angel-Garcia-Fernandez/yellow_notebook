@@ -36,6 +36,7 @@ server '82.223.70.61', user: 'rails_app', roles: %w{app db web}
 set :deploy_to, '/srv/ror/yellow_notebook/production'
 
 # Branch to deploy
+#set :branch, 'attendance_summary'
 set :branch, 'master'
 
 # Environment

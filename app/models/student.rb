@@ -46,8 +46,8 @@ class Student < ActiveRecord::Base
   validates_associated :student_activity_sign_ups
 
 
-  def to_s
-    "#{name} #{surname}"
+  def to_s surname_first = false
+    surname_first ? "#{surname}, #{name}" : "#{name} #{surname}"
   end
 
 end
