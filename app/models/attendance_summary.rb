@@ -15,7 +15,7 @@ class AttendanceSummary < ActiveRecord::Base
     merge_table = merge_table.starts_after( @period_started_at ) if @period_started_at.present?
     merge_table = merge_table.starts_before( @period_ended_at ) if @period_ended_at.present?
     AttendanceSummary.joins( :activity_class ).merge( merge_table ).
-      select( 'attendance_summaries.activity_id, attendance_summaries.school_id, attendance_summaries.student_id, sum(attendance_summaries.attended) as attendance_sum' ).
+      select( 'attendance_summaries.activity_id, attendance_summaries.school_id, attendance_summaries.student_id, sum(attendance_summaries.attended) as attendance_sum, count(attendance_summaries.activity_class_id) as activity_classes_count' ).
       group( :activity_id, :school_id, :student_id )
   end
 

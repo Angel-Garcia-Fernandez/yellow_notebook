@@ -185,6 +185,7 @@ es:
         school: colegio
         student: alumno
         attendance_sum: suma asistencia
+        activity_classes_count: número de clases
         period_started_at: comienzo periodo
         period_ended_at: fin periodo
         
