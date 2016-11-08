@@ -38,12 +38,13 @@ ActiveRecord::Schema.define(version: 20161104203615) do
   add_index "activity_classes", ["activity_id"], name: "index_activity_classes_on_activity_id", using: :btree
 
   create_table "attendance_summaries", id: false, force: :cascade do |t|
-    t.integer "activity_id",           limit: 4, default: 0, null: false
-    t.integer "school_id",             limit: 4, default: 0
-    t.integer "student_id",            limit: 4, default: 0, null: false
-    t.integer "student_class_data_id", limit: 4, default: 0
-    t.integer "activity_class_id",     limit: 4, default: 0, null: false
-    t.boolean "attended"
+    t.integer  "activity_id",           limit: 4, default: 0, null: false
+    t.integer  "school_id",             limit: 4, default: 0
+    t.integer  "student_id",            limit: 4, default: 0, null: false
+    t.integer  "student_class_data_id", limit: 4, default: 0, null: false
+    t.integer  "activity_class_id",     limit: 4, default: 0, null: false
+    t.datetime "class_started_at",                            null: false
+    t.boolean  "attended"
   end
 
   create_table "guardians", force: :cascade do |t|

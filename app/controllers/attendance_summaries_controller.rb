@@ -16,7 +16,7 @@ class AttendanceSummariesController < ApplicationController
       @attendance_summary = AttendanceSummary.new( attendance_summary_params )
 
       if @attendance_summary.valid?
-        @attendance_sum = @attendance_summary.group_for_attendance_sum#.eager_load( :activity, :school, :student )
+        @attendance_sum = @attendance_summary.in_period.group_for_attendance_sum#.eager_load( :activity, :school, :student )
         format.xlsx { render xlsx: 'show' } #, filename: I18n.t( '.bookname', time: I18n.l( DateTime.current ) }
       else
         add_model_error_to_flash @attendance_summary
