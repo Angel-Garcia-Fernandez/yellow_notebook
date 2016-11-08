@@ -10,7 +10,7 @@ class CreateAttendanceSummaries < ActiveRecord::Migration
               dat.attended
             from
               student_activity_sign_ups sig inner join
-              activities act inner on sig.activity_id = act.id inner join
+              activities act on sig.activity_id = act.id inner join
               students stu on sig.student_id = stu.id left join
               schools sch on act.school_id = sch.id inner join
               activity_classes cla on cla.activity_id = act.id inner join
