@@ -1,4 +1,5 @@
 <%- model_class = StudentClassDatum -%>
+<%- child_model_class = Student -%>
 <div class="page-header">
   <h1><%=t '.title', default: model_class.model_name.human( count:2 ).titleize %></h1>
   <h2>
@@ -11,6 +12,8 @@
   <thead>
   <tr>
     <th><%= model_class.human_attribute_name(:student_activity_sign_up).capitalize %></th>
+    <th><%= child_model_class.human_attribute_name(:scholar_phone_number).capitalize %></th>
+    <th><%= child_model_class.human_attribute_name(:phone_number).capitalize %></th>
     <th><%= model_class.human_attribute_name(:attended).capitalize %></th>
     <th><%= model_class.human_attribute_name(:paid).capitalize %></th>
     <th><%=t '.actions', default: t("helpers.actions") %></th>
@@ -20,6 +23,8 @@
   <% @activity_class.student_class_data.each do |student_class_datum| %>
       <tr>
         <td><%= student_class_datum.student_activity_sign_up.student %></td>
+        <td><%= student_class_datum.student.scholar_phone_number %></td>
+        <td><%= student_class_datum.student.phone_number %></td>
         <td><%= boolean_glyph student_class_datum.attended %></td>
         <td><%= boolean_glyph student_class_datum.paid %></td>
         <td>
