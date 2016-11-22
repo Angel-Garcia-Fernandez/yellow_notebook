@@ -37,6 +37,10 @@
   </tbody>
 </table>
 
-<%= link_to t('.new', default: t("helpers.links.new")),
+<%= paginate @activities, :theme => 'twitter-bootstrap-3' %>
+
+<div class="form-group">
+    <%= link_to t('.new', default: t("helpers.links.new")),
             new_school_path,
             class: 'btn btn-primary' %>
+</div>

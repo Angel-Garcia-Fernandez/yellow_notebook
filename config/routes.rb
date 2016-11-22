@@ -8,6 +8,12 @@ Rails.application.routes.draw do
   #root to: 'pages#about'
   root :to => 'high_voltage/pages#show', id: 'about'
 
+
+  #concerns
+  concern :paginatable do
+    get '(page/:page)', :action => :index, :on => :collection, :as => ''
+  end
+
   # web for authenticated users:
   devise_for :users, skip: :registration
   # as :user do
@@ -43,7 +49,7 @@ Rails.application.routes.draw do
   end
 
   #admin
-  resources :activities do
+  resources :activities, concerns: :paginatable do
     get :show_time_week_cycles, on: :member
     get :edit_time_week_cycles, on: :member
     patch :update_time_week_cycles, on: :member

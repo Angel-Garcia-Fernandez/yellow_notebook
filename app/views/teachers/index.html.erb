@@ -48,6 +48,10 @@
   </tbody>
 </table>
 
+<%= paginate @teachers, :theme => 'twitter-bootstrap-3' %>
+
+<div class="form-group">
 <%= link_to t('.new', default: t("helpers.links.new")),
             new_teacher_path,
             class: 'btn btn-primary' %>
+</div>

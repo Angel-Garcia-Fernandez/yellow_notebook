@@ -5,7 +5,7 @@ class SchoolsController < ApplicationController
   # GET /schools
   # GET /schools.json
   def index
-    @schools = School.all.order( :name )
+    @schools = School.all.order( :name ).page(params[:page])
   end
 
   # GET /schools/1

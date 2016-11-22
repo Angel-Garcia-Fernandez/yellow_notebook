@@ -9,7 +9,7 @@ class TeachersController < ApplicationController
   # GET /teachers
   # GET /teachers.json
   def index
-    @teachers = Teacher.all.order( :name )
+    @teachers = Teacher.all.order( :name ).page(params[:page])
   end
 
   # GET /teachers/1

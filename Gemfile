@@ -108,9 +108,12 @@ gem 'activerecord_any_of'
 # Paperclip for uploading files
 gem 'paperclip', '~> 5.1.0'
 
+# Pagination control
+gem 'kaminari'
+gem 'bootstrap-kaminari-views'
+
 # nested fields for form with has many
 gem 'nested_form_fields'
-
 
 # XLSX support
 gem 'axlsx_rails'
