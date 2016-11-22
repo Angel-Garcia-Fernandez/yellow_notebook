@@ -21,7 +21,7 @@
         </td>
         <td>
           <% activity = teacher_activity.activity %>
-          <%= link_to activity, activities_path( activity ) %>
+          <%= link_to activity, activity_path( activity ) %>
         </td>
         <td><%= boolean_glyph teacher_activity.attendance_management %></td>
         <td><%= boolean_glyph teacher_activity.collection_management %></td>
