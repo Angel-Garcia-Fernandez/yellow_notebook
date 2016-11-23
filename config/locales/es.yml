@@ -49,6 +49,9 @@ es:
       title: "Sobre cuaderno amarillo"
       welcome: "Bienvenido a cuaderno amarillo"
       body: "El administrador para actividades de tiempo libre."
+  templates:
+    search_input:
+      placeholder: Buscar
   my_activities:
     show_activity_classes:
       completed: completadas

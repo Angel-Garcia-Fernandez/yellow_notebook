@@ -12,6 +12,7 @@ function observers () {
     datepicker_observer();
     masks_observer();
     default_on_click();
+    search_btn_outside_form();
 };
 
 
