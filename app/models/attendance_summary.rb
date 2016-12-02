@@ -19,8 +19,8 @@ class AttendanceSummary < ActiveRecord::Base
   end
 
   scope :group_for_attendance_sum, -> {
-      select( 'attendance_summaries.activity_id, attendance_summaries.school_id, attendance_summaries.student_id, sum(attendance_summaries.attended) as attendance_sum, count(attendance_summaries.activity_class_id) as activity_classes_count' ).
-      group( :activity_id, :school_id, :student_id )
+      select( 'attendance_summaries.activity_id, attendance_summaries.school_id, attendance_summaries.student_activity_sign_up_id, attendance_summaries.student_id, sum(attendance_summaries.attended) as attendance_sum, count(attendance_summaries.activity_class_id) as activity_classes_count' ).
+      group( :activity_id, :school_id, :student_activity_sign_up, :student_id )
   }
 
   private
