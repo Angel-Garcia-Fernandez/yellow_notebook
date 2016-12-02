@@ -4,6 +4,7 @@ class AttendanceSummary < ActiveRecord::Base
   belongs_to :student
   belongs_to :student_class_datum
   belongs_to :activity_class
+  belongs_to :student_activity_sign_up
 
   attr_accessor :period_started_at, :period_ended_at
 

@@ -140,7 +140,7 @@ es:
         nic: DNI
         school: colegio
         default_discount: descuento normal
-        default_payment_type: tipo pago
+        default_payment_type: tipo pago por defecto
         default_payment_types:
           cash: efectivo
           bank_transfer: transferencia

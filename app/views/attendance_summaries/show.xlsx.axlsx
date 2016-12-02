@@ -1,5 +1,6 @@
 model = AttendanceSummary
 child_model = Student
+child_model_2 = StudentActivitySignUp
 wb = xlsx_package.workbook
 wb.add_worksheet(name: t( '.worksheet_name' ) ) do |sheet|
     sheet.add_row [
@@ -8,7 +9,9 @@ wb.add_worksheet(name: t( '.worksheet_name' ) ) do |sheet|
             model.human_attribute_name( :student ),
             model.human_attribute_name( :attendance_sum ),
             model.human_attribute_name( :activity_classes_count ),
-            child_model.human_attribute_name( :default_payment_type )
+            child_model.human_attribute_name( :default_payment_type ),
+            child_model_2.human_attribute_name( :payment_type ),
+            child_model_2.human_attribute_name( :activity_discount )
     ]
   @attendance_sum.each do |registry|
     sheet.add_row [
@@ -17,7 +20,9 @@ wb.add_worksheet(name: t( '.worksheet_name' ) ) do |sheet|
             registry.student.try( :to_s, true ),
             registry.attendance_sum,
             registry.activity_classes_count,
-            child_model.human_enum_name( :default_payment_type, registry.student.try( :default_payment_type ) )
+            child_model.human_enum_name( :default_payment_type, registry.student.try( :default_payment_type ) ),
+            child_model_2.human_enum_name( :payment_type, registry.student_activity_sign_up.try( :payment_type ) ),
+            registry.student_activity_sign_up.try( :activity_discount )
     ]
   end
 end
