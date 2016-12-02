@@ -79,7 +79,7 @@ namespace :import_data do
           if sign_up.blank?
             sign_up = StudentActivitySignUp.new( activity: activity, student: student,
                                                  started_at: hash[:f_inicio], ended_at: hash[:f_fin],
-                                                 activity_discount: hash[:bon].to_i/100 )
+                                                 activity_discount: hash[:bon].to_i/100.0 )
             # if not sign_up.save
             #   puts sign_up.errors.messages
             # end
