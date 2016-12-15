@@ -19,7 +19,7 @@ class StudentActivitySignUp < ActiveRecord::Base
 
   belongs_to :activity
   belongs_to :student
-  has_many :student_class_data
+  has_many :student_class_data, dependent: :destroy
 
   before_validation :build_student_class_data
 
