@@ -28,6 +28,7 @@ class Student < ActiveRecord::Base
   enum default_payment_type: [ :cash, :bank_transfer ]
 
   has_many :student_activity_sign_ups
+  has_many :student_class_data, through: :student_activity_sign_ups
   has_many :activities, through: :student_activity_sign_ups
   has_many :guardians
   has_many :account_details

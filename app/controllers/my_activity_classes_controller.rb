@@ -9,7 +9,7 @@ class MyActivityClassesController < ApplicationController
   # GET /activity_classes
   # GET /activity_classes.json
   def index
-    @activity_classes = ActivityClass.all
+    @activity_classes = ActivityClass.all.order started_at: :desc
   end
 
   # GET /activity_classes/1
@@ -18,7 +18,7 @@ class MyActivityClassesController < ApplicationController
   end
 
   def show_student_class_data
-
+    @students = @activity_class.student_class_data.joins( :student ).merge( Student.all.order( :surname ) )
   end
 
   # GET /activity_classes/new

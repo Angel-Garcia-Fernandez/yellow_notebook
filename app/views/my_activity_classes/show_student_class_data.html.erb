@@ -20,7 +20,7 @@
   </tr>
   </thead>
   <tbody>
-  <% @activity_class.student_class_data.each do |student_class_datum| %>
+  <% @students.each do |student_class_datum| %>
       <tr>
         <td><%= student_class_datum.student_activity_sign_up.student %></td>
         <td><%= student_class_datum.student.scholar_phone_number %></td>
