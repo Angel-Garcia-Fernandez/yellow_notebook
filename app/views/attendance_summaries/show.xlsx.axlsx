@@ -1,10 +1,12 @@
 model = AttendanceSummary
 child_model = Student
 child_model_2 = StudentActivitySignUp
+child_model_3 = TeacherActivity
 wb = xlsx_package.workbook
 wb.add_worksheet(name: t( '.worksheet_name' ) ) do |sheet|
     sheet.add_row [
             model.human_attribute_name( :activity ),
+            child_model_3.human_attribute_name( :teacher ),
             model.human_attribute_name( :school ),
             model.human_attribute_name( :student ),
             model.human_attribute_name( :attendance_sum ),
@@ -16,6 +18,7 @@ wb.add_worksheet(name: t( '.worksheet_name' ) ) do |sheet|
   @attendance_sum.each do |registry|
     sheet.add_row [
             registry.activity.try(:name),
+            registry.activity.try( :teachers ).try(:first).try(:to_s).try(:titleize),
             registry.school,
             registry.student.try( :to_s, true ),
             registry.attendance_sum,
