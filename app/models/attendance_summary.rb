@@ -4,6 +4,7 @@ class AttendanceSummary < ActiveRecord::Base
   belongs_to :student
   belongs_to :student_class_datum
   belongs_to :activity_class
+  belongs_to :student_activity_sign_up
 
   attr_accessor :period_started_at, :period_ended_at
 
@@ -18,8 +19,8 @@ class AttendanceSummary < ActiveRecord::Base
   end
 
   scope :group_for_attendance_sum, -> {
-      select( 'attendance_summaries.activity_id, attendance_summaries.school_id, attendance_summaries.student_id, sum(attendance_summaries.attended) as attendance_sum, count(attendance_summaries.activity_class_id) as activity_classes_count' ).
-      group( :activity_id, :school_id, :student_id )
+      select( 'attendance_summaries.activity_id, attendance_summaries.school_id, attendance_summaries.student_activity_sign_up_id, attendance_summaries.student_id, sum(attendance_summaries.attended) as attendance_sum, count(attendance_summaries.activity_class_id) as activity_classes_count' ).
+      group( :activity_id, :school_id, :student_activity_sign_up_id, :student_id )
   }
 
   private
