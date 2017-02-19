@@ -28,6 +28,7 @@
 
 class Teacher < ActiveRecord::Base
 
+  #Relations
   has_one :teacher_user
   has_one :user, through: :teacher_user
   has_many :teacher_activities
@@ -37,6 +38,7 @@ class Teacher < ActiveRecord::Base
   accepts_nested_attributes_for :teacher_user
   accepts_nested_attributes_for :teacher_activities, allow_destroy: true, reject_if: proc { |attributes| attributes['activity_id'].blank? }
 
+  #Validations
   has_attached_file :photo, styles: { medium: "300x300>", thumb: "100x100>" }#, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\z/
 
@@ -47,6 +49,12 @@ class Teacher < ActiveRecord::Base
                       :address, :town, :province, :zip_code, maximum: 255
   validates_associated :teacher_user
   validates_associated :teacher_activities
+
+  #Scopes
+  scope :name_like, -> ( name_string ) { where  'teachers.name like ?', "%#{name_string}%" }
+  scope :surname_like, -> ( surname_string ) { where  'teachers.surname like ?', "%#{surname_string}%" }
+  scope :fullname_like, -> ( fullname_string ) { where 'CONCAT(teachers.name, ' ', teachers.surname) like ?', "%#{fullname_string.gsub!(/\s+/,'%')}%" }
+  #scope :fullname_like, -> ( fullname_string ) { where 'CONCAT(teachers.name, ' ', teachers.surname) like ?', "%#{fullname_string}%" }
 
   def to_s
     "#{name} #{surname}"

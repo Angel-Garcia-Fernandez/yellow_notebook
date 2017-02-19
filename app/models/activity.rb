@@ -43,6 +43,19 @@ class Activity < ActiveRecord::Base
   scope :on_going, -> ( date = DateTime.current ) { starts.where( "activities.ended_at is null or activities.ended_at >= ?", date )}
   scope :teacher_in_charge, -> () { joins( :teacher_activities ).merge( TeacherActivity.teacher_in_charge ) }
 
+  scope :starts_before, -> ( date = DateTime.current ) { starts.where "activities.started_at <= ?", date }
+  scope :starts_after, -> ( date = DateTime.current ) { starts.where "activities.started_at => ?", date }
+  scope :ends_before, -> ( date = DateTime.current ) { starts.where "activities.ended_at <= ?", date }
+  scope :ends_after, -> ( date = DateTime.current ) { starts.where "activities.ended_at => ?", date }
+
+  scope :category_like, -> ( category_string ) { where 'activities.classification like ?', "%#{category_string}%" }
+  scope :name_like, -> ( name_string ) { where 'activities.name like ?', "%#{name_string}%" }
+  scope :teacher_like, -> ( teacher_string ) { joins( :teachers ).merge( Teacher.fullname_like teacher_string ) }
+  scope :teacher_is, -> ( teacher_id ) { joins( :teachers ).merge( Teacher.where id: teacher_id ) }
+  scope :school_like, -> ( school_string ) { joins( :schools ).merge( School.name_like school_string ) }
+  scope :school_is, -> ( school_id ) { joins( :schools ).merge( School.where id: school_id ) }
+
+
 
   def to_s
     "#{name} - #{classification} - #{school}"

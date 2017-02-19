@@ -1,23 +1,20 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <div class="input-group search-input" id="adv-search">
-        <input type="text" class="form-control" placeholder="Search for snippets" />
-        <div class="input-group-btn">
-          <div class="btn-group" role="group">
-            <div class="dropdown dropdown-lg">
-              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
-              <div class="dropdown-menu dropdown-menu-right" role="menu">
-                <%= form_tag activities_path, method: :get, class: "form-horizontal search-form", role: "form"  do %>
+      <%= form_tag activities_path, method: :get, class: "form-horizontal search-form", role: "form"  do %>
+          <div class="input-group search-input" id="adv-search">
+            <!-- # text_field_tag :general_search, class: "form-control", placeholder: t('activities.search_input.general_search') -->
+            <input type="text" class="form-control" placeholder="Search for snippets" />
+
+            <div class="input-group-btn">
+              <div class="btn-group" role="group">
+                <div class="dropdown dropdown-lg">
+                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
+
+                  <div class="dropdown-menu dropdown-menu-right" role="menu">
                     <div class="form-group">
-                      <label for="filter">Filter by</label>
-                      <select class="form-control">
-                        <option value="0" selected>All Snippets</option>
-                        <option value="1">Featured</option>
-                        <option value="2">Most popular</option>
-                        <option value="3">Top rated</option>
-                        <option value="4">Most commented</option>
-                      </select>
+                      <%= label_tag :classification_like   %>
+                      <%= text_field_tag :classification_like, params[:classification_like], { class: 'form-control' } %>
                     </div>
                     <div class="form-group">
                       <label for="contain">Author</label>
@@ -27,19 +24,26 @@
                       <label for="contain">Contains the words</label>
                       <input class="form-control" type="text" />
                     </div>
-                    <%= button_tag type: 'submit', class: "btn btn-primary" do %>
+                    <%= button_tag name: nil, type: 'submit', class: "btn btn-primary" do %>
                         <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                     <% end %>
+                  </div>
+                </div>
+                <%= button_tag name: nil, type: 'submit', class: "btn btn-primary" do %>
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                 <% end %>
               </div>
             </div>
-            <%= button_tag type: 'submit', class: "btn btn-primary search-btn-outside-form" do %>
-                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-            <% end %>
           </div>
-        </div>
-      </div>
+      <% end %>
     </div>
   </div>
-</div>
+  <div class="row">
+    <div class="col-md-12">
+      <%- params.keep_if { |k| [:classification_like, :name_like, :teacher_is, :school_is].include?( k ) }.each do |key, value| %>
+          <%= label_tag key   %>
+          <strong><%= value %></strong>
+    <%- end %>
+    </div>
+  </div>
 </div>

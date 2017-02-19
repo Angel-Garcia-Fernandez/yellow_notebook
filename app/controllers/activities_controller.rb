@@ -12,6 +12,8 @@ class ActivitiesController < ApplicationController
   before_action :set_select_collections_time_week_cycles, only: [ :edit_time_week_cycles, :update_time_week_cycles ]
   before_action :set_select_collections_activity_classes, only: [ :edit_activity_classes, :update_activity_classes ]
 
+  before_action :set_select_collections_search_input
+
 
   # GET /activities
   # GET /activities.json
@@ -181,6 +183,9 @@ class ActivitiesController < ApplicationController
   end
 
   def set_select_collections_activity_classes
+  end
+
+  def set_select_collections_search_input
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

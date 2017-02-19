@@ -16,12 +16,17 @@
 
 class School < ActiveRecord::Base
 
+  #Relations
   has_many :activities
   has_many :school_representatives
   has_many :students
 
+  #Validations
   validates_length_of :name, :address, :town, :province, :zip_code, :email, :phone, maximum: 255
   validates_presence_of :name
+
+  #Scopes
+  scope :name_like, -> ( name_string ) { where 'schools.name like ?', "%#{name_string}%" }
 
   def to_s large = false
     "#{name}#{" (#{town})" if town.present? and large }"

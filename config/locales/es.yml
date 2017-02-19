@@ -52,6 +52,14 @@ es:
   templates:
     search_input:
       placeholder: Buscar
+  activities:
+    search_input:
+      general_search: Buscar
+      name_like: Actividad
+      classification_like: Categoría
+      teacher_is: Profesor
+      school_is: Colegio
+
   my_activities:
     show_activity_classes:
       completed: completadas
