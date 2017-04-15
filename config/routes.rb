@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :xls_files
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -84,7 +85,18 @@ Rails.application.routes.draw do
   #resources :student_class_data
   #resources :time_week_cycles
 
+  resources :courses
+
   # data_exploitation
   resources :attendance_summaries, only: [ :new, :create, :show ] do
+  end
+
+  # data_feed
+  resources :xls_files do
+    match :download, on: :member, via: [:post, :get]
+    resources :parses do
+      resources :feedings, only: :create
+      resources :re_feedings, only: :create
+    end
   end
 end

@@ -18,6 +18,7 @@
     <th><%= child_model_class.human_attribute_name(:total_num_of_students).capitalize %></th>
     <th><%= child_model_class.human_attribute_name(:total_num_of_classes).capitalize %></th>
     <th><%= model_class.human_attribute_name(:school).capitalize %></th>
+    <th><%= model_class.human_attribute_name(:course).capitalize %></th>
     <th><%=t '.actions', default: t("helpers.actions") %></th>
   </tr>
   </thead>
@@ -39,6 +40,7 @@
           <% school = activity.school %>
           <%= link_to school, school_path( school ) if school.present? %>
         </td>
+        <td><%= activity.course %></td>
         <td>
           <%= link_to activity_path(activity), class: 'btn btn-xs', title: "#{ t('.show', default: t('helpers.links.show')) }" do %>
               <%= glyph 'info-sign' %>

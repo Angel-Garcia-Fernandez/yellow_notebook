@@ -24,6 +24,8 @@ es:
       title: 'El cuaderno amarillo'
       description: 'Aplicación para gestionar actividades de tiempo libre.'
     nav_links_for_auth:
+      database_feed: 'Alimentar BD'
+      import_xls_file: 'Importar EXCEL'
       database_exploition: 'Explotación BD'
       attendance_summary: 'Resumen de asistencia'
       admin: 'Administración'
@@ -31,6 +33,7 @@ es:
       teachers: 'Monitores'
       activities: 'Actividades'
       students: 'Alumnos'
+      courses: 'Cursos'
       schools: 'Colegios'
       management: 'Gestión'
       my_activities: 'Mis actividades'

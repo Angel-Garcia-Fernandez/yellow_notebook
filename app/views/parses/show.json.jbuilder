@@ -1,0 +1,1 @@
+json.partial! "parses/parse", parse: @parse

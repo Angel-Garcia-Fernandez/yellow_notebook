@@ -8,7 +8,13 @@ es:
       back: "Volver"
       cancel: "Cancelar"
       confirm: "¿Estás seguro?"
+      feeding_confirm: '¿Seguro desea empezar el proceso de alimentación?'
+      feeding: 'Alimentar BD'
+      re-feeding_confirm: '¿Seguro desea repetir el proceso de alimentación?'
+      re-feeding: 'Reintentar alimentar BD'
       destroy: "Borrar"
+      download: 'Descargar'
+      download_x: 'Descargar %{x}'
       edit: "Editar"
       edit_password: "Editar contraseña"
       edit_x: "Modificar %{x}"

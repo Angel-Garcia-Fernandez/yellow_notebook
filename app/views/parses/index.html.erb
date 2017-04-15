@@ -1,0 +1,64 @@
+<%- model_class = Parse -%>
+
+<div class="page-header">
+  <h1><%=t '.title', default: model_class.model_name.human( count:2 ).titleize %></h1>
+  <h2>
+    <%= model_class.human_attribute_name(:xls_file).capitalize %>:
+    <%= link_to @xls_file, @xls_file %>
+  </h2>
+</div>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th><%= model_class.human_attribute_name(:xls_file).capitalize %></th>
+    <th><%= model_class.human_attribute_name(:course).capitalize %></th>
+    <th><%= model_class.human_attribute_name(:csv_conversion_started_at).capitalize %></th>
+    <th><%= model_class.human_attribute_name(:csv_conversion_ended_at).capitalize %></th>
+    <th><%= model_class.human_attribute_name(:parsing_started_at).capitalize %></th>
+    <th><%= model_class.human_attribute_name(:parsing_ended_at).capitalize %></th>
+    <th><%= model_class.human_attribute_name(:status).capitalize %></th>
+    <th><%=t '.actions', default: t("helpers.actions") %></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @parses.each do |parse| %>
+      <tr>
+        <td>
+          <% xls_file = parse.xls_file %>
+          <%= link_to xls_file.to_s, xls_file_parse_path( xls_file, parse ) %>
+        </td>
+        <td><%= parse.course %></td>
+        <td><%= datetime_format parse.csv_conversion_started_at %></td>
+        <td><%= datetime_format parse.csv_conversion_ended_at %></td>
+        <td><%= datetime_format parse.parsing_started_at %></td>
+        <td><%= datetime_format parse.parsing_ended_at %></td>
+        <td><%= model_class.human_enum_name :status, parse.status %></td>
+
+        <td>
+          <%= link_to xls_file_parse_path( xls_file, parse), class: 'btn btn-xs', title: "#{ t('.show', default: t('helpers.links.show')) }" do %>
+              <%= glyph 'info-sign' %>
+          <%- end -%>
+          <%= link_to edit_xls_file_parse_path( xls_file, parse), class: 'btn btn-xs', title: "#{ t('.edit', default: t('helpers.links.edit')) }" do %>
+              <%= glyph 'pencil' %>
+          <%- end  if parse.initial? -%>
+          <%- if parse.initial?  -%>
+            <%= link_to xls_file_parse_feedings_path( xls_file, parse ), method: :post, data: { confirm: t('.feeding_confirm', default: t("helpers.links.feeding_confirm", default: 'Are you sure?')) }, class: 'btn btn-xs', title: "#{ t('.feeding', default: t('helpers.links.feeding')) }" do %>
+                <%= glyph 'play' %>
+            <%- end-%>
+          <%- else -%>
+            <%= link_to xls_file_parse_re_feedings_path( xls_file, parse ), method: :post, data: { confirm: t('.re-feeding_confirm', default: t("helpers.links.re-feeding_confirm", default: 'Are you sure?')) }, class: 'btn btn-xs', title: "#{ t('.re-feeding', default: t('helpers.links.re-feeding')) }" do %>
+                <%= glyph 'repeat' %>
+            <%- end -%>
+          <%- end -%>
+          <%= link_to xls_file_parse_path( xls_file, parse), method: :delete, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'btn btn-xs', title: "#{ t('.destroy', default: t('helpers.links.destroy')) }" do %>
+              <%= glyph 'remove' %>
+          <%- end -%>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', default: t("helpers.links.new")),
+            new_xls_file_parse_path( @xls_file ),
+            class: 'btn btn-primary' %>

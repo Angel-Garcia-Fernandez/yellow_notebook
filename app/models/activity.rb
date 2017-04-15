@@ -16,6 +16,8 @@
 
 class Activity < ActiveRecord::Base
 
+  #Relations
+  belongs_to :course
   belongs_to :school
   has_many :time_week_cycles
   has_many :activity_classes
@@ -29,8 +31,8 @@ class Activity < ActiveRecord::Base
   accepts_nested_attributes_for :time_week_cycles, allow_destroy: true#, reject_if: proc { |attributes| attributes['student_id'].blank? }
   accepts_nested_attributes_for :activity_classes, allow_destroy: true#, reject_if: proc { |attributes| attributes['student_id'].blank? }
 
-  validates_presence_of :name
-  validates_uniqueness_of :name, scope: [:school]
+  validates_presence_of :name, :school, :course
+  validates_uniqueness_of :name, scope: [:school_id, :course_id]
   validates_length_of :name, :classification, maximum: 255
   validates_associated :teacher_activities
   validate :end_after_start, if: :starts?
@@ -44,8 +46,8 @@ class Activity < ActiveRecord::Base
   scope :teacher_in_charge, -> () { joins( :teacher_activities ).merge( TeacherActivity.teacher_in_charge ) }
 
 
-  def to_s
-    "#{name} - #{classification} - #{school}"
+  def to_s large=true
+    large ? "#{name} - #{classification} - #{school} - #{course}" : "#{name}"
   end
 
   def starts?

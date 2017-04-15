@@ -1,0 +1,1 @@
+json.array! @xls_files, partial: 'xls_files/xls_file', as: :xls_file

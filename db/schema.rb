@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161202115212) do
+ActiveRecord::Schema.define(version: 20170415091303) do
 
   create_table "activities", force: :cascade do |t|
     t.string   "name",           limit: 255,                           null: false
@@ -23,8 +23,12 @@ ActiveRecord::Schema.define(version: 20161202115212) do
     t.datetime "created_at",                                           null: false
     t.datetime "updated_at",                                           null: false
     t.integer  "school_id",      limit: 4
+    t.integer  "course_id",      limit: 4
   end
 
+  add_index "activities", ["course_id"], name: "index_activities_on_course_id", using: :btree
+  add_index "activities", ["name"], name: "index_activities_on_name", using: :btree
+  add_index "activities", ["school_id", "course_id", "name"], name: "index_activities_on_school_id_and_course_id_and_name", unique: true, using: :btree
   add_index "activities", ["school_id"], name: "index_activities_on_school_id", using: :btree
 
   create_table "activity_classes", force: :cascade do |t|
@@ -48,6 +52,14 @@ ActiveRecord::Schema.define(version: 20161202115212) do
     t.boolean  "attended"
   end
 
+  create_table "courses", force: :cascade do |t|
+    t.string   "name",       limit: 255, null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "courses", ["name"], name: "index_courses_on_name", unique: true, using: :btree
+
   create_table "guardians", force: :cascade do |t|
     t.string   "nic",          limit: 255, default: "", null: false
     t.string   "name",         limit: 255, default: "", null: false
@@ -63,6 +75,33 @@ ActiveRecord::Schema.define(version: 20161202115212) do
   end
 
   add_index "guardians", ["student_id"], name: "index_guardians_on_student_id", using: :btree
+
+  create_table "parses", force: :cascade do |t|
+    t.text     "output",                    limit: 65535
+    t.integer  "status",                    limit: 4,     default: 0, null: false
+    t.datetime "csv_conversion_started_at"
+    t.datetime "csv_conversion_ended_at"
+    t.text     "parsed_csv",                limit: 65535
+    t.datetime "parsing_started_at"
+    t.datetime "parsing_ended_at"
+    t.datetime "created_at",                                          null: false
+    t.datetime "updated_at",                                          null: false
+    t.integer  "xls_file_id",               limit: 4
+    t.integer  "course_id",                 limit: 4
+  end
+
+  add_index "parses", ["course_id"], name: "index_parses_on_course_id", using: :btree
+  add_index "parses", ["xls_file_id"], name: "index_parses_on_xls_file_id", using: :btree
+
+  create_table "school_excel_names", force: :cascade do |t|
+    t.string   "name",       limit: 255, null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "school_id",  limit: 4
+  end
+
+  add_index "school_excel_names", ["name"], name: "index_school_excel_names_on_name", using: :btree
+  add_index "school_excel_names", ["school_id"], name: "index_school_excel_names_on_school_id", using: :btree
 
   create_table "school_representatives", force: :cascade do |t|
     t.string   "full_name",  limit: 255,   default: "", null: false
@@ -216,9 +255,22 @@ ActiveRecord::Schema.define(version: 20161202115212) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["login"], name: "index_users_on_login", unique: true, using: :btree
 
+  create_table "xls_files", force: :cascade do |t|
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.string   "file_file_name",    limit: 255
+    t.string   "file_content_type", limit: 255
+    t.integer  "file_file_size",    limit: 4
+    t.datetime "file_updated_at"
+  end
+
+  add_foreign_key "activities", "courses"
   add_foreign_key "activities", "schools"
   add_foreign_key "activity_classes", "activities"
   add_foreign_key "guardians", "students"
+  add_foreign_key "parses", "courses"
+  add_foreign_key "parses", "xls_files"
+  add_foreign_key "school_excel_names", "schools"
   add_foreign_key "school_representatives", "schools"
   add_foreign_key "student_activity_sign_ups", "activities"
   add_foreign_key "student_activity_sign_ups", "students"

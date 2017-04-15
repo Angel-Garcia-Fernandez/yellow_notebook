@@ -1,2 +1,0 @@
-module SchoolRepresentativesHelper
-end

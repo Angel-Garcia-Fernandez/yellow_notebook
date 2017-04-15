@@ -28,6 +28,8 @@
 
 class Teacher < ActiveRecord::Base
 
+  #Relations
+  has_many :courses, through: :activities, inverse_of: :teachers
   has_one :teacher_user
   has_one :user, through: :teacher_user
   has_many :teacher_activities

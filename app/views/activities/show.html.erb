@@ -33,6 +33,8 @@
       <% school = @activity.school %>
       <%= link_to school, school_path( school ) if school.present? %>
     </pre></dd>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:course).capitalize %></dt>
+    <dd><pre class="prettyprint"><%= @activity.course %></pre></dd>
   </dl>
 </div>
 

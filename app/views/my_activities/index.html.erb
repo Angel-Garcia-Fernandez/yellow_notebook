@@ -11,6 +11,7 @@
     <th><%= child_model_class.human_attribute_name(:started_at).capitalize %></th>
     <th><%= child_model_class.human_attribute_name(:ended_at).capitalize %></th>
     <th><%= child_model_class.human_attribute_name(:school).capitalize %></th>
+    <th><%= child_model_class.human_attribute_name(:course).capitalize %></th>
     <th><%= model_class.human_attribute_name(:attendance_management).capitalize %></th>
     <th><%= model_class.human_attribute_name(:collection_management).capitalize %></th>
     <th><%= child_model_class.human_attribute_name(:total_num_of_students).capitalize %></th>
@@ -23,21 +24,22 @@
       <tr>
         <td>
           <% activity = teacher_activity.activity %>
-          <%= link_to activity , show_activity_classes_teacher_activity_path( @teacher, activity ) %>
+          <%= link_to activity.to_s( false ) , show_activity_classes_teacher_activity_path( @teacher, activity ) %>
         </td>
         <td><%= boolean_glyph activity.on_going? %></td>
         <td><%= date_format activity.started_at %></td>
         <td><%= date_format activity.ended_at %></td>
         <td>
           <% school = activity.school %>
-          <% link_to school, school_path( school ) if school.present? %>
+          <%= link_to school, school_path( school ) if school.present? %>
         </td>
+        <td><%= activity.course %></td>
         <td><%= boolean_glyph teacher_activity.attendance_management %></td>
         <td><%= boolean_glyph teacher_activity.collection_management %></td>
         <td><%= activity.total_num_of_students %></td>
         <td><%= activity.total_num_of_classes %></td>
         <td>
-          <%= link_to show_activity_classes_teacher_activity_path( @teacher, activity ), class: 'btn btn-xs', title: "#{ t('helpers.links.show_x', x: ActivityClass) }"  do %>
+          <%= link_to show_activity_classes_teacher_activity_path( @teacher, activity ), class: 'btn btn-xs', title: "#{ t('helpers.links.show_x', x: ActivityClass.model_name.human(count: 2) ) }"  do %>
               <%= glyph 'time' %>
           <%- end -%>
         </td>

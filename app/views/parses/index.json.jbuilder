@@ -1,0 +1,1 @@
+json.array! @parses, partial: 'parses/parse', as: :parse

@@ -113,4 +113,9 @@ gem 'nested_form_fields'
 
 
 # XLSX support
-gem 'axlsx_rails'
+gem 'roo', '~> 2.7.0'
+gem 'roo-xls'
+gem 'rubyzip', '~> 1.1.0'
+gem 'axlsx', '2.1.0.pre'
+# gem 'axlsx_rails'
+#gem install acts_as_xlsx, git: 'https://github.com/straydogstudio/acts_as_xlsx'

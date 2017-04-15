@@ -3,24 +3,20 @@
 es:
   activerecord:
     models:
-      user:
-        one: usuario
-        other: usuarios
-      teacher:
-        one: monitor
-        other: monitores
       activity:
         one: actividad
         other: actividades
       activity_class:
         one: clase
         other: clases
-      teacher_activity:
-        one: asignación de actividad
-        other: asignaciones de actividad
-      school:
-        one: colegio
-        other: colegios
+      attendance_summary:
+        one: resumen de asistencia
+      course:
+        one: curso
+        other: cursos
+      parse:
+        one: proceso de alimentación
+        other: procesos de alimentación
       student:
         one: alumno
         other: alumnos
@@ -30,62 +26,30 @@ es:
       student_class_datum:
         one: registro clase alumno
         other: lista de alumnos
+      school:
+        one: colegio
+        other: colegios
+      teacher_activity:
+        one: asignación de actividad
+        other: asignaciones de actividad
+      teacher:
+        one: monitor
+        other: monitores
       time_week_cycle:
         one: clase semanal
         other: horario semanal
-      attendance_summary:
-        one: resumen de asistencia
+      user:
+        one: usuario
+        other: usuarios
+      xls_file:
+        one: fichero excel
+        other: ficheros excel
 
     attributes:
-      user:
-        id: nº identificación
-        login: login
-        email: correo
-        password: contraseña
-        password_confirmation: confirmar contraseña
-        remember_created_at: fecha de recordarme
-        sign_in_count: veces logueado
-        current_sign_in_at: fecha último logueo
-        last_sign_in_at: fecha logueo anterior
-        current_sign_in_ip: ip último logueo
-        last_sign_in_ip: ip logueo anterior
-        created_at: fecha creación
-        updated_at: fecha actualización
-        teacher_user: monitor
-        teacher: monitor
-        role: perfil
-        roles:
-          standard: normal
-          admin: administrador
-      teacher:
-        id: nº identificación
-        name: nombre
-        surname: apellidos
-        work_email: correo trabajo
-        nic: DNI
-        default_attendance_management: asistencia
-        default_collection_management: cobros
-        mobile_phone_number: móvil
-        phone_number: teléfono
-        address: dirección
-        town: municipio
-        province: provincia
-        zip_code: C.P.
-        iban: IBAN
-        photo: foto
-        studies: estudios
-        details: detalles
-        created_at: fecha creación
-        updated_at: fecha actualización
-        teacher_user: usuario
-        user: usuario
-        activities: actividades
-      teacher_user:
-        user: usuario
-        teacher: monitor
       activity:
         id: nº identificación
         code: código
+        course: curso
         name: nombre
         classification: categoría
         started_at: fecha comienzo
@@ -109,19 +73,34 @@ es:
         student_class_data: lista de clase
         number_of_students_signed: alumnos apuntados
         attendance_completed: lista pasada
-      student_class_datum:
+      attendance_summary:
         activity: actividad
-        activity_class: clase
-        attended: asistencia
-        paid: pago
-        student_activity_sign_up: inscripción
+        school: colegio
         student: alumno
-      teacher_activity:
-        teacher: monitor
-        activity: actividad
-        teacher_in_charge: tutor
-        attendance_management: asistencia
-        collection_management: cobros
+        attendance_sum: suma asistencia
+        activity_classes_count: número de clases
+        period_started_at: comienzo periodo
+        period_ended_at: fin periodo
+      course:
+        name: nombre
+      parse:
+        xls_file: fichero excel
+        output: texto de respuesta
+        status: estado
+        course: curso
+        statuses:
+          initial: inicial
+          converting: haciendo conversión
+          convert_succeed: conversión correcta
+          convert_failed: conversión fallida
+          parsing: alimentando
+          parse_succeed: alimento correcto
+          parse_failed: alimento fallido
+        csv_conversion_started_at: inicio conversión
+        csv_conversion_ended_at: fin conversión
+        parsed_csv: conversión csv
+        parsing_started_at: inicio alimento
+        parsing_ended_at: fin alimento
       school:
         id: nº identificación
         name: nombre
@@ -165,6 +144,45 @@ es:
           bank_transfer: transferencia
         activity: actividad
         student: alumno
+      teacher:
+        id: nº identificación
+        name: nombre
+        surname: apellidos
+        work_email: correo trabajo
+        nic: DNI
+        default_attendance_management: asistencia
+        default_collection_management: cobros
+        mobile_phone_number: móvil
+        phone_number: teléfono
+        address: dirección
+        town: municipio
+        province: provincia
+        zip_code: C.P.
+        iban: IBAN
+        photo: foto
+        studies: estudios
+        details: detalles
+        created_at: fecha creación
+        updated_at: fecha actualización
+        teacher_user: usuario
+        user: usuario
+        activities: actividades
+      teacher_user:
+        user: usuario
+        teacher: monitor
+      student_class_datum:
+        activity: actividad
+        activity_class: clase
+        attended: asistencia
+        paid: pago
+        student_activity_sign_up: inscripción
+        student: alumno
+      teacher_activity:
+        teacher: monitor
+        activity: actividad
+        teacher_in_charge: tutor
+        attendance_management: asistencia
+        collection_management: cobros
       time_week_cycle:
         period_started_at: comienzo vigencia de horario
         period_ended_at: fin vigencia de horario
@@ -180,15 +198,33 @@ es:
           thursday: jueves
           friday: viernes
           saturday: sábado
-      attendance_summary:
-        activity: actividad
-        school: colegio
-        student: alumno
-        attendance_sum: suma asistencia
-        activity_classes_count: número de clases
-        period_started_at: comienzo periodo
-        period_ended_at: fin periodo
-        
+      user:
+        id: nº identificación
+        login: login
+        email: correo
+        password: contraseña
+        password_confirmation: confirmar contraseña
+        remember_created_at: fecha de recordarme
+        sign_in_count: veces logueado
+        current_sign_in_at: fecha último logueo
+        last_sign_in_at: fecha logueo anterior
+        current_sign_in_ip: ip último logueo
+        last_sign_in_ip: ip logueo anterior
+        created_at: fecha creación
+        updated_at: fecha actualización
+        teacher_user: monitor
+        teacher: monitor
+        role: perfil
+        roles:
+          standard: normal
+          admin: administrador
+      xls_file:
+        file: fichero excel
+        file_file_name: nombre fichero
+        file_file_size: tamaño fichero
+        file_content_type: tipo fichero
+        file_updated_at: fecha actualización fichero
+        file_content: contenido fichero
 
     errors:
       models:

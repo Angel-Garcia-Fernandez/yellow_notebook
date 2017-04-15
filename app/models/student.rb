@@ -27,6 +27,7 @@ class Student < ActiveRecord::Base
   include Enum_I18n
   enum default_payment_type: [ :cash, :bank_transfer ]
 
+  has_many :courses, through: :activities, inverse_of: :students
   has_many :student_activity_sign_ups
   has_many :student_class_data, through: :student_activity_sign_ups
   has_many :activities, through: :student_activity_sign_ups

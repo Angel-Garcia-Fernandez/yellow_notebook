@@ -16,12 +16,19 @@
 
 class School < ActiveRecord::Base
 
+  #Relations
   has_many :activities
   has_many :school_representatives
   has_many :students
+  has_many :courses, through: :activities, inverse_of: :schools
+  has_many :school_excel_names
 
+  accepts_nested_attributes_for :school_excel_names
+
+  #Validations
   validates_length_of :name, :address, :town, :province, :zip_code, :email, :phone, maximum: 255
   validates_presence_of :name
+  validates_associated :school_excel_names
 
   def to_s large = false
     "#{name}#{" (#{town})" if town.present? and large }"
