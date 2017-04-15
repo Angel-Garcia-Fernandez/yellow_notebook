@@ -1,5 +1,6 @@
 class FeedingsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_xls_file
   before_action :set_parse
 
   # POST /parses
@@ -25,4 +26,7 @@ class FeedingsController < ApplicationController
     @parse = Parse.find(params[:parse_id])
   end
 
+  def set_xls_file
+    @xls_file = XlsFile.find params[ :xls_file_id ]
+  end
 end

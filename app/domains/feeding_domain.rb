@@ -126,7 +126,7 @@ module FeedingDomain
             #   puts sign_up.errors.messages
             # end
             sign_up.save!
-            array_apuntados << [ hash[:actividad], hash[:colegio], hash[:nie] ]
+            array_apuntados << [ hash[:actividad], hash[:centro], hash[:nie] ]
           end
 
         # else
