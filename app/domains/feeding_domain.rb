@@ -34,7 +34,7 @@ module FeedingDomain
       parse.save!
     end
 
-    parse.output += "Parsing starting time #{DatetimeDomain.datetime_format( parse.parsing_started_at  )} \n"
+    parse.output += "Parsing starting time #{DatetimeDomain.datetime_format( parse.parsing_started_at  )} \n\n"
     parse.save
 
     feeding_output = String.new
@@ -45,6 +45,7 @@ module FeedingDomain
       parse.save!
     end
 
+    parse.output += feeding_output + "\n\n"
     parse.output += "Parsing ending time #{DatetimeDomain.datetime_format( parse.parsing_ended_at  )} \n"
     parse.save
 
