@@ -1,6 +1,7 @@
 class ReFeedingsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_parse
+  before_action :set_xls_file
 
   # POST /parses
   # POST /parses.json
@@ -26,4 +27,7 @@ class ReFeedingsController < ApplicationController
     @parse = Parse.new course: @orig_parse.course, xls_file: @orig_parse.xls_file
   end
 
+  def set_xls_file
+    @xls_file = XlsFile.find( params[:xls_file])
+  end
 end
