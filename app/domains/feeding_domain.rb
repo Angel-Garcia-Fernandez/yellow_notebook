@@ -31,8 +31,10 @@ module FeedingDomain
     end
 
     output << DatetimeDomain.datetime_format( parse.csv_conversion_started_at ) + '\n'
-    feed_db( spreadsheet, parse )
+    output << feed_db( spreadsheet, parse )
 
+    parse.output = output
+    parse.save
   end
 
   def open_spreadsheet path
@@ -155,7 +157,7 @@ module FeedingDomain
 
     array_apuntados.each { |x|  output << "#{x}\n" }
 
-    parse.output = output
+    output
   end
 
 end

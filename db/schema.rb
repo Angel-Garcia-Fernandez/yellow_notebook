@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170415091303) do
+ActiveRecord::Schema.define(version: 20170514115032) do
 
   create_table "activities", force: :cascade do |t|
     t.string   "name",           limit: 255,                           null: false
@@ -77,15 +77,15 @@ ActiveRecord::Schema.define(version: 20170415091303) do
   add_index "guardians", ["student_id"], name: "index_guardians_on_student_id", using: :btree
 
   create_table "parses", force: :cascade do |t|
-    t.text     "output",                    limit: 65535
-    t.integer  "status",                    limit: 4,     default: 0, null: false
+    t.text     "output",                    limit: 16777215
+    t.integer  "status",                    limit: 4,        default: 0, null: false
     t.datetime "csv_conversion_started_at"
     t.datetime "csv_conversion_ended_at"
     t.text     "parsed_csv",                limit: 65535
     t.datetime "parsing_started_at"
     t.datetime "parsing_ended_at"
-    t.datetime "created_at",                                          null: false
-    t.datetime "updated_at",                                          null: false
+    t.datetime "created_at",                                             null: false
+    t.datetime "updated_at",                                             null: false
     t.integer  "xls_file_id",               limit: 4
     t.integer  "course_id",                 limit: 4
   end
