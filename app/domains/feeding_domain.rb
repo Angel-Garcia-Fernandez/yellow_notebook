@@ -3,6 +3,9 @@ module FeedingDomain
   module_function
 
   def feed parse
+
+    parse.output = String.new
+
     ActiveRecord::Base.transaction do
       parse.status = :converting
       parse.csv_conversion_started_at = Time.current
