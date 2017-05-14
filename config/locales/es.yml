@@ -25,7 +25,7 @@ es:
       description: 'Aplicación para gestionar actividades de tiempo libre.'
     nav_links_for_auth:
       database_feed: 'Alimentar BD'
-      import_xls_file: 'Importar Fichero EXCELL'
+      import_xls_file: 'Ficheros EXCEL'
       database_exploition: 'Explotación BD'
       attendance_summary: 'Resumen de asistencia'
       admin: 'Administración'
