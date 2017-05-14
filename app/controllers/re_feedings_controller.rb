@@ -1,7 +1,6 @@
 class ReFeedingsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_parse
-  before_action :set_xls_file
 
   # POST /parses
   # POST /parses.json
@@ -10,7 +9,7 @@ class ReFeedingsController < ApplicationController
 
     respond_to do |format|
       if @parse.save
-        format.html { redirect_to xls_file_parse_path( @xls_file, @parse ), notice: 'FeedingProcess was successfully created.' }
+        format.html { redirect_to xls_file_parse_path( @parse.xls_file, @parse ), notice: 'FeedingProcess was successfully created.' }
         format.json { render xls_file_parse_path( @parse.xls_file, @parse ), status: :updated, location: @parse }
       else
         add_model_error_to_flash @parse
@@ -27,7 +26,4 @@ class ReFeedingsController < ApplicationController
     @parse = Parse.new course: @orig_parse.course, xls_file: @orig_parse.xls_file
   end
 
-  def set_xls_file
-    @xls_file = XlsFile.find( params[:xls_file])
-  end
 end
