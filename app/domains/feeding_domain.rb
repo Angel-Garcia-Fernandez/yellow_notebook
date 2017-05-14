@@ -12,7 +12,7 @@ module FeedingDomain
 
     spreadsheet = open_spreadsheet path
 
-    parse.output << "CSV conversion stating time #{DatetimeDomain.datetime_format( parse.csv_conversion_started_at )} \n"
+    parse.output += "CSV conversion stating time #{DatetimeDomain.datetime_format( parse.csv_conversion_started_at )} \n"
     parse.save
 
     ActiveRecord::Base.transaction do
@@ -21,8 +21,8 @@ module FeedingDomain
       parse.save!
     end
 
-    parse.output << spreadsheet.info + "\n"
-    parse.output << "CSV conversion ending time #{DatetimeDomain.datetime_format( parse.csv_conversion_ended_at )} \n"
+    parse.output += spreadsheet.info + "\n"
+    parse.output += "CSV conversion ending time #{DatetimeDomain.datetime_format( parse.csv_conversion_ended_at )} \n"
     parse.save
 
     ActiveRecord::Base.transaction do
@@ -31,18 +31,18 @@ module FeedingDomain
       parse.save!
     end
 
-    parse.output << "Parsing starting time #{DatetimeDomain.datetime_format( parse.parsing_started_at  )} \n"
+    parse.output += "Parsing starting time #{DatetimeDomain.datetime_format( parse.parsing_started_at  )} \n"
     parse.save
 
     feeding_output = String.new
     ActiveRecord::Base.transaction do
       parse.status = :parse_succeed
-      feeding_output << feed_db( spreadsheet, parse )
+      feeding_output += feed_db( spreadsheet, parse )
       parse.parsing_ended_at = Time.current
       parse.save!
     end
 
-    parse.output << "Parsing ending time #{DatetimeDomain.datetime_format( parse.parsing_ended_at  )} \n"
+    parse.output += "Parsing ending time #{DatetimeDomain.datetime_format( parse.parsing_ended_at  )} \n"
     parse.save
 
   end
