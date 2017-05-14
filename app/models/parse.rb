@@ -14,4 +14,12 @@ class Parse < ActiveRecord::Base
   # validates_presence_of :csv_conversion_started_at, if: :converting?
   #   ...
 
+  def reset
+    self.output = String.new
+    self.status = :initial
+    self.csv_conversion_started_at = nil
+    self.csv_conversion_ended_at = nil
+    self.parsing_started_at = nil
+    self.parsing_ended_at = nil
+  end
 end

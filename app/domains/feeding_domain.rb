@@ -4,7 +4,7 @@ module FeedingDomain
 
   def feed parse
 
-    parse.output = String.new
+    parse.reset
 
     ActiveRecord::Base.transaction do
       parse.status = :converting
@@ -38,15 +38,24 @@ module FeedingDomain
     parse.save
 
     feeding_output = String.new
-    ActiveRecord::Base.transaction do
-      parse.status = :parse_succeed
+
+    begin
       feeding_output += feed_db( spreadsheet, parse )
-      parse.parsing_ended_at = Time.current
-      parse.save!
+      ActiveRecord::Base.transaction do
+        parse.status = :parse_succeed
+        parse.parsing_ended_at = Time.current
+        parse.save!
+      end
+    rescue Roo::HeaderRowNotFoundError
+      ActiveRecord::Base.transaction do
+        parse.output += "ERROR: La cabecera del EXCEL no coincide: las columnas deben ser las siguietnes:\nNIE;Nombre;Bon.;Subgrupo;Actividad;Estado;F. Inicio;F. Fin;Cuenta Bancaria;NIF TIT.;Titular;Teléfono;Domicilio;Centro;Monitor\n"
+        parse.status = :parse_failed
+        parse.save!
+      end
     end
 
     parse.output += feeding_output + "\n\n"
-    parse.output += "Parsing ending time #{DatetimeDomain.datetime_format( parse.parsing_ended_at  )} \n"
+    parse.output += "Parsing ending time #{DatetimeDomain.datetime_format( parse.parsing_ended_at  )} \n" if parse.parsing_ended_at
     parse.save
 
   end
@@ -71,88 +80,83 @@ module FeedingDomain
     array_apuntados = Array.new
 
     ActiveRecord::Base.transaction do
-      begin
-        spreadsheet.parse( #NIE;Nombre;Bon.;Subgrupo;Actividad;Estado;F. Inicio;F. Fin;Cuenta Bancaria;NIF TIT.;Titular;Teléfono;Domicilio;CENTRO ;MONITOR
-            # clean: true,
-            nie: /NIE/i,
-            nombre: /Nombre/i ,
-            bon: /Bon\./i,
-            subgrupo: /Subgrupo/i,
-            actividad: /Actividad/i,
-            estado: /Estado/i,
-            f_inicio: /F\. Inicio/i,
-            f_fin: /F\. Fin/i,
-            cuenta_bancaria: /Cuenta Bancaria/i,
-            nif_titular: /NIF TIT\./i,
-            titular: /Titular/i,
-            telefono: /Teléfono/i,
-            domicilio: /Domicilio/i,
-            centro: /Centro/i,
-            monitor: /Monitor/i) do |hash|
+      spreadsheet.parse( #NIE;Nombre;Bon.;Subgrupo;Actividad;Estado;F. Inicio;F. Fin;Cuenta Bancaria;NIF TIT.;Titular;Teléfono;Domicilio;CENTRO ;MONITOR
+          # clean: true,
+          nie: /NIE/i,
+          nombre: /Nombre/i ,
+          bon: /Bon\./i,
+          subgrupo: /Subgrupo/i,
+          actividad: /Actividad/i,
+          estado: /Estado/i,
+          f_inicio: /F\. Inicio/i,
+          f_fin: /F\. Fin/i,
+          cuenta_bancaria: /Cuenta Bancaria/i,
+          nif_titular: /NIF TIT\./i,
+          titular: /Titular/i,
+          telefono: /Teléfono/i,
+          domicilio: /Domicilio/i,
+          centro: /Centro/i,
+          monitor: /Monitor/i) do |hash|
 
-          if hash[:nie].present? and hash[:nie] != 'NIE'
+        if hash[:nie].present? and hash[:nie] != 'NIE'
 
-            student = Student.find_by nic: hash[:nie]
+          student = Student.find_by nic: hash[:nie]
 
 
-            if student.blank?
-              hash[:nombre] = hash[:nombre].split(', ')
-              name = hash[:nombre][1]
-              surname = hash[:nombre][0]
-              student = Student.new( nic: hash[:nie], name: name, surname: surname,  address: hash[:domicilio], phone_number: hash[:telefono],
-                                     iban: hash[:cuenta_bancaria], account_holder: hash[:titular], account_holder_nic: hash[:nif_titular] )
-              # if not student.save
-              #   puts student.errors.messages
-              # end
-              student.save!
-              array_estudiantes << hash[:nie]
-            end
-
-            school = School.find_by( name: hash[:centro] ) || SchoolExcelName.find_by( name: hash[ :centro ] ).try( :school )
-
-            if school.blank?
-              school = School.new( name: hash[:centro])
-              # if not school.save
-              #   puts school.errors.messages
-              # end
-              school.save!
-              # unless array_colegios.include? hash[:centro]
-              array_colegios << hash[:centro]
-              # end
-            end
-
-            activity = Activity.find_by name: hash[:actividad], school: school, course: parse.course
-            if activity.blank?
-              activity = Activity.new( name: hash[:actividad], school: school, course: parse.course, classification: "#{hash[:subgrupo]} - CREADA AUTOMÁTICA\n" )
-              # if not activity.save
-              #   puts activity.errors.messages
-              # end
-              activity.save!
-              # unless array_actividades.include? [ hash[:actividad], hash[:centro], parse.course.name ]
-              array_actividades << [ hash[:actividad], hash[:centro], parse.course.name ]
-              # end
-            end
-
-            sign_up = StudentActivitySignUp.find_by activity: activity, student: student
-            if sign_up.blank?
-              sign_up = StudentActivitySignUp.new( activity: activity, student: student,
-                                                   started_at: hash[:f_inicio], ended_at: hash[:f_fin],
-                                                   activity_discount: hash[:bon].to_i/100.0 )
-              # if not sign_up.save
-              #   puts sign_up.errors.messages
-              # end
-              sign_up.save!
-              array_apuntados << [ hash[:actividad], hash[:centro], hash[:nie] ]
-            end
-
-            # else
-            #   output << 'línea en blanco\n'
+          if student.blank?
+            hash[:nombre] = hash[:nombre].split(', ')
+            name = hash[:nombre][1]
+            surname = hash[:nombre][0]
+            student = Student.new( nic: hash[:nie], name: name, surname: surname,  address: hash[:domicilio], phone_number: hash[:telefono],
+                                   iban: hash[:cuenta_bancaria], account_holder: hash[:titular], account_holder_nic: hash[:nif_titular] )
+            # if not student.save
+            #   puts student.errors.messages
+            # end
+            student.save!
+            array_estudiantes << hash[:nie]
           end
-        end
-      rescue Roo::HeaderRowNotFoundError
-        output << "ERROR: La cabecera del EXCEL no coincide: las columnas deben ser las siguietnes:\nNIE;Nombre;Bon.;Subgrupo;Actividad;Estado;F. Inicio;F. Fin;Cuenta Bancaria;NIF TIT.;Titular;Teléfono;Domicilio;Centro;Monitor\n"
-      end
 
+          school = School.find_by( name: hash[:centro] ) || SchoolExcelName.find_by( name: hash[ :centro ] ).try( :school )
+
+          if school.blank?
+            school = School.new( name: hash[:centro])
+            # if not school.save
+            #   puts school.errors.messages
+            # end
+            school.save!
+            # unless array_colegios.include? hash[:centro]
+            array_colegios << hash[:centro]
+            # end
+          end
+
+          activity = Activity.find_by name: hash[:actividad], school: school, course: parse.course
+          if activity.blank?
+            activity = Activity.new( name: hash[:actividad], school: school, course: parse.course, classification: "#{hash[:subgrupo]} - CREADA AUTOMÁTICA\n" )
+            # if not activity.save
+            #   puts activity.errors.messages
+            # end
+            activity.save!
+            # unless array_actividades.include? [ hash[:actividad], hash[:centro], parse.course.name ]
+            array_actividades << [ hash[:actividad], hash[:centro], parse.course.name ]
+            # end
+          end
+
+          sign_up = StudentActivitySignUp.find_by activity: activity, student: student
+          if sign_up.blank?
+            sign_up = StudentActivitySignUp.new( activity: activity, student: student,
+                                                 started_at: hash[:f_inicio], ended_at: hash[:f_fin],
+                                                 activity_discount: hash[:bon].to_i/100.0 )
+            # if not sign_up.save
+            #   puts sign_up.errors.messages
+            # end
+            sign_up.save!
+            array_apuntados << [ hash[:actividad], hash[:centro], hash[:nie] ]
+          end
+
+          # else
+          #   output << 'línea en blanco\n'
+        end
+      end
       raise ActiveRecord::Rollback
     end
 
