@@ -157,7 +157,7 @@ module FeedingDomain
           #   output << 'línea en blanco\n'
         end
       end
-      raise ActiveRecord::Rollback
+      # raise ActiveRecord::Rollback
     end
 
 
