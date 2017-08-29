@@ -6,7 +6,7 @@ namespace :db do
       puts 'TRANSFORMATION:ADD_FIRST_COURSE started'
       
       ActiveRecord::Base.transaction do
-        first_course = Course.create!( name: 'Estándar 2016/2017' )
+        first_course = Course.find_or_create_by!( name: 'Estándar 2016/2017' )
         puts 'first course inserted'
 
         Activity.all.where( course: nil ).each do |activity|
