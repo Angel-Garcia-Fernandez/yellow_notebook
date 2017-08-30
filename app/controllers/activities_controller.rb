@@ -171,6 +171,7 @@ class ActivitiesController < ApplicationController
   def set_select_collections
     @schools = School.all
     @teachers = Teacher.all
+    @courses = Course.all
   end
 
   def set_select_collections_students
@@ -185,7 +186,7 @@ class ActivitiesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
     def activity_params
-      params.require(:activity).permit( :name, :classification, :started_at, :ended_at, :default_price, :details, :school_id,
+      params.require(:activity).permit( :name, :classification, :course_id, :started_at, :ended_at, :default_price, :details, :school_id,
                                         student_activity_sign_ups_attributes: [ :id, :_destroy, :student_id,
                                                                                 :started_at, :ended_at,
                                                                                 :activity_discount, :payment_type ],
