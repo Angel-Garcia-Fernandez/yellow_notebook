@@ -20,7 +20,7 @@ class Activity < ActiveRecord::Base
   belongs_to :course
   belongs_to :school
   has_many :time_week_cycles
-  has_many :activity_classes
+  has_many :activity_classes, inverse_of: :activity
   has_many :student_activity_sign_ups
   has_many :students, through: :student_activity_sign_ups
   has_many :teacher_activities

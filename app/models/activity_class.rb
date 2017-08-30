@@ -12,7 +12,7 @@
 
 class ActivityClass < ActiveRecord::Base
 
-  belongs_to :activity
+  belongs_to :activity, inverse_of: :activity_classes
   has_many :teachers, through: :activity
   has_many :student_class_data, :dependent => :delete_all
 
