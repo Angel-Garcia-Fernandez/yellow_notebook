@@ -112,6 +112,9 @@ gem 'paperclip', '~> 5.1.0'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 
+# Searching module
+gem 'ransack'
+
 # nested fields for form with has many
 gem 'nested_form_fields'
 
