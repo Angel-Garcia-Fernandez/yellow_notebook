@@ -42,6 +42,7 @@ group :development do
   gem 'capistrano-db-tasks', require: false # Gives some task to pull or push database from local to server and vice versa.
                                             # For a list of tasks: https://github.com/sgruhier/capistrano-db-tasks
   gem 'capistrano-rails-collection'
+  gem 'capistrano-rake'
 end
 
 # Environment variables configuration in application.yml with figaro.
@@ -117,5 +118,5 @@ gem 'roo', '~> 2.7.0'
 gem 'roo-xls'
 gem 'rubyzip', '~> 1.1.0'
 gem 'axlsx', '2.1.0.pre'
-# gem 'axlsx_rails'
+gem 'axlsx_rails'
 #gem install acts_as_xlsx, git: 'https://github.com/straydogstudio/acts_as_xlsx'
